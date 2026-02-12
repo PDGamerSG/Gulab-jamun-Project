@@ -1403,6 +1403,236 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
+/* Pricing Section */
+.pricing-section {
+    padding: 120px 0;
+    background-color: #ffffff;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.pricing-card {
+    background: #ffffff;
+    padding: 50px 40px;
+    border-radius: 32px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05);
+    border-color: rgba(232, 93, 117, 0.1);
+}
+
+.pricing-card.primary {
+    background: #1A1A1A;
+    color: #ffffff;
+    border: none;
+    transform: scale(1.05);
+}
+
+.pricing-card.primary:hover {
+    transform: scale(1.05) translateY(-10px);
+}
+
+.card-tag {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--accent-primary);
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.pricing-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 20px 0;
+}
+
+.price span {
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.6;
+}
+
+.pricing-header p {
+    font-size: 1rem;
+    opacity: 0.7;
+    margin-bottom: 30px;
+}
+
+.pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+    flex-grow: 1;
+}
+
+.pricing-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+}
+
+.pricing-features li svg {
+    color: var(--accent-primary);
+}
+
+.pricing-card.primary .pricing-header h3,
+.pricing-card.primary .price {
+    color: #ffffff;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 120px 0;
+    background-color: #F7F6F3;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.contact-desc {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 24px 0 40px;
+}
+
+.info-items {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.info-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.info-icon {
+    width: 48px;
+    height: 48px;
+    background: #ffffff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-primary);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+}
+
+.info-item h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+
+.info-item p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.contact-form-container {
+    background: #ffffff;
+    padding: 50px;
+    border-radius: 32px;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.05);
+}
+
+.contact-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 16px 20px;
+    background: #F7F6F3;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: rgba(232, 93, 117, 0.3);
+    box-shadow: 0 0 0 4px rgba(232, 93, 117, 0.05);
+}
+
+.w-full {
+    width: 100%;
+}
+
+@media (max-width: 992px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .pricing-card.primary {
+        transform: none;
+    }
+
+    .pricing-card.primary:hover {
+        transform: translateY(-10px);
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+}
+
 /* CTA Section */
 .cta-section {
     padding: 120px 0;
@@ -1537,7 +1767,7 @@ body {
 .footer-watermark {
     font-size: 15vw;
     font-weight: 900;
-    color: rgba(232, 93, 117, 0.05);
+    color: rgba(232, 93, 117, 0.12);
     text-align: center;
     text-transform: uppercase;
     line-height: 0.8;
