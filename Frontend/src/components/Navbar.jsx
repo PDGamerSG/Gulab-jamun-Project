@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const NAV_LINKS = [
-    { to: "/home", label: "Home" },
     { to: "/dashboard", label: "Dashboard" },
     { to: "/architecture", label: "Architecture" },
     { to: "/data-quality", label: "Data Quality" },

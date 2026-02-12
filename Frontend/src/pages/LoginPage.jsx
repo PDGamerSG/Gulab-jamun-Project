@@ -21,7 +21,7 @@ function LoginPage() {
 
         const success = login(username, password);
         if (success) {
-            navigate("/home");
+            navigate("/dashboard");
         } else {
             setError("Invalid credentials. Try admin / admin123");
         }
