@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon | Gulabjamun</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #F7F6F3;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+            margin: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .waiting-container {
+            text-align: center;
+            width: 100%;
+            max-width: 900px;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .mascot-container {
+            width: clamp(200px, 40vw, 320px);
+            height: clamp(200px, 40vw, 320px);
+            margin: 0 auto 30px;
+            position: relative;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .mascot-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.15));
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+        }
+
+        .coming-soon-text {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: 800;
+            color: #1A1A1A;
+            margin-bottom: 24px;
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            opacity: 0;
+            filter: blur(10px);
+            transform: translateY(30px);
+            animation: crystalReveal 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #e85d75, #ffb26b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        @keyframes crystalReveal {
+            to {
+                opacity: 1;
+                filter: blur(0);
+                transform: translateY(0);
+            }
+        }
+
+        .ecosystem-text {
+            font-size: clamp(1rem, 4vw, 1.4rem);
+            color: #666;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s cubic-bezier(0.19, 1, 0.22, 1) 0.3s forwards;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .timer-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+            opacity: 0;
+            transform: scale(0.9);
+            animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s forwards;
+            flex-wrap: wrap;
+        }
+
+        @keyframes popIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .timer-item {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: clamp(20px, 4vw, 40px) clamp(15px, 3vw, 30px);
+            border-radius: 24px;
+            flex: 1;
+            min-width: 100px;
+            max-width: 180px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .timer-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .timer-value {
+            display: block;
+            font-size: clamp(2.5rem, 10vw, 5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #e85d75, #ffb26b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 8px;
+            letter-spacing: -0.05em;
+        }
+
+        .timer-label {
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #999;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 60px;
+            color: #1A1A1A;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            opacity: 0.6;
+            padding: 12px 24px;
+            border-radius: 100px;
+            background: rgba(0, 0, 10, 0.05);
+        }
+
+        .back-link:hover {
+            opacity: 1;
+            background: rgba(0, 0, 10, 0.1);
+            transform: translateX(-5px);
+        }
+
+        /* BG Decorations */
+        .waiting-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+        }
+
+        @media (max-width: 480px) {
+            .timer-grid {
+                gap: 10px;
+            }
+
+            .timer-item {
+                min-width: 80px;
+                padding: 15px 10px;
+            }
+
+            .waiting-container {
+                padding: 20px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="waiting-bg">
+        <div class="circle" style="width: 400px; height: 400px; top: -100px; right: -100px;"></div>
+        <div class="circle"
+            style="width: 500px; height: 500px; bottom: -200px; left: -200px; background: radial-gradient(circle, rgba(255, 178, 107, 0.1) 0%, transparent 70%);">
+        </div>
+    </div>
+
+    <div class="waiting-container">
+        <div class="mascot-container">
+            <img src="gulabjamun mascot.png" alt="Gulabjamun Mascot" class="mascot-img">
+        </div>
+
+        <h1 class="coming-soon-text">We are coming soon with our<br><span class="gradient-text">most advanced retail
+                ecosystem.</span></h1>
+        <p class="ecosystem-text">The sweetness of smarter retail is just around the corner. Stay tuned!</p>
+
+        <div class="timer-grid" id="timer">
+            <div class="timer-item">
+                <span class="timer-value" id="hours">06</span>
+                <span class="timer-label">Hours</span>
+            </div>
+            <div class="timer-item">
+                <span class="timer-value" id="minutes">00</span>
+                <span class="timer-label">Minutes</span>
+            </div>
+            <div class="timer-item">
+                <span class="timer-value" id="seconds">00</span>
+                <span class="timer-label">Seconds</span>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to home</a>
+    </div>
+
+    <script>
+        // Set countdown to 6 hours from now
+        const countdownTime = new Date().getTime() + (6 * 60 * 60 * 1000);
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = countdownTime - now;
+
+            if (distance < 0) {
+                document.getElementById("timer").innerHTML = "<h2 style='color:#e85d75'>WE ARE LIVE!</h2>";
+                return;
+            }
+
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // Mouse move effect for background circles
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 30;
+            const y = (e.clientY / window.innerHeight) * 30;
+            const circles = document.querySelectorAll('.circle');
+            circles.forEach((circle, index) => {
+                const shift = (index + 1) * 0.8;
+                circle.style.transform = `translate(${x * shift}px, ${y * shift}px)`;
+            });
+        });
+    </script>
+</body>
+
+</html>

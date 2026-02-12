@@ -15,17 +15,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Smooth scroll for nav links
-    document.querySelectorAll('.nav-links a').forEach(link => {
+    // Smooth scroll for all internal links
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
             const targetId = link.getAttribute('href');
+            if (targetId === '#') return;
+
             const targetContent = document.querySelector(targetId);
 
             if (targetContent) {
-                // Update active link
-                document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
+                e.preventDefault();
+                // Update active link if it's in the nav
+                if (link.closest('.nav-links')) {
+                    document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                }
 
                 window.scrollTo({
                     top: targetContent.offsetTop - 100,

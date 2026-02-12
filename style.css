@@ -275,7 +275,108 @@ body {
     transform: translateY(-2px);
 }
 
-/* Hero Section Premium Styles (Light Version) */
+/* Premium Button Styles */
+.btn-primary-premium {
+    background: var(--accent-primary);
+    color: #ffffff;
+    padding: 16px 32px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    box-shadow: 0 10px 20px rgba(232, 93, 117, 0.2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.btn-primary-premium:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(232, 93, 117, 0.3);
+    filter: brightness(1.05);
+}
+
+.btn-primary-premium:active {
+    transform: translateY(-1px) scale(0.98);
+    filter: brightness(0.95);
+}
+
+.btn-outline-premium {
+    background: transparent;
+    color: var(--text-main);
+    padding: 16px 32px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-outline-premium:hover {
+    background: rgba(0, 0, 0, 0.02);
+    border-color: var(--text-main);
+    transform: translateY(-3px);
+}
+
+.btn-dark-premium {
+    background: #1A1A1A;
+    color: #ffffff;
+    padding: 16px 32px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-dark-premium:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 0 20px rgba(232, 93, 117, 0.2);
+    background: #000000;
+}
+
+.btn-dark-premium:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.btn-glass-premium {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--text-main);
+    padding: 16px 32px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-glass-premium:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    border-color: var(--accent-primary);
+}
+
 .hero-section {
     position: relative;
     padding: 160px 0 100px;
@@ -285,6 +386,7 @@ body {
     min-height: 90vh;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .grid-background {
@@ -1672,6 +1774,135 @@ body {
     color: #e85d75;
 }
 
+/* About Us - Behind Gulab Jamun */
+.about-section {
+    padding: 140px 0;
+    background-color: #F7F6F3;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: -5%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(232, 93, 117, 0.05) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.team-card {
+    background: #ffffff;
+    padding: 50px 30px;
+    border-radius: 32px;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    position: relative;
+    z-index: 1;
+}
+
+.team-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+    border-color: rgba(232, 93, 117, 0.1);
+}
+
+.team-avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 30px;
+    background: #F7F6F3;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e85d75;
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+.team-card:hover .team-avatar {
+    background: #1A1A1A;
+    color: #ffffff;
+    transform: scale(1.1) rotate(5deg);
+}
+
+.team-info h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1A1A1A;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.team-info p {
+    font-size: 0.95rem;
+    color: #6B7280;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.team-social {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease;
+}
+
+.team-card:hover .team-social {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.team-social-link {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: #F7F6F3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6B7280;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.team-social-link:hover {
+    background: #1A1A1A;
+    color: #ffffff;
+}
+
+@media (max-width: 992px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-section {
+        padding: 100px 0;
+    }
+}
+
 /* Footer Styles */
 .main-footer {
     background: #ffffff;
@@ -1754,16 +1985,6 @@ body {
     color: #ffffff;
 }
 
-.footer-bottom {
-    padding-top: 40px;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    position: relative;
-    z-index: 2;
-}
-
 .footer-watermark {
     font-size: 15vw;
     font-weight: 900;
@@ -1771,11 +1992,21 @@ body {
     text-align: center;
     text-transform: uppercase;
     line-height: 0.8;
-    margin-top: -5vh;
+    margin-top: -2vh;
     user-select: none;
     pointer-events: none;
     letter-spacing: -0.05em;
     font-family: var(--font-primary);
+}
+
+.footer-bottom {
+    padding: 40px 0;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 2;
+    background: #ffffff;
 }
 
 @media (max-width: 992px) {

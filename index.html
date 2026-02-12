@@ -31,12 +31,13 @@
                 <li><a href="#features">Features</a></li>
                 <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#faq">FAQ</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
 
             <div class="nav-actions">
-                <button class="btn-dark">Experience Gulab</button>
-                <button class="btn-light">Talk to Jamun</button>
+                <a href="waiting.html" class="btn-dark" style="text-decoration: none;">Experience Gulab</a>
+                <a href="#contact" class="btn-light" style="text-decoration: none;">Talk to Jamun</a>
             </div>
 
             <!-- Mobile Menu Toggle -->
@@ -103,9 +104,10 @@
                                 </svg>
                                 <span class="callout-text">Try it free for 7 days</span>
                             </div>
-                            <button class="btn-dark-premium">Experience Gulab</button>
+                            <a href="waiting.html" class="btn-dark-premium" style="text-decoration: none;">Experience
+                                Gulab</a>
                         </div>
-                        <button class="btn-glass-premium">Talk to Jamun</button>
+                        <a href="#contact" class="btn-glass-premium" style="text-decoration: none;">Talk to Jamun</a>
                     </div>
                 </div>
             </div>
@@ -545,373 +547,470 @@
                     <div class="timeline-line"></div>
                 </div>
             </div>
-            <!-- Features Section -->
-            <section id="features" class="features-section">
-                <div class="container">
-                    <div class="section-header center">
-                        <span class="section-tag">Powerful Features</span>
-                        <h2 class="section-title">Everything You Need to Scale Your Retail</h2>
-                        <p class="section-subtitle">A unified platform with modular features designed for modern retail
-                            intelligence.</p>
+        </section>
+        <!-- Features Section -->
+        <section id="features" class="features-section">
+            <div class="container">
+                <div class="section-header center">
+                    <span class="section-tag">Powerful Features</span>
+                    <h2 class="section-title">Everything You Need to Scale Your Retail</h2>
+                    <p class="section-subtitle">A unified platform with modular features designed for modern retail
+                        intelligence.</p>
+                </div>
+
+                <div class="features-grid">
+                    <!-- POS -->
+                    <div class="feature-card" data-reveal="fade-up">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                <line x1="1" y1="10" x2="23" y2="10"></line>
+                            </svg>
+                        </div>
+                        <h3>POS Management</h3>
+                        <p>A fast, reliable billing system designed for multi-store retail environments. Track every
+                            transaction in real time.</p>
                     </div>
 
-                    <div class="features-grid">
-                        <!-- POS -->
-                        <div class="feature-card" data-reveal="fade-up">
-                            <div class="feature-icon">
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                                    <line x1="1" y1="10" x2="23" y2="10"></line>
-                                </svg>
-                            </div>
-                            <h3>POS Management</h3>
-                            <p>A fast, reliable billing system designed for multi-store retail environments. Track every
-                                transaction in real time.</p>
+                    <!-- Inventory -->
+                    <div class="feature-card" data-reveal="fade-up" data-delay="50">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                </path>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                            </svg>
                         </div>
+                        <h3>Inventory Management</h3>
+                        <p>Monitor stock levels across stores and warehouses. Get low-stock alerts and demand
+                            insights instantly.</p>
+                    </div>
 
-                        <!-- Inventory -->
-                        <div class="feature-card" data-reveal="fade-up" data-delay="50">
-                            <div class="feature-icon">
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path
-                                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
-                                    </path>
-                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                                </svg>
-                            </div>
-                            <h3>Inventory Management</h3>
-                            <p>Monitor stock levels across stores and warehouses. Get low-stock alerts and demand
-                                insights instantly.</p>
+                    <!-- Store -->
+                    <div class="feature-card" data-reveal="fade-up" data-delay="100">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
                         </div>
+                        <h3>Store Management</h3>
+                        <p>Manage performance across all retail locations. Compare sales and monitor operations by
+                            region.</p>
+                    </div>
 
-                        <!-- Store -->
-                        <div class="feature-card" data-reveal="fade-up" data-delay="100">
-                            <div class="feature-icon">
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                </svg>
-                            </div>
-                            <h3>Store Management</h3>
-                            <p>Manage performance across all retail locations. Compare sales and monitor operations by
-                                region.</p>
+                    <!-- HRM -->
+                    <div class="feature-card" data-reveal="fade-up" data-delay="150">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
                         </div>
+                        <h3>HRM & Staff</h3>
+                        <p>Organize your workforce with role-based access, attendance tracking, and performance
+                            visibility.</p>
+                    </div>
 
-                        <!-- HRM -->
-                        <div class="feature-card" data-reveal="fade-up" data-delay="150">
-                            <div class="feature-icon">
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="9" cy="7" r="4"></circle>
-                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                </svg>
-                            </div>
-                            <h3>HRM & Staff</h3>
-                            <p>Organize your workforce with role-based access, attendance tracking, and performance
-                                visibility.</p>
+                    <!-- Analytics -->
+                    <div class="feature-card" data-reveal="fade-up" data-delay="200">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="20" x2="18" y2="10"></line>
+                                <line x1="12" y1="20" x2="12" y2="4"></line>
+                                <line x1="6" y1="20" x2="6" y2="14"></line>
+                            </svg>
                         </div>
+                        <h3>Analytics & Reports</h3>
+                        <p>Turn raw data into clear insights. Track revenue, top products, and customer trends in
+                            real time.</p>
+                    </div>
 
-                        <!-- Analytics -->
-                        <div class="feature-card" data-reveal="fade-up" data-delay="200">
-                            <div class="feature-icon">
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="18" y1="20" x2="18" y2="10"></line>
-                                    <line x1="12" y1="20" x2="12" y2="4"></line>
-                                    <line x1="6" y1="20" x2="6" y2="14"></line>
-                                </svg>
-                            </div>
-                            <h3>Analytics & Reports</h3>
-                            <p>Turn raw data into clear insights. Track revenue, top products, and customer trends in
-                                real time.</p>
+                    <!-- Login/Secure -->
+                    <div class="feature-card" data-reveal="fade-up" data-delay="250">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
                         </div>
+                        <h3>Security & Access</h3>
+                        <p>Secure, role-based access for admins and staff. Control permissions and protect sensitive
+                            data.</p>
+                    </div>
 
-                        <!-- Login/Secure -->
-                        <div class="feature-card" data-reveal="fade-up" data-delay="250">
-                            <div class="feature-icon">
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                </svg>
-                            </div>
-                            <h3>Security & Access</h3>
-                            <p>Secure, role-based access for admins and staff. Control permissions and protect sensitive
-                                data.</p>
+                    <!-- Excel -->
+                    <div class="feature-card" data-reveal="fade-up" data-delay="300">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
                         </div>
+                        <h3>Excel Integration</h3>
+                        <p>Upload and edit Excel files directly. Sync spreadsheet data into dashboards and generate
+                            reports instantly.</p>
+                    </div>
 
-                        <!-- Excel -->
-                        <div class="feature-card" data-reveal="fade-up" data-delay="300">
-                            <div class="feature-icon">
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                    <polyline points="14 2 14 8 20 8"></polyline>
-                                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                                    <polyline points="10 9 9 9 8 9"></polyline>
-                                </svg>
-                            </div>
-                            <h3>Excel Integration</h3>
-                            <p>Upload and edit Excel files directly. Sync spreadsheet data into dashboards and generate
-                                reports instantly.</p>
+                    <!-- Custom Import -->
+                    <div class="feature-card" data-reveal="fade-up" data-delay="350">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path
+                                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                                </path>
+                            </svg>
                         </div>
+                        <h3>Custom Chart Gen</h3>
+                        <p>Import custom datasets and define tracking fields. Generate charts and insights instantly
+                            without setup.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Pricing Section -->
+        <section id="pricing" class="pricing-section">
+            <div class="container">
+                <div class="section-header center">
+                    <span class="section-tag">Flexible Plans</span>
+                    <h2 class="section-title">Pricing Built for Your Scale</h2>
+                    <p class="section-subtitle">Choose the perfect plan to unlock your retail intelligence
+                        potential.</p>
+                </div>
 
-                        <!-- Custom Import -->
-                        <div class="feature-card" data-reveal="fade-up" data-delay="350">
-                            <div class="feature-icon">
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                    <path
-                                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
-                                    </path>
-                                </svg>
+                <div class="pricing-grid">
+                    <!-- Starter -->
+                    <div class="pricing-card" data-reveal="fade-up">
+                        <div class="pricing-header">
+                            <h3>Starter</h3>
+                            <div class="price">FREE<span>/mo</span></div>
+                            <p>For independent single stores.</p>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg> 1 Store Location</li>
+                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg> Daily Data Sync</li>
+                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg> Basic Analytics</li>
+                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg> Email Support</li>
+                        </ul>
+                        <a href="waiting.html" class="btn-outline-premium">Start for Free</a>
+                    </div>
+
+                    <!-- Growth -->
+                    <div class="pricing-card primary" data-reveal="fade-up" data-delay="100">
+                        <div class="card-tag">Recommended</div>
+                        <div class="pricing-header">
+                            <h3>Growth</h3>
+                            <div class="price">$49<span>/mo</span></div>
+                            <p>For growing retail chains.</p>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg> Up to 5 Stores</li>
+                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg> Real-time Alerts</li>
+                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg> Advanced CLV Reports</li>
+                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg> Priority Support</li>
+                        </ul>
+                        <a href="waiting.html" class="btn-primary-premium">Get Started</a>
+                    </div>
+
+                    <!-- Enterprise -->
+                    <div class="pricing-card" data-reveal="fade-up" data-delay="200">
+                        <div class="pricing-header">
+                            <h3>Enterprise</h3>
+                            <div class="price">Custom</div>
+                            <p>For large-scale retail giants.</p>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg> Unlimited Stores</li>
+                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg> Custom Integrations</li>
+                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg> Dedicated Manager</li>
+                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg> 24/7 Phone Support</li>
+                        </ul>
+                        <a href="#contact" class="btn-outline-premium">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <div class="faq-wrapper">
+                    <div class="faq-visual" data-reveal="fade-right">
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=2070"
+                            alt="Support & Common Questions" class="faq-img">
+                        <div class="faq-float-card">
+                            <div class="float-icon">?</div>
+                            <div>
+                                <strong>Need Help?</strong>
+                                <p>Our team is here 24/7</p>
                             </div>
-                            <h3>Custom Chart Gen</h3>
-                            <p>Import custom datasets and define tracking fields. Generate charts and insights instantly
-                                without setup.</p>
+                        </div>
+                    </div>
+                    <div class="faq-content" data-reveal="fade-left">
+                        <span class="section-tag">Common Inquiries</span>
+                        <h2 class="section-title">Frequently Asked Questions</h2>
+
+                        <div class="faq-accordion">
+                            <div class="faq-item">
+                                <div class="faq-question">What retail systems does Gulabjamun connect with?
+                                </div>
+                                <div class="faq-answer">Gulabjamun integrates seamlessly with major POS systems,
+                                    e-commerce platforms (Shopify, WooCommerce), and local warehouse management
+                                    tools using our unified data pipeline.</div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question">How fast is the data processing?</div>
+                                <div class="faq-answer">Our system processes data in near real-time. Sales from
+                                    your POS or e-commerce store typically reflect on your analytics dashboard
+                                    within seconds.</div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question">Can I export my data to Excel?</div>
+                                <div class="faq-answer">Yes, Gulabjamun provides one-click exports for all
+                                    reports. You can also edit and re-upload data via our smart spreadsheet
+                                    integration.</div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question">Is my retail data secure?</div>
+                                <div class="faq-answer">Absolutely. We use enterprise-grade encryption and offer
+                                    role-based access control, ensuring only authorized personnel have
+                                    visibility into sensitive financial data.</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- Pricing Section -->
-                <section id="pricing" class="pricing-section">
-                    <div class="container">
-                        <div class="section-header center">
-                            <span class="section-tag">Flexible Plans</span>
-                            <h2 class="section-title">Pricing Built for Your Scale</h2>
-                            <p class="section-subtitle">Choose the perfect plan to unlock your retail intelligence
-                                potential.</p>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header center">
+                    <span class="section-tag">Our Team</span>
+                    <h2 class="section-title">Behind Gulab Jamun</h2>
+                    <p class="section-subtitle">Meet the specialized team building the most advanced retail ecosystem.
+                    </p>
+                </div>
+
+                <div class="team-grid">
+                    <!-- Pallab Das -->
+                    <div class="team-card" data-reveal="fade-up">
+                        <div class="team-avatar">
+                            <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" fill="none"
+                                stroke-width="1.5">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
                         </div>
-
-                        <div class="pricing-grid">
-                            <!-- Starter -->
-                            <div class="pricing-card" data-reveal="fade-up">
-                                <div class="pricing-header">
-                                    <h3>Starter</h3>
-                                    <div class="price">FREE<span>/mo</span></div>
-                                    <p>For independent single stores.</p>
-                                </div>
-                                <ul class="pricing-features">
-                                    <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor"
-                                            fill="none" stroke-width="2.5">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg> 1 Store Location</li>
-                                    <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor"
-                                            fill="none" stroke-width="2.5">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg> Daily Data Sync</li>
-                                    <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor"
-                                            fill="none" stroke-width="2.5">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg> Basic Analytics</li>
-                                    <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor"
-                                            fill="none" stroke-width="2.5">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg> Email Support</li>
-                                </ul>
-                                <a href="#" class="btn-outline-premium">Start for Free</a>
-                            </div>
-
-                            <!-- Growth -->
-                            <div class="pricing-card primary" data-reveal="fade-up" data-delay="100">
-                                <div class="card-tag">Recommended</div>
-                                <div class="pricing-header">
-                                    <h3>Growth</h3>
-                                    <div class="price">$49<span>/mo</span></div>
-                                    <p>For growing retail chains.</p>
-                                </div>
-                                <ul class="pricing-features">
-                                    <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor"
-                                            fill="none" stroke-width="2.5">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg> Up to 5 Stores</li>
-                                    <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor"
-                                            fill="none" stroke-width="2.5">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg> Real-time Alerts</li>
-                                    <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor"
-                                            fill="none" stroke-width="2.5">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg> Advanced CLV Reports</li>
-                                    <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor"
-                                            fill="none" stroke-width="2.5">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg> Priority Support</li>
-                                </ul>
-                                <a href="#" class="btn-primary-premium">Get Started</a>
-                            </div>
-
-                            <!-- Enterprise -->
-                            <div class="pricing-card" data-reveal="fade-up" data-delay="200">
-                                <div class="pricing-header">
-                                    <h3>Enterprise</h3>
-                                    <div class="price">Custom</div>
-                                    <p>For large-scale retail giants.</p>
-                                </div>
-                                <ul class="pricing-features">
-                                    <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor"
-                                            fill="none" stroke-width="2.5">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg> Unlimited Stores</li>
-                                    <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor"
-                                            fill="none" stroke-width="2.5">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg> Custom Integrations</li>
-                                    <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor"
-                                            fill="none" stroke-width="2.5">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg> Dedicated Manager</li>
-                                    <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor"
-                                            fill="none" stroke-width="2.5">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg> 24/7 Phone Support</li>
-                                </ul>
-                                <a href="#" class="btn-outline-premium">Contact Sales</a>
-                            </div>
+                        <div class="team-info">
+                            <h3>Pallab Das</h3>
+                            <p>Founder & CEO</p>
+                        </div>
+                        <div class="team-social">
+                            <a href="#" class="team-social-link"><svg viewBox="0 0 24 24" width="16" height="16"
+                                    fill="currentColor">
+                                    <path
+                                        d="M22.23 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0zM7.12 20.45H3.56V9h3.56v11.45zM5.34 7.58c-1.14 0-2.06-.92-2.06-2.06 0-1.14.92-2.06 2.06-2.06 1.14 0 2.06.92 2.06 2.06 0 1.14-.92 2.06-2.06 2.06zM20.45 20.45h-3.56V15a1.78 1.78 0 0 0-3.56 0v5.45h-3.56V9h3.56v1.54a3.52 3.52 0 0 1 3.2-1.54c2.62 0 3.92 1.74 3.92 4.09v7.36z" />
+                                </svg></a>
+                            <a href="#" class="team-social-link"><svg viewBox="0 0 24 24" width="16" height="16"
+                                    stroke="currentColor" fill="none" stroke-width="2">
+                                    <path
+                                        d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                                </svg></a>
                         </div>
                     </div>
-                </section>
 
-                <!-- FAQ Section -->
-                <section id="faq" class="faq-section">
-                    <div class="container">
-                        <div class="faq-wrapper">
-                            <div class="faq-visual" data-reveal="fade-right">
-                                <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=2070"
-                                    alt="Support & Common Questions" class="faq-img">
-                                <div class="faq-float-card">
-                                    <div class="float-icon">?</div>
-                                    <div>
-                                        <strong>Need Help?</strong>
-                                        <p>Our team is here 24/7</p>
-                                    </div>
+                    <!-- Sriram -->
+                    <div class="team-card" data-reveal="fade-up" data-delay="100">
+                        <div class="team-avatar">
+                            <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" fill="none"
+                                stroke-width="1.5">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <div class="team-info">
+                            <h3>Sriram</h3>
+                            <p>CTO & Co-Founder</p>
+                        </div>
+                        <div class="team-social">
+                            <a href="#" class="team-social-link"><svg viewBox="0 0 24 24" width="16" height="16"
+                                    fill="currentColor">
+                                    <path
+                                        d="M22.23 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0zM7.12 20.45H3.56V9h3.56v11.45zM5.34 7.58c-1.14 0-2.06-.92-2.06-2.06 0-1.14.92-2.06 2.06-2.06 1.14 0 2.06.92 2.06 2.06 0 1.14-.92 2.06-2.06 2.06zM20.45 20.45h-3.56V15a1.78 1.78 0 0 0-3.56 0v5.45h-3.56V9h3.56v1.54a3.52 3.52 0 0 1 3.2-1.54c2.62 0 3.92 1.74 3.92 4.09v7.36z" />
+                                </svg></a>
+                            <a href="#" class="team-social-link"><svg viewBox="0 0 24 24" width="16" height="16"
+                                    stroke="currentColor" fill="none" stroke-width="2">
+                                    <path
+                                        d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                                </svg></a>
+                        </div>
+                    </div>
+
+                    <!-- Ayush Yadav -->
+                    <div class="team-card" data-reveal="fade-up" data-delay="200">
+                        <div class="team-avatar">
+                            <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" fill="none"
+                                stroke-width="1.5">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <div class="team-info">
+                            <h3>Ayush Yadav</h3>
+                            <p>Head of Product</p>
+                        </div>
+                        <div class="team-social">
+                            <a href="#" class="team-social-link"><svg viewBox="0 0 24 24" width="16" height="16"
+                                    fill="currentColor">
+                                    <path
+                                        d="M22.23 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0zM7.12 20.45H3.56V9h3.56v11.45zM5.34 7.58c-1.14 0-2.06-.92-2.06-2.06 0-1.14.92-2.06 2.06-2.06 1.14 0 2.06.92 2.06 2.06 0 1.14-.92 2.06-2.06 2.06zM20.45 20.45h-3.56V15a1.78 1.78 0 0 0-3.56 0v5.45h-3.56V9h3.56v1.54a3.52 3.52 0 0 1 3.2-1.54c2.62 0 3.92 1.74 3.92 4.09v7.36z" />
+                                </svg></a>
+                            <a href="#" class="team-social-link"><svg viewBox="0 0 24 24" width="16" height="16"
+                                    stroke="currentColor" fill="none" stroke-width="2">
+                                    <path
+                                        d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                                </svg></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info" data-reveal="fade-right">
+                        <span class="section-tag">Get in Touch</span>
+                        <h2 class="section-title">Let's Talk About Your Growth</h2>
+                        <p class="contact-desc">Ready to unify your retail data? Send us a message and our
+                            specialists will reach out within 24 hours.</p>
+
+                        <div class="info-items">
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none"
+                                        stroke-width="2">
+                                        <path
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                        </path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4>Email Us</h4>
+                                    <p>hello@gulabjamun.ai</p>
                                 </div>
                             </div>
-                            <div class="faq-content" data-reveal="fade-left">
-                                <span class="section-tag">Common Inquiries</span>
-                                <h2 class="section-title">Frequently Asked Questions</h2>
-
-                                <div class="faq-accordion">
-                                    <div class="faq-item">
-                                        <div class="faq-question">What retail systems does Gulabjamun connect with?
-                                        </div>
-                                        <div class="faq-answer">Gulabjamun integrates seamlessly with major POS systems,
-                                            e-commerce platforms (Shopify, WooCommerce), and local warehouse management
-                                            tools using our unified data pipeline.</div>
-                                    </div>
-                                    <div class="faq-item">
-                                        <div class="faq-question">How fast is the data processing?</div>
-                                        <div class="faq-answer">Our system processes data in near real-time. Sales from
-                                            your POS or e-commerce store typically reflect on your analytics dashboard
-                                            within seconds.</div>
-                                    </div>
-                                    <div class="faq-item">
-                                        <div class="faq-question">Can I export my data to Excel?</div>
-                                        <div class="faq-answer">Yes, Gulabjamun provides one-click exports for all
-                                            reports. You can also edit and re-upload data via our smart spreadsheet
-                                            integration.</div>
-                                    </div>
-                                    <div class="faq-item">
-                                        <div class="faq-question">Is my retail data secure?</div>
-                                        <div class="faq-answer">Absolutely. We use enterprise-grade encryption and offer
-                                            role-based access control, ensuring only authorized personnel have
-                                            visibility into sensitive financial data.</div>
-                                    </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none"
+                                        stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4>Office</h4>
+                                    <p>Intelligence Tower, South Delhi, India</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
 
-                <!-- Contact Section -->
-                <section id="contact" class="contact-section">
-                    <div class="container">
-                        <div class="contact-grid">
-                            <div class="contact-info" data-reveal="fade-right">
-                                <span class="section-tag">Get in Touch</span>
-                                <h2 class="section-title">Let's Talk About Your Growth</h2>
-                                <p class="contact-desc">Ready to unify your retail data? Send us a message and our
-                                    specialists will reach out within 24 hours.</p>
-
-                                <div class="info-items">
-                                    <div class="info-item">
-                                        <div class="info-icon">
-                                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor"
-                                                fill="none" stroke-width="2">
-                                                <path
-                                                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-                                                </path>
-                                                <polyline points="22,6 12,13 2,6"></polyline>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <h4>Email Us</h4>
-                                            <p>hello@gulabjamun.ai</p>
-                                        </div>
-                                    </div>
-                                    <div class="info-item">
-                                        <div class="info-icon">
-                                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor"
-                                                fill="none" stroke-width="2">
-                                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                                <circle cx="12" cy="10" r="3"></circle>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <h4>Office</h4>
-                                            <p>Intelligence Tower, South Delhi, India</p>
-                                        </div>
-                                    </div>
+                    <div class="contact-form-container" data-reveal="fade-left">
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" placeholder="John Doe" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Work Email</label>
+                                    <input type="email" placeholder="john@retail.com" required>
                                 </div>
                             </div>
-
-                            <div class="contact-form-container" data-reveal="fade-left">
-                                <form id="contact-form" class="contact-form">
-                                    <div class="form-row">
-                                        <div class="form-group">
-                                            <label>Full Name</label>
-                                            <input type="text" placeholder="John Doe" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Work Email</label>
-                                            <input type="email" placeholder="john@retail.com" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Company Name</label>
-                                        <input type="text" placeholder="Your Store Name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Message</label>
-                                        <textarea placeholder="How can we help you scale?" rows="5" required></textarea>
-                                    </div>
-                                    <button type="submit" class="btn-primary-premium w-full">Send Message</button>
-                                </form>
+                            <div class="form-group">
+                                <label>Company Name</label>
+                                <input type="text" placeholder="Your Store Name">
                             </div>
+                            <div class="form-group">
+                                <label>Message</label>
+                                <textarea placeholder="How can we help you scale?" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary-premium w-full">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section id="cta" class="cta-section">
+            <div class="container">
+                <div class="cta-box" data-reveal="fade-up">
+                    <div class="cta-content">
+                        <h2>Turn retail data into<br><span>real-time decisions.</span></h2>
+                        <div class="cta-actions">
+                            <a href="#dashboard" class="btn-dark-premium">View Live Dashboard</a>
                         </div>
                     </div>
-                </section>
-
-                <!-- Final CTA Section -->
-                <section id="cta" class="cta-section">
-                    <div class="container">
-                        <div class="cta-box" data-reveal="fade-up">
-                            <div class="cta-content">
-                                <h2>Turn retail data into<br><span>real-time decisions.</span></h2>
-                                <div class="cta-actions">
-                                    <a href="#dashboard" class="btn-dark-premium">View Live Dashboard</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -929,15 +1028,16 @@
                         <li><a href="#features">Features</a></li>
                         <li><a href="#pricing">Pricing</a></li>
                         <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#about">About</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Company</h4>
                     <ul>
-                        <li><a href="#">About Gulab</a></li>
-                        <li><a href="#">The Jamun Team</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="#about">The Team</a></li>
+                        <li><a href="#about">About Gulab</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -969,12 +1069,12 @@
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Gulabjamun Retail Intelligence. All rights reserved.</p>
-            </div>
         </div>
         <div class="footer-watermark">
             Gulabjamun
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Gulabjamun Retail Intelligence. All rights reserved.</p>
         </div>
     </footer>
 
