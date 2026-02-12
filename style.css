@@ -1537,7 +1537,7 @@ body {
 .footer-watermark {
     font-size: 15vw;
     font-weight: 900;
-    color: rgba(0, 0, 0, 0.02);
+    color: rgba(232, 93, 117, 0.05);
     text-align: center;
     text-transform: uppercase;
     line-height: 0.8;
