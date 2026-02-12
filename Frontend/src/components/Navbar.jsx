@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const NAV_LINKS = [
-    { to: "/", label: "Home" },
+    { to: "/home", label: "Home" },
     { to: "/dashboard", label: "Dashboard" },
     { to: "/architecture", label: "Architecture" },
     { to: "/data-quality", label: "Data Quality" },
@@ -14,10 +15,17 @@ const NAV_LINKS = [
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const location = useLocation();
+    const navigate = useNavigate();
+    const { logout } = useAuth();
+
+    function handleLogout() {
+        logout();
+        navigate("/");
+    }
 
     return (
         <nav className="navbar">
-            <Link to="/" className="navbar-logo" onClick={() => setMenuOpen(false)}>
+            <Link to="/home" className="navbar-logo" onClick={() => setMenuOpen(false)}>
                 <span className="logo-dot" />
                 Gulabjamun
             </Link>
@@ -41,6 +49,9 @@ function Navbar() {
             </ul>
 
             <div className="navbar-cta">
+                <button className="btn btn-outline" onClick={handleLogout} style={{ marginRight: 8 }}>
+                    Logout
+                </button>
                 <Link to="/dashboard" className="btn btn-primary">View Dashboard</Link>
             </div>
         </nav>
