@@ -84,12 +84,12 @@ const DATA = {
 
     // ── Roles & Permissions ─────────────────────────────────────
     roles: [
-        { id: 1, name: 'Super Admin', users: 2, color: '#e74c3c', permissions: { dashboard: true, pos: true, inventory: true, insights: true, hrm: true, settings: true, userMgmt: true } },
-        { id: 2, name: 'Store Manager', users: 12, color: '#3498db', permissions: { dashboard: true, pos: true, inventory: true, insights: true, hrm: false, settings: false, userMgmt: false } },
-        { id: 3, name: 'Data Analyst', users: 5, color: '#2ecc71', permissions: { dashboard: true, pos: false, inventory: true, insights: true, hrm: false, settings: false, userMgmt: false } },
-        { id: 4, name: 'Cashier', users: 38, color: '#f39c12', permissions: { dashboard: false, pos: true, inventory: false, insights: false, hrm: false, settings: false, userMgmt: false } },
-        { id: 5, name: 'HR Manager', users: 3, color: '#9b59b6', permissions: { dashboard: true, pos: false, inventory: false, insights: false, hrm: true, settings: false, userMgmt: true } },
-        { id: 6, name: 'Viewer', users: 15, color: '#95a5a6', permissions: { dashboard: true, pos: false, inventory: false, insights: true, hrm: false, settings: false, userMgmt: false } },
+        { id: 1, name: 'Super Admin', users: 2, color: '#1a1a1a', permissions: { dashboard: true, pos: true, inventory: true, insights: true, hrm: true, settings: true, userMgmt: true } },
+        { id: 2, name: 'Store Manager', users: 12, color: '#F97316', permissions: { dashboard: true, pos: true, inventory: true, insights: true, hrm: false, settings: false, userMgmt: false } },
+        { id: 3, name: 'Data Analyst', users: 5, color: '#6b7280', permissions: { dashboard: true, pos: false, inventory: true, insights: true, hrm: false, settings: false, userMgmt: false } },
+        { id: 4, name: 'Cashier', users: 38, color: '#FB923C', permissions: { dashboard: false, pos: true, inventory: false, insights: false, hrm: false, settings: false, userMgmt: false } },
+        { id: 5, name: 'HR Manager', users: 3, color: '#374151', permissions: { dashboard: true, pos: false, inventory: false, insights: false, hrm: true, settings: false, userMgmt: true } },
+        { id: 6, name: 'Viewer', users: 15, color: '#9ca3af', permissions: { dashboard: true, pos: false, inventory: false, insights: true, hrm: false, settings: false, userMgmt: false } },
     ],
 
     users: [
@@ -157,28 +157,28 @@ const DATA = {
     ],
 
     salesByCategory: [
-        { category: 'Grocery', percentage: 35, color: '#6366f1' },
-        { category: 'Beverages', percentage: 18, color: '#22d3ee' },
-        { category: 'Personal Care', percentage: 15, color: '#f472b6' },
-        { category: 'Snacks', percentage: 14, color: '#facc15' },
-        { category: 'Dairy', percentage: 10, color: '#4ade80' },
-        { category: 'Household', percentage: 8, color: '#fb923c' },
+        { category: 'Grocery', percentage: 35, color: '#1a1a1a' },
+        { category: 'Beverages', percentage: 18, color: '#F97316' },
+        { category: 'Personal Care', percentage: 15, color: '#6b7280' },
+        { category: 'Snacks', percentage: 14, color: '#FB923C' },
+        { category: 'Dairy', percentage: 10, color: '#374151' },
+        { category: 'Household', percentage: 8, color: '#9ca3af' },
     ],
 
     paymentMethods: [
-        { method: 'UPI', percentage: 42, color: '#6366f1' },
-        { method: 'Card', percentage: 30, color: '#22d3ee' },
-        { method: 'Cash', percentage: 18, color: '#4ade80' },
-        { method: 'Wallet', percentage: 10, color: '#f472b6' },
+        { method: 'UPI', percentage: 42, color: '#1a1a1a' },
+        { method: 'Card', percentage: 30, color: '#F97316' },
+        { method: 'Cash', percentage: 18, color: '#6b7280' },
+        { method: 'Wallet', percentage: 10, color: '#FB923C' },
     ],
 
     // ── Department breakdowns (HRM) ─────────────────────────────
     departments: [
-        { name: 'Operations', count: 4, color: '#6366f1' },
-        { name: 'Sales', count: 4, color: '#22d3ee' },
-        { name: 'Analytics', count: 2, color: '#4ade80' },
-        { name: 'Logistics', count: 2, color: '#fb923c' },
-        { name: 'HR', count: 2, color: '#f472b6' },
-        { name: 'Finance', count: 1, color: '#facc15' },
+        { name: 'Operations', count: 4, color: '#1a1a1a' },
+        { name: 'Sales', count: 4, color: '#F97316' },
+        { name: 'Analytics', count: 2, color: '#6b7280' },
+        { name: 'Logistics', count: 2, color: '#FB923C' },
+        { name: 'HR', count: 2, color: '#374151' },
+        { name: 'Finance', count: 1, color: '#9ca3af' },
     ],
 };

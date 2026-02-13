@@ -5,27 +5,26 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-/* ── CSS Custom Properties (matching analytics dashboard) ───── */
+/* ── CSS Custom Properties – Minimalist Orange / Grey / Black ── */
 :root {
   /* Accent Colors */
-  --accent-primary: #E85D75;
-  --accent-secondary: #FFB26B;
-  --accent-lavender: #8b5cf6;
-  --accent-gradient: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  --accent-primary: #F97316;
+  --accent-secondary: #FB923C;
+  --accent-gradient: linear-gradient(135deg, #F97316, #FB923C);
 
   /* Text */
-  --text-primary: #1a1a2e;
-  --text-secondary: #64748b;
-  --text-muted: #94a3b8;
+  --text-primary: #1a1a1a;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
 
   /* Backgrounds */
   --bg-primary: #ffffff;
-  --bg-tint: #f8f9fc;
+  --bg-tint: #f9fafb;
   --bg-surface: #ffffff;
 
   /* Borders */
-  --border: #e8e8ee;
-  --border-light: #f1f5f9;
+  --border: #e5e7eb;
+  --border-light: #f3f4f6;
 
   /* Shadows */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
@@ -48,16 +47,16 @@
   --space-xl: 32px;
   --space-2xl: 48px;
 
-  /* Semantic */
-  --success: #10b981;
-  --success-bg: rgba(16, 185, 129, 0.08);
-  --warning: #f59e0b;
-  --warning-bg: rgba(245, 158, 11, 0.08);
-  --danger: #ef4444;
-  --danger-bg: rgba(239, 68, 68, 0.08);
-  --info: #06b6d4;
-  --info-bg: rgba(6, 182, 212, 0.08);
-  --primary-bg: rgba(232, 93, 117, 0.08);
+  /* Semantic – kept muted to stay minimal */
+  --success: #6b7280;
+  --success-bg: rgba(107, 114, 128, 0.06);
+  --warning: #F97316;
+  --warning-bg: rgba(249, 115, 22, 0.06);
+  --danger: #b91c1c;
+  --danger-bg: rgba(185, 28, 28, 0.06);
+  --info: #6b7280;
+  --info-bg: rgba(107, 114, 128, 0.06);
+  --primary-bg: rgba(249, 115, 22, 0.06);
 
   /* Transitions */
   --transition-fast: 0.15s ease;
@@ -561,6 +560,182 @@ textarea {
 .user-avatar:hover {
   transform: scale(1.05);
   box-shadow: 0 2px 10px rgba(232, 93, 117, 0.25);
+}
+
+/* ── Header Dropdowns ── */
+.header-dropdown-wrapper {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  width: 320px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  display: none;
+  animation: slideDown 0.2s ease-out;
+}
+
+.dropdown-menu.active {
+  display: block;
+}
+
+.dropdown-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.dropdown-content {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.dropdown-item {
+  padding: 12px 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background: var(--bg-tint);
+}
+
+.dropdown-item.unread {
+  background: rgba(249, 115, 22, 0.05);
+}
+
+.item-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.item-icon.warning {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.item-icon.success {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.item-icon.primary {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.item-text p {
+  margin: 0 0 4px 0;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.item-text span {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.dropdown-footer {
+  padding: 12px;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-tint);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+.dropdown-footer a {
+  font-size: 0.85rem;
+  color: var(--accent-primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* Profile specific */
+.dropdown-header.user-info {
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.user-avatar.small {
+  width: 40px;
+  height: 40px;
+  font-size: 1rem;
+}
+
+.dropdown-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: 0.2s;
+  font-size: 0.95rem;
+}
+
+.dropdown-link:hover {
+  background: var(--bg-tint);
+  color: var(--accent-primary);
+}
+
+.dropdown-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+.dropdown-link.logout {
+  color: var(--danger);
+}
+
+.dropdown-link.logout:hover {
+  background: #fef2f2;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: var(--border-color);
+  margin: 4px 0;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ═════════════════ CONTENT ═════════════════ */
@@ -1523,4 +1698,66 @@ tbody tr:last-child td {
 
 .text-center {
   text-align: center;
+}
+
+/* ═════════════════ KPI ICON SVG FIX ═════════════════ */
+.kpi-icon svg {
+  display: block;
+}
+
+.kpi-icon.primary svg {
+  stroke: var(--accent-primary);
+}
+
+.kpi-icon.success svg {
+  stroke: var(--success);
+}
+
+.kpi-icon.warning svg {
+  stroke: var(--warning);
+}
+
+.kpi-icon.danger svg {
+  stroke: var(--danger);
+}
+
+.kpi-icon.info svg {
+  stroke: var(--info);
+}
+
+/* ═════════════════ TOAST NOTIFICATIONS ═════════════════ */
+.csv-toast {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  padding: 14px 24px;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 600;
+  font-family: var(--font);
+  color: white;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.csv-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.csv-toast.success {
+  background: linear-gradient(135deg, #F97316, #FB923C);
+}
+
+.csv-toast.error {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+/* ═════════════════ ACTIVITY ICON SVG ═════════════════ */
+.act-icon svg {
+  display: block;
 }
