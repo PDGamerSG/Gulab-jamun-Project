@@ -207,68 +207,36 @@
         </section>
 
         <!-- Dashboard Showcase Section -->
-        <!-- AI Chatbot Showcase Section -->
-        <section id="dashboard" class="dashboard-section chat-section">
+        <section id="dashboard" class="dashboard-section">
             <div class="container">
                 <div class="section-header center">
-                    <span class="section-tag">AI Copilot</span>
-                    <h2 class="section-title">Meet Jamun : Your AI Retail Assistant</h2>
-                    <p class="section-subtitle">Analyze trends, manage menus, and optimize inventory with a single
-                        conversational command.</p>
+                    <span class="section-tag">Command Center</span>
+                    <h2 class="section-title">One Dashboard. Total Control.</h2>
+                    <p class="section-subtitle">A unified real-time view of your entire retail operation. Track every
+                        sale, inventory move, and customer insight as it happens.</p>
                 </div>
 
-                <div class="chat-interface-wrapper" data-reveal="fade-up">
-                    <div class="chat-interface">
-                        <div class="chat-header">
-                            <div class="jamun-avatar">
-                                <div class="avatar-glow"></div>
-                                <span>J</span>
-                            </div>
-                            <div class="chat-meta">
-                                <h3>Jamun AI</h3>
-                                <div class="status-indicator">
-                                    <span class="dot"></span>
-                                    <span>Active Scaling Mode</span>
-                                </div>
-                            </div>
-                        </div>
+                <div class="dashboard-wrapper" data-reveal="fade-up">
+                    <div class="dashboard-frame">
+                        <img src="dashboard home .png" alt="Gulabjamun Dashboard" class="dashboard-img">
+                        <div class="dashboard-overlay"></div>
+                    </div>
 
-                        <div class="chat-window" id="jamunChat">
-                            <!-- Messages will be injected by JS or shown as static first -->
-                            <div class="message jamun">
-                                <p>Welcome back! Last weekend saw a <strong>12% increase</strong> in beverage sales
-                                    across South Delhi stores.</p>
-                            </div>
-                            <div class="message user">
-                                <p>Jamun, can we optimize the menu prices for slow-moving items?</p>
-                            </div>
-                            <div class="message jamun">
-                                <div class="analysis-card">
-                                    <div class="card-header">Inventory Insight</div>
-                                    <p>Identified 5 items with low turnover. Suggested price drop: 10%.</p>
-                                    <button class="chat-action-btn">Manage Menu Now</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="chat-input-bar">
-                            <input type="text" id="chatInput" placeholder="Ask Jamun to sync 5 stores..."
-                                autocomplete="off">
-                            <button class="chat-send-icon" id="sendBtn">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
-                                    stroke-width="2.5">
-                                    <line x1="22" y1="2" x2="11" y2="13"></line>
-                                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                                </svg>
-                            </button>
+                    <!-- Floating Data Points -->
+                    <div class="floating-data-card card-top-left" data-reveal="fade-in" data-delay="300">
+                        <div class="data-icon">📈</div>
+                        <div class="data-info">
+                            <span>Live Sales</span>
+                            <strong>₹12,450</strong>
                         </div>
                     </div>
 
-                    <!-- Floating Performance Cards -->
-                    <div class="floating-pills">
-                        <div class="pill pill-1">Menu Updated ✅</div>
-                        <div class="pill pill-2">Inventory Syncing...</div>
-                        <div class="pill pill-3">+8% Sales Boost</div>
+                    <div class="floating-data-card card-bottom-right" data-reveal="fade-in" data-delay="500">
+                        <div class="data-icon">📦</div>
+                        <div class="data-info">
+                            <span>Low Stock</span>
+                            <strong>5 Items</strong>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -304,11 +272,10 @@
                             </div>
                         </div>
                         <div class="bento-visual">
-                            <div class="silo-circles">
-                                <div class="silo-circle c1"></div>
-                                <div class="silo-circle c2"></div>
-                                <div class="silo-circle c3"></div>
-                                <div class="silo-line"></div>
+                            <div class="data-blocks">
+                                <div class="block b1"></div>
+                                <div class="block b2"></div>
+                                <div class="block b3"></div>
                             </div>
                         </div>
                     </div>
@@ -365,12 +332,12 @@
             </div>
         </section>
 
-        <!-- Solution Section -->
-        <section id="solution" class="solution-section">
+        <!-- Success Ecosystem Section -->
+        <section id="features" class="solution-section">
             <div class="container">
                 <div class="section-header center">
                     <span class="section-tag">Success Ecosystem</span>
-                    <h2 class="section-title">Meet Gulabjamun : Your Complete Retail Ecosystem</h2>
+                    <h2 class="section-title">Meet Gulabjamun: Your Complete Retail Ecosystem</h2>
                     <p class="section-subtitle">Gulabjamun connects sales, inventory, logistics, staff, and customer
                         data into one unified platform giving retailers real-time insights and full operational control.
                     </p>
@@ -392,7 +359,7 @@
                         </div>
                         <h3>Unified Retail Data Hub</h3>
                         <p>No more data silos. Gulabjamun brings all your POS, E-commerce, and Warehouse data into one
-                            command center.</p>
+                            command center for a single source of truth.</p>
                         <ul class="pillar-list-premium">
                             <li>Real-time Data Pipelines</li>
                             <li>Single Source of Truth</li>
@@ -409,14 +376,15 @@
                         <div class="pillar-icon-premium">
                             <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2"
                                 fill="none">
-                                <circle cx="12" cy="12" r="3" />
                                 <path
-                                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                                <line x1="12" y1="22.08" x2="12" y2="12" />
                             </svg>
                         </div>
                         <h3>Smart Ops & Automation</h3>
                         <p>Let AI handle the heavy lifting. Automate stock replenishments, role-based access, and daily
-                            reporting.</p>
+                            reporting to eliminate manual drag.</p>
                         <ul class="pillar-list-premium">
                             <li>Automated Stock Alerts</li>
                             <li>Role-based Permissions</li>
@@ -433,9 +401,10 @@
                         <div class="pillar-icon-premium">
                             <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2"
                                 fill="none">
-                                <line x1="18" y1="20" x2="18" y2="10" />
-                                <line x1="12" y1="20" x2="12" y2="4" />
-                                <line x1="6" y1="20" x2="6" y2="14" />
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                             </svg>
                         </div>
                         <h3>Advanced Customer Intel</h3>
@@ -447,60 +416,11 @@
                             <li>Personalized Journeys</li>
                         </ul>
                         <div class="pillar-footer-premium">
-                            <strong>Scale Revenue</strong>
+                            <strong>360° Customer View</strong>
                         </div>
                     </div>
                 </div>
 
-                <!-- Feature Strip -->
-                <div class="feature-strip" data-reveal="fade-in">
-                    <div class="feature-item" title="Login & User Roles"><svg viewBox="0 0 24 24" width="20" height="20"
-                            stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg> <span>User Roles</span></div>
-                    <div class="feature-item" title="POS Management"><svg viewBox="0 0 24 24" width="20" height="20"
-                            stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
-                            <line x1="2" y1="10" x2="22" y2="10"></line>
-                        </svg> <span>POS Suite</span></div>
-                    <div class="feature-item" title="Inventory Tracking"><svg viewBox="0 0 24 24" width="20" height="20"
-                            stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path
-                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
-                            </path>
-                        </svg> <span>Inventory</span></div>
-                    <div class="feature-item" title="Store Analytics"><svg viewBox="0 0 24 24" width="20" height="20"
-                            stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
-                            <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
-                        </svg> <span>Store Insights</span></div>
-                    <div class="feature-item" title="HRM System"><svg viewBox="0 0 24 24" width="20" height="20"
-                            stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg> <span>HRM Hub</span></div>
-                    <div class="feature-item" title="Excel Data Integration"><svg viewBox="0 0 24 24" width="20"
-                            height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <polyline points="14 2 14 8 20 8"></polyline>
-                            <line x1="16" y1="13" x2="8" y2="13"></line>
-                            <line x1="16" y1="17" x2="8" y2="17"></line>
-                        </svg> <span>Excel Sync</span></div>
-                </div>
-
-                <div class="solution-cta" data-reveal="fade-up" data-delay="300">
-                    <p>Start managing your entire retail ecosystem with Gulabjamun.</p>
-                    <a href="#dashboard" class="btn-dark-premium">Explore the Dashboard</a>
-                </div>
             </div>
         </section>
 
