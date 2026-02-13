@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, CartesianGrid, LabelList } from "recharts";
 
 const COLORS = ["#FFB26B", "#ffcba4", "#ffd8b8", "#ffe4cc", "#fff0e0"];
 
@@ -32,13 +32,23 @@ function WarehouseChart() {
   }, []);
 
   return (
-    <ResponsiveContainer width="100%" height={320}>
-      <BarChart data={data} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
-        <XAxis dataKey="warehouse" tick={{ fill: '#6B7280', fontSize: 12 }} axisLine={{ stroke: '#E5E7EB' }} tickLine={false} />
-        <YAxis tick={{ fill: '#6B7280', fontSize: 12 }} axisLine={false} tickLine={false} tickFormatter={v => `₹${(v / 1000).toFixed(0)}k`} />
-        <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,178,107,0.06)' }} />
-        <Bar dataKey="revenue" radius={[6, 6, 0, 0]} maxBarSize={50}>
-          {data.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
+    <ResponsiveContainer width="100%" height={340}>
+      <BarChart data={data} margin={{ top: 20, right: 20, left: 0, bottom: 0 }}>
+        <defs>
+          {COLORS.map((color, i) => (
+            <linearGradient key={i} id={`whGrad${i}`} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor={color} stopOpacity={1} />
+              <stop offset="100%" stopColor={color} stopOpacity={0.65} />
+            </linearGradient>
+          ))}
+        </defs>
+        <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.04)" vertical={false} />
+        <XAxis dataKey="warehouse" tick={{ fill: '#6B7280', fontSize: 11, fontWeight: 500 }} axisLine={{ stroke: '#E5E7EB' }} tickLine={false} />
+        <YAxis tick={{ fill: '#6B7280', fontSize: 11 }} axisLine={false} tickLine={false} tickFormatter={v => `₹${(v / 1000).toFixed(0)}k`} />
+        <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,178,107,0.06)', radius: 4 }} />
+        <Bar dataKey="revenue" radius={[8, 8, 0, 0]} maxBarSize={44} animationDuration={1200} animationEasing="ease-out">
+          {data.map((_, i) => <Cell key={i} fill={`url(#whGrad${i % COLORS.length})`} />)}
+          <LabelList dataKey="revenue" position="top" style={{ fill: '#6B7280', fontSize: 9, fontWeight: 600 }} formatter={v => `₹${(v / 1000).toFixed(0)}k`} />
         </Bar>
       </BarChart>
     </ResponsiveContainer>
