@@ -1,0 +1,20 @@
+{
+    "name": "crm-hackathon",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "build": "tsc",
+        "watch": "tsc -w",
+        "serve": "serve .",
+        "dev": "concurrently \"npm:watch\" \"npm:serve\""
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "concurrently": "^9.2.1",
+        "serve": "^14.2.5",
+        "typescript": "^5.0.0"
+    }
+}
