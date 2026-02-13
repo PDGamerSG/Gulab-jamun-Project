@@ -1,224 +1,271 @@
-const IconLayers = ({ size = 16 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></svg>
-);
-const IconSave = ({ size = 16 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" /><polyline points="17 21 17 13 7 13 7 21" /><polyline points="7 3 7 8 15 8" /></svg>
-);
-const IconFolder = ({ size = 14 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" /></svg>
-);
-const IconFile = ({ size = 14 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" /><polyline points="13 2 13 9 20 9" /></svg>
-);
-const IconZap = ({ size = 16 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
-);
-const IconDollar = ({ size = 16 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
-);
-const IconTrash = ({ size = 16 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg>
-);
-const IconTrendUp = ({ size = 16 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg>
-);
-const IconLock = ({ size = 16 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
-);
-const IconKey = ({ size = 16 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4" /></svg>
-);
-const IconEye = ({ size = 16 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
-);
-const IconFileText = ({ size = 16 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" /></svg>
-);
-const IconRefresh = ({ size = 16 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 4 23 10 17 10" /><polyline points="1 20 1 14 7 14" /><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" /></svg>
-);
-const IconGlobe = ({ size = 16 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
-);
-const IconShield = ({ size = 16 }) => (
+import { useState } from "react";
+import "../Security.css";
+
+// --- Icons (Lucide) ---
+const IconShield = ({ size = 20 }) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
 );
+const IconLock = ({ size = 20 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+);
+const IconKey = ({ size = 20 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4" /></svg>
+);
+const IconEye = ({ size = 20 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+);
+const IconFileText = ({ size = 20 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" /></svg>
+);
+const IconRefresh = ({ size = 20 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 4 23 10 17 10" /><polyline points="1 20 1 14 7 14" /><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" /></svg>
+);
+const IconGlobe = ({ size = 20 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
+);
+const IconCheck = () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+);
+const IconX = () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+);
+const IconFolder = () => (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" /></svg>
+);
+const IconChevron = () => (
+    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+);
+const IconFileCode = ({ type }) => {
+    const color = type === 'parquet' ? '#10b981' : type === 'csv' ? '#a855f7' : '#94a3b8';
+    return <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /></svg>;
+};
+
+// --- Data Structure for File Explorer ---
+const FILE_SYSTEM = [
+    {
+        id: 's3-root', name: 's3://data-lake-prod', type: 'bucket', expanded: true, children: [
+            {
+                id: 'raw', name: 'layer=raw', type: 'folder', expanded: false, children: [
+                    { id: 'raw-pos', name: 'source=pos_terminals', type: 'folder', children: [] },
+                    { id: 'raw-web', name: 'source=web_events', type: 'folder', children: [] },
+                ]
+            },
+            {
+                id: 'staging', name: 'layer=staging', type: 'folder', expanded: false, children: [
+                    { id: 'stg-sales', name: 'table=sales_transactions', type: 'folder', children: [] },
+                ]
+            },
+            {
+                id: 'warehouse', name: 'layer=warehouse', type: 'folder', expanded: true, children: [
+                    {
+                        id: 'fact-sales', name: 'table=fact_sales', type: 'folder', expanded: true, children: [
+                            {
+                                id: 'y2025', name: 'year=2025', type: 'folder', expanded: true, children: [
+                                    {
+                                        id: 'm01', name: 'month=01', type: 'folder', children: [
+                                            { id: 'p1', name: 'part-0001.snappy.parquet', type: 'file', ext: 'parquet', size: '245 MB' },
+                                            { id: 'p2', name: 'part-0002.snappy.parquet', type: 'file', ext: 'parquet', size: '210 MB' }
+                                        ]
+                                    },
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        id: 'dim-cust', name: 'table=dim_customer', type: 'folder', expanded: false, children: [
+                            { id: 'c1', name: 'customer_full.parquet', type: 'file', ext: 'parquet', size: '45 MB' }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+];
+
+// Recursive Tree Component
+const FileTreeItem = ({ item, level, onToggle, activeId, onSelect }) => {
+    const isFolder = item.type === 'folder' || item.type === 'bucket';
+    const paddingLeft = level * 16 + 8;
+
+    return (
+        <div className="start-tree-node">
+            <div
+                className={`dl-item-row ${activeId === item.id ? 'active' : ''}`}
+                style={{ paddingLeft: `${paddingLeft}px` }}
+                onClick={(e) => {
+                    e.stopPropagation();
+                    if (isFolder) onToggle(item.id);
+                    onSelect(item);
+                }}
+            >
+                <span className={`dl-arrow ${item.expanded ? 'expanded' : ''}`} style={{ opacity: isFolder ? 1 : 0 }}>
+                    <IconChevron />
+                </span>
+                <span className={`dl-icon ${item.type === 'bucket' ? 'icon-bucket' : 'icon-folder'}`}>
+                    {item.type === 'bucket' ? <IconGlobe size={14} /> : isFolder ? <IconFolder /> : <IconFileCode type={item.ext} />}
+                </span>
+                <span className={`dl-text-name ${item.type === 'bucket' ? 'dl-bucket-text' : ''}`}>
+                    {item.name}
+                </span>
+                {item.size && <span className="dl-size-badge">{item.size}</span>}
+            </div>
+            {item.expanded && item.children && (
+                <div className="slide-down">
+                    {item.children.map(child => (
+                        <FileTreeItem
+                            key={child.id}
+                            item={child}
+                            level={level + 1}
+                            onToggle={onToggle}
+                            activeId={activeId}
+                            onSelect={onSelect}
+                        />
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+};
+
+const DataLakeExplorer = () => {
+    // Clone initial state to avoid mutation issues during renders if we mutated directly
+    // Ideally use useReducer but State is fine for simple tree
+    const [fileSystem, setFileSystem] = useState(JSON.parse(JSON.stringify(FILE_SYSTEM)));
+    const [activeFile, setActiveFile] = useState(null);
+
+    const toggleNode = (id) => {
+        const toggleRecursive = (nodes) => {
+            return nodes.map(node => {
+                if (node.id === id) {
+                    return { ...node, expanded: !node.expanded };
+                }
+                if (node.children) {
+                    return { ...node, children: toggleRecursive(node.children) };
+                }
+                return node;
+            });
+        };
+        setFileSystem(toggleRecursive(fileSystem));
+    };
+
+    return (
+        <div className="dl-explorer-container animate-in">
+            <div className="dl-header">
+                <span className="dl-sidebar-title">Explorer: Data Lake</span>
+                <div style={{ display: 'flex', gap: 4 }}>
+                    <span className="dl-action-dot" style={{ background: '#ed6a5e' }} />
+                    <span className="dl-action-dot" style={{ background: '#f5bd4f' }} />
+                    <span className="dl-action-dot" style={{ background: '#61c554' }} />
+                </div>
+            </div>
+            <div style={{ display: 'flex', height: '400px' }}>
+                <div className="dl-tree-content" style={{ width: '50%', borderRight: '1px solid #333' }}>
+                    {fileSystem.map(node => (
+                        <FileTreeItem
+                            key={node.id}
+                            item={node}
+                            level={0}
+                            onToggle={toggleNode}
+                            activeId={activeFile?.id}
+                            onSelect={setActiveFile}
+                        />
+                    ))}
+                </div>
+                <div className="dl-preview-pane" style={{ width: '50%' }}>
+                    {activeFile && activeFile.type === 'file' ? (
+                        <>
+                            <div style={{ marginBottom: 16, borderBottom: '1px solid #333', paddingBottom: 8 }}>
+                                <span className="dl-keyword">PREVIEWING</span> {activeFile.name}
+                            </div>
+                            <span className="dl-cmt"># Parquet Metadata</span><br />
+                            <span className="dl-key">compression</span>: <span className="dl-str">"SNAPPY"</span><br />
+                            <span className="dl-key">created_at</span>: <span className="dl-num">1709823400</span><br />
+                            <span className="dl-key">row_count</span>: <span className="dl-num">1,450,200</span><br />
+                            <span className="dl-key">schema</span>: {'{'}<br />
+                            &nbsp;&nbsp;<span className="dl-key">columns</span>: [<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;{"{ name: 'order_id', type: 'UTF8' }"},<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;{"{ name: 'amount', type: 'FLOAT' }"}<br />
+                            &nbsp;&nbsp;]<br />
+                            {'}'}
+                        </>
+                    ) : (
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#444' }}>
+                            Select a file to preview metadata
+                        </div>
+                    )}
+                </div>
+            </div>
+            <div className="dl-header" style={{ borderTop: '1px solid #333', borderBottom: 'none', fontSize: 11 }}>
+                <span>s3-us-east-1</span>
+                <span>UTF-8</span>
+            </div>
+        </div>
+    );
+};
 
 function StorageSecurityPage() {
     return (
-        <div className="page-container">
-            <div className="page-header">
-                <div>
-                    <h1 className="page-title">Storage & Security</h1>
-                    <p className="page-subtitle">Partitioning strategy, access controls, and schema design documentation</p>
+        <div className="page-container sec-container">
+            {/* HERO */}
+            <header className="sec-hero fade-in-up">
+                <div className="sec-shield-bg" />
+                <div className="sec-hero-content">
+                    <h1>Enterprise-Grade Security</h1>
+                    <p>
+                        Our platform is built with a defense-in-depth approach, safeguarding data through
+                        advanced encryption, strict access controls (RBAC), and automated auditing.
+                    </p>
                 </div>
-            </div>
+            </header>
 
-            { }
-            <section className="dashboard-section">
+            {/* SECURITY GRID - REUSED FROM PREVIOUS STEP */}
+            <section className="dashboard-section fade-in-up delay-1">
                 <div className="section-title">
-                    <span className="icon" style={{ background: "rgba(232,93,117,0.08)", color: "#E85D75" }}>
-                        <IconLayers />
+                    <span className="icon" style={{ background: "rgba(16, 185, 129, 0.1)", color: "#10b981" }}>
+                        <IconShield />
                     </span>
-                    Star Schema Design
+                    Core Security Measures
                 </div>
-                <div className="schema-diagram animate-in">
-                    { }
-                    <div className="schema-fact">
-                        <div className="schema-card fact-card">
-                            <div className="schema-card-header fact">Fact Table</div>
-                            <div className="schema-card-title">fact_sales</div>
-                            <ul className="schema-cols">
-                                <li><span className="col-key">PK</span> order_id</li>
-                                <li><span className="col-key">FK</span> customer_id</li>
-                                <li><span className="col-key">FK</span> product_id</li>
-                                <li>order_date</li>
-                                <li>quantity</li>
-                                <li>unit_price</li>
-                                <li>revenue</li>
-                                <li>country</li>
-                            </ul>
+                <div className="sec-features-grid">
+                    {[
+                        { icon: <IconLock size={24} />, title: "Encryption at Rest", desc: "AES-256 encryption for all Parquet files and databases. Keys managed via secure KMS." },
+                        { icon: <IconKey size={24} />, title: "Secure API Access", desc: "JWT-based authentication with auto-rotation. OAuth2 integration for SSO login." },
+                        { icon: <IconEye size={24} />, title: "Data Masking", desc: "Dynamic masking of PII fields (emails, phones) based on user role priviledges." },
+                        { icon: <IconFileText size={24} />, title: "Audit Logging", desc: "Immutable logs tracking 100% of data access, queries, and administrative actions." },
+                        { icon: <IconRefresh size={24} />, title: "Disaster Recovery", desc: "Point-in-time recovery (PITR) with daily off-site backups retained for 90 days." },
+                        { icon: <IconGlobe size={24} />, title: "Network Isolation", desc: "VPC-peering only. No public database access. strict firewall rules." },
+                    ].map((feature, i) => (
+                        <div key={i} className="sec-feature-card">
+                            <div className="sec-icon-box">{feature.icon}</div>
+                            <h3 className="sec-feature-title">{feature.title}</h3>
+                            <p className="sec-feature-desc">{feature.desc}</p>
                         </div>
-                    </div>
-
-                    { }
-                    <div className="schema-dimensions">
-                        {[
-                            { name: "dim_customer", cols: ["customer_id (PK)", "name", "email", "segment", "country", "valid_from", "valid_to", "is_current"], scd: true },
-                            { name: "dim_product", cols: ["product_id (PK)", "description", "stock_code", "category", "weight_gms", "importance", "valid_from", "valid_to"], scd: true },
-                            { name: "dim_date", cols: ["date_key (PK)", "full_date", "day", "month", "quarter", "year", "is_weekend"], scd: false },
-                            { name: "dim_warehouse", cols: ["warehouse_id (PK)", "block_name", "region", "capacity", "manager"], scd: false },
-                            { name: "fact_shipment", cols: ["shipment_id (PK)", "order_id (FK)", "warehouse_id (FK)", "shipment_mode", "delivery_status", "discount_offered", "customer_rating"], scd: false },
-                        ].map((dim, i) => (
-                            <div key={i} className="schema-card dim-card animate-in" style={{ animationDelay: `${i * 0.08}s` }}>
-                                <div className={`schema-card-header ${dim.scd ? "scd" : dim.name === "fact_shipment" ? "fact" : "dim"}`}>
-                                    {dim.scd ? "SCD Type 2" : dim.name === "fact_shipment" ? "Fact Table" : "Dimension"}
-                                </div>
-                                <div className="schema-card-title">{dim.name}</div>
-                                <ul className="schema-cols">
-                                    {dim.cols.map((c, j) => <li key={j}>{c}</li>)}
-                                </ul>
-                                {dim.scd && <div className="scd-badge">Tracks History</div>}
-                            </div>
-                        ))}
-                    </div>
-
-                    { }
-                    <div className="schema-relations-label">← Foreign Key Relationships →</div>
+                    ))}
                 </div>
             </section>
 
-            { }
-            <section className="dashboard-section">
+            {/* PARTITIONING & STORAGE LAYOUT - UPDATED */}
+            <section className="dashboard-section fade-in-up delay-3">
                 <div className="section-title">
-                    <span className="icon" style={{ background: "rgba(255,178,107,0.12)", color: "#FFB26B" }}>
-                        <IconSave />
+                    <span className="icon" style={{ background: "rgba(139, 92, 246, 0.1)", color: "#8b5cf6" }}>
+                        <IconFolder size={20} />
                     </span>
-                    Storage Format: Parquet vs CSV
+                    Data Lake Storage Layout
                 </div>
-                <div className="card animate-in" style={{ padding: "var(--space-xl)", overflow: "auto" }}>
-                    <table className="comparison-table">
-                        <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>CSV</th>
-                                <th className="highlight-col">Parquet ★</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {[
-                                ["Format", "Row-based text", "Columnar binary"],
-                                ["Compression", "None (raw text)", "Snappy/GZIP (60-80% smaller)"],
-                                ["Schema", "Not embedded", "Self-describing metadata"],
-                                ["Read Speed", "Full scan required", "Column pruning + predicate pushdown"],
-                                ["Write Speed", "Fast (append)", "Moderate (encoding overhead)"],
-                                ["Type Safety", "None (all strings)", "Strong typing (int, float, timestamp)"],
-                                ["Partitioning", "Manual", "Native support"],
-                                ["Our Choice", "—", "Used for all fact/dim tables"],
-                            ].map(([feature, csv, parquet], i) => (
-                                <tr key={i}>
-                                    <td className="feature-name">{feature}</td>
-                                    <td>{csv}</td>
-                                    <td className="highlight-col">{parquet}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                {/* REPLACED OLD TREE WITH NEW EXPLORER */}
+                <DataLakeExplorer />
             </section>
 
-            { }
-            <section className="dashboard-section">
+            {/* ACCESS MATRIX */}
+            <section className="dashboard-section fade-in-up delay-2">
                 <div className="section-title">
-                    <span className="icon" style={{ background: "rgba(16,185,129,0.08)", color: "#10b981" }}>
-                        <IconFolder size={16} />
-                    </span>
-                    Partitioning Strategy
-                </div>
-                <div className="partition-visual animate-in">
-                    <div className="card" style={{ padding: "var(--space-xl)" }}>
-                        <div className="partition-tree">
-                            <div className="ptree-root">
-                                <span className="ptree-icon"><IconFolder /></span> data_warehouse/
-                            </div>
-                            <div className="ptree-level-1">
-                                <div className="ptree-branch">
-                                    <span className="ptree-icon"><IconFolder /></span> fact_sales/
-                                    <div className="ptree-level-2">
-                                        <div className="ptree-leaf"><span className="ptree-icon"><IconFolder /></span> year=2010/</div>
-                                        <div className="ptree-leaf"><span className="ptree-icon"><IconFolder /></span> year=2011/
-                                            <div className="ptree-level-3">
-                                                <div className="ptree-file"><span className="ptree-icon"><IconFile /></span> month=01/ <span className="ptree-size">part-00001.parquet (2.1MB)</span></div>
-                                                <div className="ptree-file"><span className="ptree-icon"><IconFile /></span> month=02/ <span className="ptree-size">part-00001.parquet (1.8MB)</span></div>
-                                                <div className="ptree-file ptree-more">... (12 partitions/year)</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="ptree-branch">
-                                    <span className="ptree-icon"><IconFolder /></span> fact_shipment/
-                                    <div className="ptree-level-2">
-                                        <div className="ptree-leaf"><span className="ptree-icon"><IconFolder /></span> warehouse=A/ <span className="ptree-size">shipments.parquet</span></div>
-                                        <div className="ptree-leaf"><span className="ptree-icon"><IconFolder /></span> warehouse=B/ <span className="ptree-size">shipments.parquet</span></div>
-                                        <div className="ptree-file ptree-more">... (5 warehouses)</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="partition-benefits">
-                            <h4>Benefits</h4>
-                            <div className="benefits-grid">
-                                {[
-                                    { icon: <IconZap />, title: "Query Performance", desc: "Scan only relevant partitions, skip 90%+ of data" },
-                                    { icon: <IconDollar />, title: "Cost Efficiency", desc: "Read less data → lower I/O, faster execution" },
-                                    { icon: <IconTrash />, title: "Data Lifecycle", desc: "Drop old partitions without rewriting entire table" },
-                                    { icon: <IconTrendUp />, title: "Scalability", desc: "Add new partitions as data grows, no schema changes" },
-                                ].map((b, i) => (
-                                    <div key={i} className="benefit-item">
-                                        <span className="benefit-icon" style={{ color: "var(--accent-primary)" }}>{b.icon}</span>
-                                        <div>
-                                            <strong>{b.title}</strong>
-                                            <p>{b.desc}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            { }
-            <section className="dashboard-section">
-                <div className="section-title">
-                    <span className="icon" style={{ background: "rgba(224,195,252,0.2)", color: "#c9a0f0" }}>
+                    <span className="icon" style={{ background: "rgba(245, 158, 11, 0.1)", color: "#f59e0b" }}>
                         <IconKey />
                     </span>
-                    Access Control Matrix (RBAC)
+                    Role-Based Access Control (RBAC) Matrix
                 </div>
-                <div className="card animate-in" style={{ padding: "var(--space-xl)", overflow: "auto" }}>
-                    <table className="comparison-table rbac-table">
+                <div className="rbac-wrapper">
+                    <table className="rbac-table">
                         <thead>
                             <tr>
                                 <th>Permission</th>
@@ -229,19 +276,23 @@ function StorageSecurityPage() {
                         </thead>
                         <tbody>
                             {[
-                                ["View Dashboards", "Yes", "Yes", "Yes"],
-                                ["Run Analytics Queries", "Yes", "Yes", "Yes"],
-                                ["Export Reports", "No", "Yes", "Yes"],
-                                ["View Raw Data", "No", "Yes (masked PII)", "Yes"],
-                                ["Modify Pipelines", "No", "No", "Yes"],
-                                ["Manage Users", "No", "No", "Yes"],
-                                ["Delete Data", "No", "No", "Yes (audit logged)"],
+                                ["View Dashboards", true, true, true],
+                                ["Run Ad-hoc Queries", true, true, true],
+                                ["Export Data Reports", false, true, true],
+                                ["View Unmasked PII", false, "partial", true],
+                                ["Configure Data Pipelines", false, false, true],
+                                ["Manage User Roles", false, false, true],
+                                ["Delete Records", false, false, "audit"],
                             ].map(([perm, analyst, manager, admin], i) => (
                                 <tr key={i}>
-                                    <td className="feature-name">{perm}</td>
-                                    <td>{analyst}</td>
-                                    <td>{manager}</td>
-                                    <td>{admin}</td>
+                                    <td>{perm}</td>
+                                    <td>{analyst === true ? <IconCheck /> : <IconX />}</td>
+                                    <td>
+                                        {manager === true ? <IconCheck /> : manager === "partial" ? <span className="perm-partial">Masked PII</span> : <IconX />}
+                                    </td>
+                                    <td>
+                                        {admin === "audit" ? <span className="perm-partial">Audit Logged</span> : <IconCheck />}
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
@@ -249,29 +300,56 @@ function StorageSecurityPage() {
                 </div>
             </section>
 
-            { }
-            <section className="dashboard-section">
+            {/* SCHEMA & DICTIONARY */}
+            <section className="dashboard-section fade-in-up delay-3">
                 <div className="section-title">
-                    <span className="icon" style={{ background: "rgba(232,93,117,0.08)", color: "#E85D75" }}>
-                        <IconShield />
+                    <span className="icon" style={{ background: "rgba(59, 130, 246, 0.1)", color: "#3b82f6" }}>
+                        <IconFileText />
                     </span>
-                    Security Measures
+                    Data Dictionary & Schema
                 </div>
-                <div className="security-grid">
-                    {[
-                        { icon: <IconLock size={24} />, title: "Encryption at Rest", desc: "All Parquet files encrypted using AES-256. Encryption keys managed separately from data storage." },
-                        { icon: <IconKey size={24} />, title: "API Authentication", desc: "FastAPI endpoints secured with JWT tokens. Rate limiting applied to prevent abuse. CORS configured for authorized domains." },
-                        { icon: <IconEye size={24} />, title: "Data Masking", desc: "PII fields (customer name, email) are masked for Analyst role. Full data only visible to Admin or via approved queries." },
-                        { icon: <IconFileText size={24} />, title: "Audit Logging", desc: "All data access and modification events logged with timestamps, user IDs, and IP addresses for compliance." },
-                        { icon: <IconRefresh size={24} />, title: "Backup & Recovery", desc: "Daily automated backups with 30-day retention. Point-in-time recovery (PITR) capability for critical datasets." },
-                        { icon: <IconGlobe size={24} />, title: "Network Security", desc: "API served over HTTPS. Internal communication via private VPC. Firewall rules restrict access to authorized IPs." },
-                    ].map((s, i) => (
-                        <div key={i} className="card security-card animate-in" style={{ animationDelay: `${i * 0.08}s` }}>
-                            <div className="security-icon" style={{ color: "var(--accent-primary)" }}>{s.icon}</div>
-                            <h4>{s.title}</h4>
-                            <p>{s.desc}</p>
+                <div className="sec-dictionary-grid">
+                    {/* Fact Table */}
+                    <div className="sec-table-card">
+                        <div className="sec-card-header fact">
+                            <span>FACT_SALES</span>
+                            <span className="sec-badge scd">Parquet</span>
                         </div>
-                    ))}
+                        <div className="sec-col-list">
+                            <div className="sec-col-item"><span><span className="sec-key pk">PK</span> order_id</span> <span>string</span></div>
+                            <div className="sec-col-item"><span><span className="sec-key fk">FK</span> customer_id</span> <span>string</span></div>
+                            <div className="sec-col-item"><span><span className="sec-key fk">FK</span> product_id</span> <span>string</span></div>
+                            <div className="sec-col-item"><span>order_date</span> <span>timestamp</span></div>
+                            <div className="sec-col-item"><span>sales_amount</span> <span>double</span></div>
+                        </div>
+                    </div>
+                    {/* Dim Customer */}
+                    <div className="sec-table-card">
+                        <div className="sec-card-header dim">
+                            <span>DIM_CUSTOMER</span>
+                            <span className="sec-badge scd">SCD Type 2</span>
+                        </div>
+                        <div className="sec-col-list">
+                            <div className="sec-col-item"><span><span className="sec-key pk">PK</span> customer_key</span> <span>int</span></div>
+                            <div className="sec-col-item"><span>name</span> <span>string</span></div>
+                            <div className="sec-col-item"><span>email</span> <span>string</span></div>
+                            <div className="sec-col-item"><span>valid_from</span> <span>date</span></div>
+                            <div className="sec-col-item"><span>is_current</span> <span>boolean</span></div>
+                        </div>
+                    </div>
+                    {/* Dim Product */}
+                    <div className="sec-table-card">
+                        <div className="sec-card-header dim">
+                            <span>DIM_PRODUCT</span>
+                            <span className="sec-badge scd">SCD Type 2</span>
+                        </div>
+                        <div className="sec-col-list">
+                            <div className="sec-col-item"><span><span className="sec-key pk">PK</span> product_key</span> <span>int</span></div>
+                            <div className="sec-col-item"><span>sku</span> <span>string</span></div>
+                            <div className="sec-col-item"><span>category</span> <span>string</span></div>
+                            <div className="sec-col-item"><span>unit_price</span> <span>decimal</span></div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
