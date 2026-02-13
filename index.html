@@ -1155,6 +1155,45 @@
     </div>
   </div>
 
+  <!-- ═══════════ MODAL: EDIT USER ═══════════ -->
+  <div class="modal-overlay" id="modalEditUser">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Edit User</h3>
+        <button class="modal-close" id="btnCloseEditUser">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="formEditUser">
+          <input type="hidden" id="editUserId" />
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="editUserName" required />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="editUserEmail" required />
+          </div>
+          <div class="grid grid-2" style="gap: 15px;">
+            <div class="form-group">
+              <label>Role</label>
+              <select id="editUserRole" required>
+                <!-- Options will be populated dynamically -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Store</label>
+              <input type="text" id="editUserStore" required />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline" id="btnCancelEditUser">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <script src="data.js"></script>
   <script src="app.js"></script>
 </body>

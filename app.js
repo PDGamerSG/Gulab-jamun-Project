@@ -250,10 +250,17 @@ document.addEventListener('DOMContentLoaded', () => {
           <td><span class="role-tag" style="background:${color}15;color:${color};"><span class="role-dot" style="background:${color}"></span>${u.role}</span></td>
           <td>${u.store}</td>
           <td>${u.lastActive}</td>
-          <td><button class="btn btn-sm btn-outline">Edit</button></td>
+          <td><button class="btn btn-sm btn-outline btn-edit-user" data-id="${u.id}">Edit</button></td>
         </tr>
       `;
     }).join('');
+
+    // Attach event listeners
+    document.querySelectorAll('.btn-edit-user').forEach(btn => {
+      btn.addEventListener('click', () => {
+        openEditUserModal(btn.dataset.id);
+      });
+    });
   }
 
   // ── Permissions Matrix ──────────────────────────────────────
@@ -798,6 +805,59 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // -- Employees Import
+
+  // ══════════════════════════════════════════════════════════════
+  //  EDIT USER LOGIC
+  // ══════════════════════════════════════════════════════════════
+
+  const modalEditUser = document.getElementById('modalEditUser');
+  const btnCloseEditUser = document.getElementById('btnCloseEditUser');
+  const btnCancelEditUser = document.getElementById('btnCancelEditUser');
+  const formEditUser = document.getElementById('formEditUser');
+
+  function openEditUserModal(userId) {
+    const user = DATA.users.find(u => u.id == userId);
+    if (!user) return;
+
+    document.getElementById('editUserId').value = user.id;
+    document.getElementById('editUserName').value = user.name;
+    document.getElementById('editUserEmail').value = user.email;
+    document.getElementById('editUserStore').value = user.store;
+
+    // Populate roles
+    const roleSelect = document.getElementById('editUserRole');
+    roleSelect.innerHTML = DATA.roles.map(r => `<option value="${r.name}">${r.name}</option>`).join('');
+    roleSelect.value = user.role;
+
+    modalEditUser.classList.add('active');
+  }
+
+  function closeEditUserModal() {
+    modalEditUser.classList.remove('active');
+  }
+
+  if (btnCloseEditUser) btnCloseEditUser.addEventListener('click', closeEditUserModal);
+  if (btnCancelEditUser) btnCancelEditUser.addEventListener('click', closeEditUserModal);
+  if (modalEditUser) modalEditUser.addEventListener('click', (e) => { if (e.target === modalEditUser) closeEditUserModal(); });
+
+  if (formEditUser) {
+    formEditUser.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const userId = document.getElementById('editUserId').value;
+      const name = document.getElementById('editUserName').value;
+      const email = document.getElementById('editUserEmail').value;
+      const role = document.getElementById('editUserRole').value;
+      const store = document.getElementById('editUserStore').value;
+
+      const userIndex = DATA.users.findIndex(u => u.id == userId);
+      if (userIndex > -1) {
+        DATA.users[userIndex] = { ...DATA.users[userIndex], name, email, role, store };
+        renderUsers(document.getElementById('userSearch').value, document.getElementById('roleFilter').value);
+        showToast('User updated successfully');
+        closeEditUserModal();
+      }
+    });
+  }
   document.getElementById('btnImportEmployees').addEventListener('click', () => {
     document.getElementById('importEmpFile').click();
   });
