@@ -650,57 +650,62 @@
 
 .tab-nav {
     display: flex;
-    gap: 6px;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(12px);
-    padding: 6px;
-    border-radius: var(--radius-lg);
-    margin-bottom: var(--space-xl);
+    justify-content: center;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(16px);
+    padding: 5px 8px;
+    border-radius: 16px;
+    margin: 0 auto var(--space-xl) auto;
+    width: fit-content;
+    max-width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    border: 1px solid var(--border-light);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .tab-btn {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 12px 22px;
+    padding: 11px 24px;
     border: none;
     background: transparent;
-    border-radius: var(--radius-md);
+    border-radius: 12px;
     cursor: pointer;
-    font-size: 0.84rem;
+    font-size: 0.82rem;
     font-weight: 500;
     color: var(--text-muted);
     white-space: nowrap;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.02em;
 }
 
 .tab-btn:hover {
     color: var(--text-primary);
-    background: rgba(232, 93, 117, 0.04);
+    background: rgba(232, 93, 117, 0.06);
+    transform: translateY(-1px);
 }
 
 .tab-btn.active {
     background: white;
     color: var(--text-primary);
     font-weight: 600;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 16px rgba(232, 93, 117, 0.12), 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
 .tab-btn.active::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 20%;
-    right: 20%;
-    height: 2.5px;
-    border-radius: 2px;
+    bottom: 2px;
+    left: 25%;
+    right: 25%;
+    height: 3px;
+    border-radius: 3px;
     background: linear-gradient(90deg, #E85D75, #FFB26B);
+    box-shadow: 0 1px 6px rgba(232, 93, 117, 0.3);
 }
 
 .tab-btn.active .tab-icon {
@@ -710,7 +715,7 @@
 .tab-icon {
     display: inline-flex;
     align-items: center;
-    transition: color 0.25s ease;
+    transition: color 0.3s ease;
 }
 
 /* SVG icon consistency */
@@ -729,19 +734,22 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    padding: 5px 12px;
+    padding: 6px 14px;
     font-size: 0.75rem;
     font-weight: 600;
-    color: #10b981;
-    background: rgba(16, 185, 129, 0.08);
-    border-radius: var(--radius-full);
+    color: #E85D75;
+    background: rgba(232, 93, 117, 0.08);
+    border: 1px solid rgba(232, 93, 117, 0.15);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(232, 93, 117, 0.08);
 }
 
 .live-dot {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #10b981;
+    background: #E85D75;
+    box-shadow: 0 0 6px rgba(232, 93, 117, 0.4);
     animation: pulse-dot 2s ease-in-out infinite;
 }
 
@@ -798,176 +806,489 @@
 }
 
 
-.pipeline-flow {
+/* ===== ARCHITECTURE PAGE ===== */
+
+.arch-header-badge {
     display: flex;
-    flex-direction: column;
-    gap: 0;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    border-radius: 12px;
+    position: relative;
 }
 
-.pipeline-stage-wrapper {
+.arch-pulse-ring {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    position: relative;
+}
+
+.arch-pulse-ring::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid #10b981;
+    animation: arch-pulse 2s ease-out infinite;
+}
+
+@keyframes arch-pulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.arch-pipeline {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.pipeline-connector {
+/* --- Connector with animated dots --- */
+.arch-connector {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 40px;
+    height: 52px;
+    position: relative;
 }
 
-.connector-line {
+.arch-connector-track {
+    position: relative;
     width: 2px;
     flex: 1;
-    background: linear-gradient(180deg, var(--border), var(--accent-primary));
+    overflow: visible;
 }
 
-.connector-arrow {
-    width: 0;
-    height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 8px solid var(--accent-primary);
-}
-
-.pipeline-stage {
+.arch-connector-line {
     width: 100%;
-    padding: var(--space-xl);
+    height: 100%;
+    border-radius: 2px;
+    opacity: 0.4;
+}
+
+.arch-flow-dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    left: -2px;
+    animation: arch-dot-flow 2s ease-in-out infinite;
+}
+
+.arch-flow-dot-2 {
+    animation-delay: 1s;
+}
+
+@keyframes arch-dot-flow {
+    0% {
+        top: -4px;
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        top: calc(100% + 4px);
+        opacity: 0;
+    }
+}
+
+.arch-connector-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: arch-arrow-bounce 2s ease-in-out infinite;
+}
+
+@keyframes arch-arrow-bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(3px);
+    }
+}
+
+/* --- Stage Card --- */
+.arch-stage {
+    width: 100%;
+    max-width: 720px;
+    padding: 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-sm);
+    /* Scroll animation */
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.pipeline-stage:hover {
-    box-shadow: var(--shadow-lg);
+.arch-stage-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 
-.stage-accent {
+.arch-stage:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.05);
+    transform: translateY(-3px) scale(1.005);
+    border-color: var(--stage-color);
+}
+
+.arch-stage-expanded {
+    border-color: var(--stage-color);
+}
+
+/* Top accent gradient bar */
+.arch-stage-accent {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 3px;
+    background: linear-gradient(90deg, var(--stage-color), var(--stage-grad-end));
+    opacity: 0.8;
+    transition: height 0.3s ease, opacity 0.3s ease;
 }
 
-.stage-header {
+.arch-stage:hover .arch-stage-accent,
+.arch-stage-expanded .arch-stage-accent {
+    height: 4px;
+    opacity: 1;
+}
+
+/* Floating orb */
+.arch-stage-orb {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    pointer-events: none;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+    opacity: 0.5;
+}
+
+.arch-stage:hover .arch-stage-orb {
+    transform: scale(1.3);
+    opacity: 0.8;
+}
+
+/* Header */
+.arch-stage-header {
     display: flex;
     align-items: center;
-    gap: var(--space-md);
-    margin-bottom: var(--space-lg);
+    gap: 16px;
+    margin-bottom: 20px;
+    position: relative;
 }
 
-.stage-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: var(--radius-md);
+.arch-stage-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.3rem;
+    position: relative;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
 }
 
-.stage-title {
+.arch-stage:hover .arch-stage-icon {
+    transform: scale(1.1);
+}
+
+/* Spinning ring around icon on hover */
+.arch-icon-ring {
+    position: absolute;
+    inset: -4px;
+    border-radius: 18px;
+    border: 2px dashed;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: arch-spin 8s linear infinite;
+}
+
+.arch-stage:hover .arch-icon-ring {
+    opacity: 1;
+}
+
+@keyframes arch-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.arch-stage-title {
     font-size: 1.1rem;
     font-weight: 700;
     color: var(--text-primary);
     margin: 0;
 }
 
-.stage-step {
-    font-size: 0.72rem;
+.arch-stage-step {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-weight: 600;
+    margin-top: 2px;
 }
 
-.stage-expand {
-    margin-left: auto;
-    width: 28px;
-    height: 28px;
+.arch-step-num {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    color: white;
+    font-size: 0.55rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arch-expand-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    background: var(--bg-tint);
-    color: var(--text-secondary);
-    font-size: 1.1rem;
-    font-weight: 700;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
 }
 
-.stage-items {
+/* Items grid */
+.arch-items-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: var(--space-sm);
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    position: relative;
 }
 
-.stage-item {
-    padding: 12px;
+.arch-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
     background: var(--bg-tint);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
 }
 
-.item-name {
+.arch-item:hover {
+    border-color: var(--stage-color);
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateX(4px);
+}
+
+.arch-item-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.arch-item-name {
     font-size: 0.82rem;
     font-weight: 600;
     color: var(--text-primary);
 }
 
-.item-desc {
-    font-size: 0.72rem;
+.arch-item-desc {
+    font-size: 0.7rem;
     color: var(--text-muted);
-    margin: 2px 0 6px;
+    margin-top: 1px;
 }
 
-.item-badge {
+.arch-item-badge {
     display: inline-block;
     padding: 2px 8px;
-    border-radius: var(--radius-sm);
-    font-size: 0.65rem;
-    font-weight: 600;
+    border-radius: 6px;
+    font-size: 0.6rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.03em;
+    border: 1px solid;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
-.stage-detail {
-    margin-top: var(--space-md);
+/* Expandable detail */
+.arch-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    opacity: 0;
 }
 
-.detail-divider {
+.arch-detail-open {
+    max-height: 250px;
+    opacity: 1;
+}
+
+.arch-detail-inner {
+    padding-top: 16px;
+}
+
+.arch-detail-divider {
     height: 1px;
-    background: var(--border);
-    margin-bottom: var(--space-md);
+    margin-bottom: 14px;
 }
 
-.stage-detail p {
-    font-size: 0.88rem;
-    line-height: 1.7;
+.arch-detail-inner p {
+    font-size: 0.86rem;
+    line-height: 1.75;
     color: var(--text-secondary);
+    margin: 0;
 }
 
-.flow-summary-grid {
+/* --- Summary Section --- */
+.arch-summary {
+    margin-top: var(--space-2xl);
+    padding: 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.arch-summary-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.arch-summary-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(232, 93, 117, 0.08);
+    color: #E85D75;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arch-summary-header h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.arch-summary-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: var(--space-md);
-    text-align: center;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 16px;
 }
 
-.flow-stat-value {
-    font-size: 1.8rem;
+.arch-summary-stat {
+    text-align: center;
+    padding: 16px 8px;
+    background: var(--bg-tint);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+}
+
+.arch-summary-stat:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    border-color: var(--stat-color);
+}
+
+.arch-stat-value {
+    font-size: 2rem;
     font-weight: 800;
     letter-spacing: -0.03em;
-    color: var(--accent-primary);
+    color: var(--stat-color);
+    display: block;
+    transform: translateY(10px);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.flow-stat-label {
-    font-size: 0.75rem;
+.arch-stat-visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.arch-stat-label {
+    font-size: 0.72rem;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-weight: 600;
+    margin-top: 4px;
+}
+
+.arch-stat-bar {
+    height: 3px;
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: 3px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.arch-stat-bar-fill {
+    height: 100%;
+    width: 0;
+    border-radius: 3px;
+    animation: arch-bar-fill 1s ease-out forwards;
+}
+
+@keyframes arch-bar-fill {
+    to {
+        width: 100%;
+    }
+}
+
+/* Legacy pipeline classes (keep for compat) */
+.pipeline-flow {
+    display: none;
+}
+
+.flow-summary-grid {
+    display: none;
 }
 
 
