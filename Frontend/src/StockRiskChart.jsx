@@ -2,24 +2,37 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer,
-  Cell, CartesianGrid, LabelList
+  CartesianGrid, LabelList
 } from "recharts";
-
-const GRADIENT_COLORS = [
-  "#E85D75", "#e6647b", "#e46b81", "#e27287", "#e0798d",
-  "#de8093", "#dc8799", "#da8e9f", "#d895a5", "#d69cab"
-];
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null;
   return (
     <div className="custom-tooltip">
-      <div className="label">{label}</div>
+      <div className="label">{payload[0]?.payload?.fullName || label}</div>
       <div className="value" style={{ color: '#E85D75' }}>
         ⚠ {payload[0].value?.toLocaleString("en-IN")} units
       </div>
       <div style={{ fontSize: '0.68rem', color: '#9CA3AF', marginTop: 2 }}>High demand — stock-out risk</div>
     </div>
+  );
+};
+
+// Custom bar shape with subtle shadow
+const RoundedBar = (props) => {
+  const { x, y, width, height, fill, index } = props;
+  if (!height || height <= 0) return null;
+  const radius = Math.min(10, width / 2);
+  const opacity = 1 - (index * 0.06);
+  return (
+    <g>
+      {/* Glow shadow behind bar */}
+      <rect x={x + 2} y={y + 4} width={width - 4} height={height} rx={radius}
+        fill={fill} opacity={0.15} filter="url(#barShadow)" />
+      {/* Main bar */}
+      <rect x={x} y={y} width={width} height={height} rx={radius}
+        fill={`url(#stockGrad)`} opacity={opacity} />
+    </g>
   );
 };
 
@@ -37,7 +50,7 @@ function StockRiskChart() {
         }));
         setData(formatted);
       })
-      .catch(() => {})
+      .catch(() => { })
       .finally(() => setLoading(false));
   }, []);
 
@@ -58,13 +71,17 @@ function StockRiskChart() {
   }
 
   return (
-    <ResponsiveContainer width="100%" height={340}>
-      <BarChart data={data} margin={{ top: 20, right: 20, left: 0, bottom: 5 }}>
+    <ResponsiveContainer width="100%" height={360}>
+      <BarChart data={data} margin={{ top: 20, right: 20, left: 0, bottom: 5 }} barCategoryGap="18%">
         <defs>
-          <linearGradient id="stockRiskGrad" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id="stockGrad" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#E85D75" stopOpacity={1} />
-            <stop offset="100%" stopColor="#E85D75" stopOpacity={0.6} />
+            <stop offset="50%" stopColor="#e86e84" stopOpacity={0.9} />
+            <stop offset="100%" stopColor="#f0899b" stopOpacity={0.7} />
           </linearGradient>
+          <filter id="barShadow">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="4" />
+          </filter>
         </defs>
         <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.04)" vertical={false} />
         <XAxis
@@ -83,11 +100,15 @@ function StockRiskChart() {
           tickFormatter={v => v >= 1000 ? `${(v / 1000).toFixed(1)}k` : v}
         />
         <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(232,93,117,0.04)', radius: 4 }} />
-        <Bar dataKey="sales" radius={[8, 8, 0, 0]} maxBarSize={38} animationDuration={1200} animationEasing="ease-out">
-          {data.map((_, i) => (
-            <Cell key={i} fill={GRADIENT_COLORS[i % GRADIENT_COLORS.length]} />
-          ))}
-          <LabelList dataKey="sales" position="top" style={{ fill: '#6B7280', fontSize: 10, fontWeight: 600 }} formatter={v => v >= 1000 ? `${(v / 1000).toFixed(1)}k` : v} />
+        <Bar
+          dataKey="sales"
+          shape={<RoundedBar />}
+          maxBarSize={42}
+          animationDuration={1500}
+          animationEasing="ease-out"
+          isAnimationActive={true}
+        >
+          <LabelList dataKey="sales" position="top" style={{ fill: '#E85D75', fontSize: 10, fontWeight: 700 }} formatter={v => v >= 1000 ? `${(v / 1000).toFixed(1)}k` : v} />
         </Bar>
       </BarChart>
     </ResponsiveContainer>

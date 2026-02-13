@@ -1,5 +1,55 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import axios from "axios";
+
+// Animated count-up hook
+function useCountUp(target, duration = 1800, enabled = true) {
+  const [value, setValue] = useState(0);
+  const rafRef = useRef(null);
+  const startRef = useRef(null);
+
+  useEffect(() => {
+    if (!enabled || target == null) return;
+    setValue(0);
+    startRef.current = null;
+
+    const easeOutExpo = t => t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+
+    const animate = (timestamp) => {
+      if (!startRef.current) startRef.current = timestamp;
+      const elapsed = timestamp - startRef.current;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeOutExpo(progress);
+      setValue(easedProgress * target);
+      if (progress < 1) {
+        rafRef.current = requestAnimationFrame(animate);
+      } else {
+        setValue(target);
+      }
+    };
+
+    rafRef.current = requestAnimationFrame(animate);
+    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
+  }, [target, duration, enabled]);
+
+  return value;
+}
+
+function AnimatedValue({ value, format, prefix = "", delay = 0 }) {
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setStarted(true), delay);
+    return () => clearTimeout(timer);
+  }, [delay]);
+
+  const animated = useCountUp(value, 1800, started);
+
+  return (
+    <span style={{ display: 'inline-block', minWidth: 0 }}>
+      {prefix}{format(Math.round(animated * 100) / 100)}
+    </span>
+  );
+}
 
 const CARDS = [
   {
@@ -26,9 +76,15 @@ const CARDS = [
 
 function KPICards() {
   const [kpi, setKpi] = useState(null);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
-    const fetchKpi = () => axios.get("http://localhost:8000/kpi-summary").then(res => setKpi(res.data));
+    const fetchKpi = () => {
+      axios.get("http://localhost:8000/kpi-summary").then(res => {
+        setKpi(res.data);
+        setRefreshKey(k => k + 1);
+      });
+    };
     fetchKpi();
     window.addEventListener("data-refresh", fetchKpi);
     return () => window.removeEventListener("data-refresh", fetchKpi);
@@ -45,8 +101,8 @@ function KPICards() {
   }
 
   return (
-    <div className="kpi-grid stagger">
-      {CARDS.map((card) => (
+    <div className="kpi-grid stagger" key={refreshKey}>
+      {CARDS.map((card, idx) => (
         <div key={card.key} className="card kpi-card animate-in" style={{
           padding: "28px 24px",
           position: "relative",
@@ -75,9 +131,15 @@ function KPICards() {
               </div>
               <div style={{
                 fontSize: "2rem", fontWeight: 800, letterSpacing: "-0.03em",
-                color: "var(--text-primary)", lineHeight: 1.1
+                color: "var(--text-primary)", lineHeight: 1.1,
+                fontVariantNumeric: "tabular-nums"
               }}>
-                {card.prefix}{card.format(kpi[card.key])}
+                <AnimatedValue
+                  value={kpi[card.key]}
+                  format={card.format}
+                  prefix={card.prefix}
+                  delay={idx * 150}
+                />
               </div>
             </div>
             <div style={{

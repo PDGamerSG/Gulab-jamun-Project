@@ -650,46 +650,67 @@
 
 .tab-nav {
     display: flex;
-    gap: 4px;
-    background: var(--bg-tint);
-    padding: 4px;
-    border-radius: var(--radius-md);
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    padding: 6px;
+    border-radius: var(--radius-lg);
     margin-bottom: var(--space-xl);
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 
 .tab-btn {
     display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 10px 18px;
+    gap: 8px;
+    padding: 12px 22px;
     border: none;
     background: transparent;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
     cursor: pointer;
-    font-size: 0.85rem;
+    font-size: 0.84rem;
     font-weight: 500;
-    color: var(--text-secondary);
+    color: var(--text-muted);
     white-space: nowrap;
-    transition: var(--transition-fast);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    letter-spacing: 0.01em;
 }
 
 .tab-btn:hover {
     color: var(--text-primary);
-    background: rgba(0, 0, 0, 0.03);
+    background: rgba(232, 93, 117, 0.04);
 }
 
 .tab-btn.active {
     background: white;
     color: var(--text-primary);
     font-weight: 600;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    right: 20%;
+    height: 2.5px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #E85D75, #FFB26B);
+}
+
+.tab-btn.active .tab-icon {
+    color: #E85D75;
 }
 
 .tab-icon {
     display: inline-flex;
     align-items: center;
+    transition: color 0.25s ease;
 }
 
 /* SVG icon consistency */

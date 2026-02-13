@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, CartesianGrid, LabelList } from "recharts";
-
-const COLORS = ["#FFB26B", "#ffcba4", "#ffd8b8", "#ffe4cc", "#fff0e0"];
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, LabelList } from "recharts";
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null;
@@ -11,6 +9,21 @@ const CustomTooltip = ({ active, payload, label }) => {
       <div className="label">{label}</div>
       <div className="value">₹ {payload[0].value?.toLocaleString("en-IN")}</div>
     </div>
+  );
+};
+
+const RoundedBar = (props) => {
+  const { x, y, width, height, index } = props;
+  if (!height || height <= 0) return null;
+  const radius = Math.min(10, width / 2);
+  const opacity = 1 - (index * 0.06);
+  return (
+    <g>
+      <rect x={x + 2} y={y + 4} width={width - 4} height={height} rx={radius}
+        fill="#FFB26B" opacity={0.12} filter="url(#whShadow)" />
+      <rect x={x} y={y} width={width} height={height} rx={radius}
+        fill="url(#whGrad)" opacity={opacity} />
+    </g>
   );
 };
 
@@ -32,23 +45,24 @@ function WarehouseChart() {
   }, []);
 
   return (
-    <ResponsiveContainer width="100%" height={340}>
-      <BarChart data={data} margin={{ top: 20, right: 20, left: 0, bottom: 0 }}>
+    <ResponsiveContainer width="100%" height={360}>
+      <BarChart data={data} margin={{ top: 20, right: 20, left: 0, bottom: 0 }} barCategoryGap="18%">
         <defs>
-          {COLORS.map((color, i) => (
-            <linearGradient key={i} id={`whGrad${i}`} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor={color} stopOpacity={1} />
-              <stop offset="100%" stopColor={color} stopOpacity={0.65} />
-            </linearGradient>
-          ))}
+          <linearGradient id="whGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#FFB26B" stopOpacity={1} />
+            <stop offset="50%" stopColor="#ffc88e" stopOpacity={0.9} />
+            <stop offset="100%" stopColor="#ffd8b8" stopOpacity={0.7} />
+          </linearGradient>
+          <filter id="whShadow">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="4" />
+          </filter>
         </defs>
         <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.04)" vertical={false} />
         <XAxis dataKey="warehouse" tick={{ fill: '#6B7280', fontSize: 11, fontWeight: 500 }} axisLine={{ stroke: '#E5E7EB' }} tickLine={false} />
         <YAxis tick={{ fill: '#6B7280', fontSize: 11 }} axisLine={false} tickLine={false} tickFormatter={v => `₹${(v / 1000).toFixed(0)}k`} />
         <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,178,107,0.06)', radius: 4 }} />
-        <Bar dataKey="revenue" radius={[8, 8, 0, 0]} maxBarSize={44} animationDuration={1200} animationEasing="ease-out">
-          {data.map((_, i) => <Cell key={i} fill={`url(#whGrad${i % COLORS.length})`} />)}
-          <LabelList dataKey="revenue" position="top" style={{ fill: '#6B7280', fontSize: 9, fontWeight: 600 }} formatter={v => `₹${(v / 1000).toFixed(0)}k`} />
+        <Bar dataKey="revenue" shape={<RoundedBar />} maxBarSize={44} animationDuration={1500} animationEasing="ease-out">
+          <LabelList dataKey="revenue" position="top" style={{ fill: '#e8913b', fontSize: 10, fontWeight: 700 }} formatter={v => `₹${(v / 1000).toFixed(0)}k`} />
         </Bar>
       </BarChart>
     </ResponsiveContainer>

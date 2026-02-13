@@ -12,7 +12,7 @@ const CustomTooltip = ({ active, payload, label }) => {
       <div className="label">{label}</div>
       {payload.map((p, i) => (
         <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 4 }}>
-          <span style={{ width: 8, height: 8, borderRadius: '50%', background: p.color, display: 'inline-block', boxShadow: `0 1px 4px ${p.color}40` }} />
+          <span style={{ width: 8, height: 8, borderRadius: '50%', background: p.color === 'url(#onTimeGradW)' ? '#10b981' : '#E85D75', display: 'inline-block' }} />
           <span className="value">{p.name}: {p.value?.toLocaleString("en-IN")}</span>
         </div>
       ))}
@@ -21,16 +21,19 @@ const CustomTooltip = ({ active, payload, label }) => {
 };
 
 const renderLegend = (props) => {
-  const { payload } = props;
+  const items = [
+    { label: "On Time", color: "#10b981" },
+    { label: "Delayed", color: "#E85D75" }
+  ];
   return (
     <div style={{ display: 'flex', justifyContent: 'center', gap: 24, marginTop: 8 }}>
-      {payload.map((entry, i) => (
+      {items.map((item, i) => (
         <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <span style={{
-            width: 10, height: 10, borderRadius: 3, background: entry.color,
-            boxShadow: `0 2px 6px ${entry.color}40`, display: 'inline-block'
+            width: 10, height: 10, borderRadius: 3, background: item.color,
+            boxShadow: `0 2px 6px ${item.color}40`, display: 'inline-block'
           }} />
-          <span style={{ fontSize: '0.82rem', color: '#6B7280', fontWeight: 500 }}>{entry.value}</span>
+          <span style={{ fontSize: '0.82rem', color: '#6B7280', fontWeight: 500 }}>{item.label}</span>
         </div>
       ))}
     </div>
@@ -53,17 +56,25 @@ function DeliveryDelayWarehouseChart() {
   }, []);
 
   return (
-    <ResponsiveContainer width="100%" height={360}>
-      <BarChart data={data} margin={{ top: 20, right: 20, left: 0, bottom: 5 }}>
+    <ResponsiveContainer width="100%" height={380}>
+      <BarChart data={data} margin={{ top: 20, right: 20, left: 0, bottom: 5 }} barCategoryGap="22%">
         <defs>
-          <linearGradient id="onTimeGrad" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id="onTimeGradW" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#10b981" stopOpacity={1} />
-            <stop offset="100%" stopColor="#10b981" stopOpacity={0.7} />
+            <stop offset="50%" stopColor="#34d399" stopOpacity={0.9} />
+            <stop offset="100%" stopColor="#6ee7b7" stopOpacity={0.7} />
           </linearGradient>
-          <linearGradient id="delayedGrad" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id="delayedGradW" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#E85D75" stopOpacity={1} />
-            <stop offset="100%" stopColor="#E85D75" stopOpacity={0.7} />
+            <stop offset="50%" stopColor="#f0899b" stopOpacity={0.9} />
+            <stop offset="100%" stopColor="#f7b3be" stopOpacity={0.7} />
           </linearGradient>
+          <filter id="onTimeShadow">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+          </filter>
+          <filter id="delayedShadow">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+          </filter>
         </defs>
         <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.04)" vertical={false} />
         <XAxis
@@ -79,11 +90,11 @@ function DeliveryDelayWarehouseChart() {
         />
         <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(232,93,117,0.04)', radius: 4 }} />
         <Legend content={renderLegend} />
-        <Bar dataKey="on_time" name="On Time" fill="url(#onTimeGrad)" radius={[4, 4, 0, 0]} maxBarSize={32} animationDuration={1200}>
-          <LabelList dataKey="on_time" position="top" style={{ fill: '#10b981', fontSize: 9, fontWeight: 600 }} />
+        <Bar dataKey="on_time" name="On Time" fill="url(#onTimeGradW)" radius={[6, 6, 0, 0]} maxBarSize={28} animationDuration={1500} animationEasing="ease-out">
+          <LabelList dataKey="on_time" position="top" style={{ fill: '#10b981', fontSize: 9, fontWeight: 700 }} />
         </Bar>
-        <Bar dataKey="delayed" name="Delayed" fill="url(#delayedGrad)" radius={[4, 4, 0, 0]} maxBarSize={32} animationDuration={1200}>
-          <LabelList dataKey="delayed" position="top" style={{ fill: '#E85D75', fontSize: 9, fontWeight: 600 }} />
+        <Bar dataKey="delayed" name="Delayed" fill="url(#delayedGradW)" radius={[6, 6, 0, 0]} maxBarSize={28} animationDuration={1500} animationEasing="ease-out">
+          <LabelList dataKey="delayed" position="top" style={{ fill: '#E85D75', fontSize: 9, fontWeight: 700 }} />
         </Bar>
       </BarChart>
     </ResponsiveContainer>
