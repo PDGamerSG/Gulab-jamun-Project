@@ -1,25 +1,21 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
+import "../Architecture.css";
 
-const IconDatabase = ({ size = 22 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" /><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" /></svg>
+// --- Icons ---
+const IconDatabase = ({ size = 18 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" /><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" /></svg>
 );
-const IconZap = ({ size = 22 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+const IconZap = ({ size = 18 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
 );
-const IconRefresh = ({ size = 22 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 4 23 10 17 10" /><polyline points="1 20 1 14 7 14" /><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" /></svg>
+const IconList = ({ size = 18 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="8" y1="6" x2="21" y2="6" /><line x1="8" y1="12" x2="21" y2="12" /><line x1="8" y1="18" x2="21" y2="18" /><line x1="3" y1="6" x2="3.01" y2="6" /><line x1="3" y1="12" x2="3.01" y2="12" /><line x1="3" y1="18" x2="3.01" y2="18" /></svg>
 );
-const IconLayers = ({ size = 22 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></svg>
+const IconLayers = ({ size = 18 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></svg>
 );
-const IconSave = ({ size = 22 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" /><polyline points="17 21 17 13 7 13 7 21" /><polyline points="7 3 7 8 15 8" /></svg>
-);
-const IconBarChart = ({ size = 22 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>
-);
-const IconArrowDown = () => (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19" /><polyline points="19 12 12 19 5 12" /></svg>
+const IconBarChart = ({ size = 18 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>
 );
 
 const PIPELINE_STAGES = [
@@ -27,271 +23,247 @@ const PIPELINE_STAGES = [
         id: "sources", title: "Data Sources", icon: <IconDatabase />, color: "#E85D75", gradEnd: "#f7a4b3",
         items: [
             { name: "POS Systems", desc: "50+ store terminals", type: "Batch" },
-            { name: "E-commerce Platform", desc: "Real-time order events", type: "Stream" },
-            { name: "Warehouse DB", desc: "Inventory snapshots", type: "Batch" },
-            { name: "Clickstream Logs", desc: "User behavior events", type: "Stream" },
+            { name: "E-commerce", desc: "Real-time orders", type: "Stream" },
         ],
-        detail: "Multi-source data across POS terminals, e-commerce platform, warehouse management systems, and web clickstream logs. Each source has different update frequencies and formats."
+        detail: "Ingests data from dispersed POS terminals and high-velocity e-commerce events."
     },
     {
-        id: "ingestion", title: "Data Ingestion", icon: <IconZap />, color: "#FFB26B", gradEnd: "#ffd8b8",
+        id: "ingestion", title: "Ingestion Layer", icon: <IconZap />, color: "#FFB26B", gradEnd: "#ffd8b8",
         items: [
-            { name: "Batch Pipeline", desc: "Daily CSV/Parquet loads", type: "Python" },
-            { name: "Stream Pipeline", desc: "Near real-time events", type: "FastAPI" },
-            { name: "Schema Evolution", desc: "Auto-detect new columns", type: "Pandas" },
-            { name: "Retry Logic", desc: "3x retry with backoff", type: "Resilient" },
+            { name: "Batch Pipeline", desc: "Daily loads", type: "Python" },
+            { name: "Stream Pipeline", desc: "FastAPI events", type: "API" },
         ],
-        detail: "Hybrid ingestion supporting both daily batch loads (CSV → Parquet) and near real-time streaming via FastAPI endpoints. Includes fault tolerance with retry logic and automated schema evolution handling."
+        detail: "Hybrid ingestion layer with automated schema detection and retry mechanisms."
     },
     {
-        id: "transform", title: "Transformation", icon: <IconRefresh />, color: "#c9a0f0", gradEnd: "#E0C3FC",
+        id: "modeling", title: "Warehouse", icon: <IconLayers />, color: "#10b981", gradEnd: "#6ee7b7",
         items: [
-            { name: "Null Handling", desc: "Drop/impute null values", type: "Quality" },
-            { name: "Deduplication", desc: "Remove duplicate records", type: "Quality" },
-            { name: "Logic Validation", desc: "No negative prices/qty", type: "Quality" },
-            { name: "SCD Type 2", desc: "Track attribute history", type: "Historical" },
+            { name: "Star Schema", desc: "Fact/Dim model", type: "DW" },
+            { name: "SCD Type 2", desc: "History tracking", type: "Logic" },
         ],
-        detail: "Data cleansing pipeline implements null value handling, duplicate removal, and business logic validation. Slowly Changing Dimensions (SCD Type 2) track customer and product attribute changes over time."
+        detail: "Star schema architecture optimized for high-performance analytical queries."
     },
     {
-        id: "modeling", title: "Data Modeling", icon: <IconLayers />, color: "#10b981", gradEnd: "#6ee7b7",
+        id: "analytics", title: "Analytics Engine", icon: <IconBarChart />, color: "#8b5cf6", gradEnd: "#a78bfa",
         items: [
-            { name: "fact_sales", desc: "Order transactions", type: "Fact" },
-            { name: "fact_shipment", desc: "Delivery records", type: "Fact" },
-            { name: "dim_customer", desc: "Customer attributes", type: "Dimension" },
-            { name: "dim_product", desc: "Product catalog", type: "Dimension" },
+            { name: "KPI Engine", desc: "Revenue/CLV", type: "Calc" },
+            { name: "Dashboard", desc: "React UI", type: "View" },
         ],
-        detail: "Star schema with Fact tables (Sales, Shipments) and Dimension tables (Customer, Product, Date, Warehouse). Optimized for analytical queries with denormalized dimensions and surrogate keys."
-    },
-    {
-        id: "storage", title: "Storage Layer", icon: <IconSave />, color: "#38bdf8", gradEnd: "#7dd3fc",
-        items: [
-            { name: "Parquet Format", desc: "Columnar compression", type: "Storage" },
-            { name: "Date Partitioning", desc: "By month/region", type: "Partition" },
-            { name: "RBAC", desc: "Role-based access", type: "Security" },
-            { name: "Data Masking", desc: "PII protection", type: "Security" },
-        ],
-        detail: "Apache Parquet columnar storage for optimal analytical query performance. 60-80% compression vs CSV. Partitioned by date and region for scan reduction."
-    },
-    {
-        id: "analytics", title: "Analytics & ML", icon: <IconBarChart />, color: "#8b5cf6", gradEnd: "#a78bfa",
-        items: [
-            { name: "KPI Engine", desc: "Revenue, CLV, Turnover", type: "Metrics" },
-            { name: "Dashboards", desc: "Interactive Recharts UI", type: "Visual" },
-            { name: "Quality Reports", desc: "Data validation scores", type: "Quality" },
-            { name: "ML-Ready", desc: "Feature store pipeline", type: "Future" },
-        ],
-        detail: "Business KPIs computed via FastAPI endpoints: Daily/Monthly Revenue, Customer Lifetime Value, Inventory Turnover Ratio. Interactive React dashboard with real-time simulation capabilities."
+        detail: "Real-time dashboard computing complex business metrics and visualizations."
     },
 ];
-
-const SUMMARY_STATS = [
-    { value: "4", label: "Data Sources", color: "#E85D75" },
-    { value: "2", label: "Ingestion Modes", color: "#FFB26B" },
-    { value: "6", label: "Quality Checks", color: "#c9a0f0" },
-    { value: "6", label: "Analytical Tables", color: "#10b981" },
-    { value: "10+", label: "API Endpoints", color: "#38bdf8" },
-    { value: "11", label: "Visualizations", color: "#8b5cf6" },
-];
-
-// Animated data flow dots in the connector
-function FlowConnector({ color, nextColor }) {
-    return (
-        <div className="arch-connector">
-            <div className="arch-connector-track">
-                <div className="arch-connector-line" style={{
-                    background: `linear-gradient(180deg, ${color}, ${nextColor})`
-                }} />
-                <div className="arch-flow-dot" style={{
-                    background: color,
-                    boxShadow: `0 0 8px ${color}80`
-                }} />
-                <div className="arch-flow-dot arch-flow-dot-2" style={{
-                    background: nextColor,
-                    boxShadow: `0 0 8px ${nextColor}80`
-                }} />
-            </div>
-            <div className="arch-connector-arrow" style={{ color: nextColor }}>
-                <IconArrowDown />
-            </div>
-        </div>
-    );
-}
-
-// Animated counter for summary
-function AnimatedStat({ value, delay }) {
-    const [visible, setVisible] = useState(false);
-    useEffect(() => {
-        const t = setTimeout(() => setVisible(true), delay);
-        return () => clearTimeout(t);
-    }, [delay]);
-    return (
-        <span className={`arch-stat-value ${visible ? 'arch-stat-visible' : ''}`}>
-            {value}
-        </span>
-    );
-}
 
 function ArchitecturePage() {
-    const [expandedStage, setExpandedStage] = useState(null);
-    const [hoveredStage, setHoveredStage] = useState(null);
-    const [visibleStages, setVisibleStages] = useState(new Set());
-    const stageRefs = useRef([]);
+    const [hoveredNode, setHoveredNode] = useState(null);
 
-    // Intersection observer for scroll-triggered animations
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const idx = entry.target.dataset.index;
-                        setVisibleStages(prev => new Set([...prev, idx]));
-                    }
-                });
-            },
-            { threshold: 0.2, rootMargin: '0px 0px -50px 0px' }
-        );
-        stageRefs.current.forEach(ref => ref && observer.observe(ref));
-        return () => observer.disconnect();
-    }, []);
+    // Dynamic class for highlighting connections
+    const getConnClass = (targetNode) => {
+        if (!hoveredNode) return "connection-path";
+        // If hovering Fact, highlight all. If hovering Dim, highlight specific.
+        if (hoveredNode === 'fact') return "connection-path highlighted";
+        if (hoveredNode === targetNode) return "connection-path highlighted";
+        return "connection-path";
+    };
 
     return (
-        <div className="page-container">
+        <div className="page-container arch-container">
             <div className="page-header">
                 <div>
-                    <h1 className="page-title">Architecture Diagram</h1>
-                    <p className="page-subtitle">End-to-end data lifecycle — from raw sources to analytics</p>
+                    <h1 className="page-title">System Architecture</h1>
+                    <p className="page-subtitle">End-to-end data lifecycle: Source → Ingestion → Warehouse → Analytics</p>
                 </div>
                 <div className="arch-header-badge">
                     <span className="arch-pulse-ring" />
-                    <span>Data Pipeline Active</span>
+                    <span>System Active</span>
                 </div>
             </div>
 
-            {/* Pipeline Flow */}
-            <div className="arch-pipeline">
+            {/* --- STAR SCHEMA VISUALIZATION --- */}
+            <section className="schema-section animate-in">
+                <div className="schema-bg-grid" />
+                <div style={{ padding: '24px 32px', borderBottom: '1px solid rgba(0,0,0,0.04)', display: 'flex', alignItems: 'center', gap: 12 }}>
+                    <div className="icon" style={{
+                        width: 32, height: 32, borderRadius: 8, background: "rgba(16,185,129,0.1)", color: "#10b981",
+                        display: 'flex', alignItems: 'center', justifyContent: 'center'
+                    }}>
+                        <IconLayers />
+                    </div>
+                    <h2 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#334155' }}>Core Data Model (Star Schema)</h2>
+                </div>
+
+                <div className="schema-visual-container">
+                    {/* SVG Connector Lines - Paths drawn to connect centers */}
+                    <svg className="schema-connections" width="100%" height="100%" viewBox="0 0 1000 600" preserveAspectRatio="none">
+                        {/* Center is approx 500, 300 */}
+                        {/* Top Left (Cust) -> Center */}
+                        <path d="M 250,120 Q 500,120 500,220" className={getConnClass('customer')} />
+
+                        {/* Top Right (Prod) -> Center */}
+                        <path d="M 750,120 Q 500,120 500,220" className={getConnClass('product')} />
+
+                        {/* Bottom Left (Date) -> Center */}
+                        <path d="M 250,480 Q 500,480 500,380" className={getConnClass('date')} />
+
+                        {/* Bottom Right (Store) -> Center */}
+                        <path d="M 750,480 Q 500,480 500,380" className={getConnClass('store')} />
+                    </svg>
+
+                    {/* Central Fact Table (Active Area) */}
+                    <div
+                        className="schema-node node-fact pos-center"
+                        onMouseEnter={() => setHoveredNode('fact')}
+                        onMouseLeave={() => setHoveredNode(null)}
+                    >
+                        <div className="node-header">
+                            <IconDatabase size={14} /> FACT_SALES
+                        </div>
+                        <div className="node-columns">
+                            <Column name="order_id" isPk />
+                            <Column name="customer_id" isFk />
+                            <Column name="product_id" isFk />
+                            <Column name="date_id" isFk />
+                            <Column name="store_id" isFk />
+                            <Column name="quantity" />
+                            <Column name="total_amount" />
+                        </div>
+                    </div>
+
+                    {/* Dimension Tables */}
+                    <div
+                        className="schema-node node-dim pos-top-left"
+                        onMouseEnter={() => setHoveredNode('customer')}
+                        onMouseLeave={() => setHoveredNode(null)}
+                    >
+                        <div className="node-header">DIM_CUSTOMER</div>
+                        <div className="node-columns">
+                            <Column name="customer_id" isPk />
+                            <Column name="full_name" />
+                            <Column name="email" />
+                            <Column name="segment" />
+                            <Column name="region" />
+                        </div>
+                    </div>
+
+                    <div
+                        className="schema-node node-dim pos-top-right"
+                        onMouseEnter={() => setHoveredNode('product')}
+                        onMouseLeave={() => setHoveredNode(null)}
+                    >
+                        <div className="node-header">DIM_PRODUCT</div>
+                        <div className="node-columns">
+                            <Column name="product_id" isPk />
+                            <Column name="sku_code" />
+                            <Column name="category" />
+                            <Column name="unit_price" />
+                            <Column name="supplier" />
+                        </div>
+                    </div>
+
+                    <div
+                        className="schema-node node-dim pos-bottom-left"
+                        onMouseEnter={() => setHoveredNode('date')}
+                        onMouseLeave={() => setHoveredNode(null)}
+                    >
+                        <div className="node-header">DIM_DATE</div>
+                        <div className="node-columns">
+                            <Column name="date_id" isPk />
+                            <Column name="full_date" />
+                            <Column name="month_name" />
+                            <Column name="quarter" />
+                            <Column name="is_holiday" />
+                        </div>
+                    </div>
+
+                    <div
+                        className="schema-node node-dim pos-bottom-right"
+                        onMouseEnter={() => setHoveredNode('store')}
+                        onMouseLeave={() => setHoveredNode(null)}
+                    >
+                        <div className="node-header">DIM_STORE</div>
+                        <div className="node-columns">
+                            <Column name="store_id" isPk />
+                            <Column name="store_name" />
+                            <Column name="city" />
+                            <Column name="manager" />
+                            <Column name="size_sqft" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* --- PIPELINE STAGES --- */}
+            <div className="arch-pipeline animate-in stagger-1">
                 {PIPELINE_STAGES.map((stage, index) => (
-                    <div key={stage.id}>
-                        {/* Animated connector between stages */}
-                        {index > 0 && (
-                            <FlowConnector
-                                color={PIPELINE_STAGES[index - 1].color}
-                                nextColor={stage.color}
-                            />
-                        )}
-
-                        {/* Stage card */}
-                        <div
-                            ref={el => stageRefs.current[index] = el}
-                            data-index={index}
-                            className={`arch-stage ${visibleStages.has(String(index)) ? 'arch-stage-visible' : ''} ${expandedStage === stage.id ? 'arch-stage-expanded' : ''} ${hoveredStage === stage.id ? 'arch-stage-hovered' : ''}`}
-                            style={{
-                                '--stage-color': stage.color,
-                                '--stage-grad-end': stage.gradEnd,
-                                transitionDelay: `${index * 0.08}s`
-                            }}
-                            onClick={() => setExpandedStage(expandedStage === stage.id ? null : stage.id)}
-                            onMouseEnter={() => setHoveredStage(stage.id)}
-                            onMouseLeave={() => setHoveredStage(null)}
-                        >
-                            {/* Animated gradient border top */}
-                            <div className="arch-stage-accent" />
-
-                            {/* Background orb */}
-                            <div className="arch-stage-orb" style={{
-                                background: `radial-gradient(circle, ${stage.color}15 0%, transparent 70%)`
-                            }} />
-
-                            {/* Header */}
-                            <div className="arch-stage-header">
-                                <div className="arch-stage-icon" style={{
-                                    background: `linear-gradient(135deg, ${stage.color}20, ${stage.gradEnd}20)`,
-                                    color: stage.color,
-                                    boxShadow: `0 4px 14px ${stage.color}20`
-                                }}>
-                                    {stage.icon}
-                                    {/* Spinning ring on hover */}
-                                    <div className="arch-icon-ring" style={{ borderColor: `${stage.color}30` }} />
-                                </div>
-                                <div style={{ flex: 1 }}>
-                                    <h3 className="arch-stage-title">{stage.title}</h3>
-                                    <div className="arch-stage-step">
-                                        <span className="arch-step-num" style={{ background: stage.color }}>{index + 1}</span>
-                                        Step {index + 1} of {PIPELINE_STAGES.length}
-                                    </div>
-                                </div>
-                                <div className="arch-expand-btn" style={{
-                                    background: expandedStage === stage.id ? stage.color : `${stage.color}10`,
-                                    color: expandedStage === stage.id ? '#fff' : stage.color
-                                }}>
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
-                                        style={{ transform: expandedStage === stage.id ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease' }}>
-                                        <polyline points="6 9 12 15 18 9" />
-                                    </svg>
-                                </div>
+                    <div key={stage.id} className="arch-stage-card-simple" style={{ transitionDelay: `${index * 50}ms`, color: stage.color }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+                            <div style={{
+                                width: 40, height: 40, borderRadius: 10,
+                                background: `linear-gradient(135deg, ${stage.color}15, ${stage.gradEnd}25)`,
+                                color: stage.color,
+                                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                boxShadow: `0 4px 10px ${stage.color}15`
+                            }}>
+                                {stage.icon}
                             </div>
-
-                            {/* Item cards */}
-                            <div className="arch-items-grid">
-                                {stage.items.map((item, i) => (
-                                    <div key={i} className="arch-item" style={{ animationDelay: `${i * 0.05}s` }}>
-                                        <div className="arch-item-dot" style={{ background: stage.color }} />
-                                        <div style={{ flex: 1 }}>
-                                            <div className="arch-item-name">{item.name}</div>
-                                            <div className="arch-item-desc">{item.desc}</div>
-                                        </div>
-                                        <span className="arch-item-badge" style={{
-                                            background: `${stage.color}10`,
-                                            color: stage.color,
-                                            borderColor: `${stage.color}25`
-                                        }}>
-                                            {item.type}
-                                        </span>
-                                    </div>
-                                ))}
-                            </div>
-
-                            {/* Expanded detail */}
-                            <div className={`arch-detail ${expandedStage === stage.id ? 'arch-detail-open' : ''}`}>
-                                <div className="arch-detail-inner">
-                                    <div className="arch-detail-divider" style={{
-                                        background: `linear-gradient(90deg, transparent, ${stage.color}30, transparent)`
-                                    }} />
-                                    <p>{stage.detail}</p>
+                            <div>
+                                <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#1e293b' }}>{stage.title}</h3>
+                                <div style={{ fontSize: '0.75rem', fontWeight: 600, color: stage.color, textTransform: 'uppercase' }}>
+                                    Step {index + 1}
                                 </div>
                             </div>
                         </div>
+
+                        <div className="arch-items-grid">
+                            {stage.items.map((item, i) => (
+                                <div key={i} className="arch-item">
+                                    <div className="arch-item-dot" style={{ background: stage.color }} />
+                                    <div style={{ flex: 1, fontSize: '0.85rem' }}>
+                                        <span style={{ fontWeight: 600, color: '#334155' }}>{item.name}</span>
+                                        <span style={{ margin: '0 6px', color: '#cbd5e1' }}>|</span>
+                                        <span style={{ color: '#64748b' }}>{item.type}</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        <p className="arch-detail-text">{stage.detail}</p>
                     </div>
                 ))}
             </div>
 
-            {/* Summary Section */}
-            <div className="arch-summary">
-                <div className="arch-summary-header">
-                    <div className="arch-summary-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" />
-                        </svg>
-                    </div>
-                    <h3>ETL Pipeline Summary</h3>
+            {/* --- TECH STACK --- */}
+            <section className="animate-in stagger-2" style={{ marginTop: "40px", textAlign: 'center' }}>
+                <div style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 10,
+                    padding: '8px 20px', background: 'white', borderRadius: 99,
+                    boxShadow: '0 2px 10px rgba(0,0,0,0.05)', marginBottom: 24,
+                    border: '1px solid #e2e8f0'
+                }}>
+                    <span style={{ color: "#38bdf8" }}><IconZap size={16} /></span>
+                    <span style={{ fontSize: '0.9rem', fontWeight: 700, color: '#334155' }}>Powered By Modern Tech Stack</span>
                 </div>
-                <div className="arch-summary-grid">
-                    {SUMMARY_STATS.map((stat, i) => (
-                        <div key={i} className="arch-summary-stat" style={{ '--stat-color': stat.color }}>
-                            <AnimatedStat value={stat.value} delay={600 + i * 120} />
-                            <div className="arch-stat-label">{stat.label}</div>
-                            <div className="arch-stat-bar">
-                                <div className="arch-stat-bar-fill" style={{
-                                    background: `linear-gradient(90deg, ${stat.color}, ${stat.color}80)`,
-                                    animationDelay: `${800 + i * 120}ms`
-                                }} />
-                            </div>
-                        </div>
+
+                <div className="tech-stack-row">
+                    {["Python 3.11", "FastAPI", "Pandas", "React 18", "Recharts", "Vite", "Apache Parquet"].map((tech) => (
+                        <span key={tech} className="arch-tech-badge">{tech}</span>
                     ))}
                 </div>
-            </div>
+            </section>
         </div>
     );
 }
+
+// Helper for Column Row
+const Column = ({ name, isPk, isFk }) => (
+    <div className={`node-col ${isPk ? 'pk' : ''}`}>
+        <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            {isPk && <span className="key-badge key-pk">PK</span>}
+            {isFk && <span className="key-badge key-fk">FK</span>}
+            {name}
+        </span>
+        <span style={{ fontSize: '0.7rem', color: '#94a3b8' }}>
+            {isPk ? 'int' : isFk ? 'int' : 'var'}
+        </span>
+    </div>
+);
 
 export default ArchitecturePage;
