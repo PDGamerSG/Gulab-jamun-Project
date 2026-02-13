@@ -75,6 +75,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Card Glow effect for Solution section
+    const solutionCards = document.querySelectorAll('.solution-card-premium');
+    solutionCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+
     // Reveal Animations using Intersection Observer
     const revealCallback = (entries, observer) => {
         entries.forEach(entry => {
@@ -89,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const revealObserver = new IntersectionObserver(revealCallback, {
-        threshold: 0.15,
+        threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     });
 
@@ -113,4 +126,136 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Jamun Live Chat (Gemini Integration)
+    const jamunChat = document.getElementById('jamunChat');
+    const chatInput = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('sendBtn');
+
+    // API Configurations
+    const GEMINI_API_KEY = "AIzaSyD6NZsh8RuwApTf--tttIBvO55Gtee9hvQ";
+    const SYSTEM_PROMPT = "You are Jamun, a smart retail AI assistant for the Gulabjamun platform. You help retailers with analyzing sales data, managing inventory, optimizing menus, and other retail operations. Be helpful, professional, and concise. Use retail emojis. Current date: Feb 13, 2026.";
+
+    let chatHistory = [];
+    let isTyping = false;
+
+    function addMessage(text, type, isHtml = false) {
+        if (!jamunChat) return;
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `message ${type}`;
+        if (isHtml) {
+            msgDiv.innerHTML = text;
+        } else {
+            msgDiv.innerHTML = `<p>${text}</p>`;
+        }
+        jamunChat.appendChild(msgDiv);
+        jamunChat.scrollTop = jamunChat.scrollHeight;
+    }
+
+    function showTyping() {
+        if (isTyping) return;
+        isTyping = true;
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'typing-indicator';
+        typingDiv.id = 'typingIndicator';
+        typingDiv.innerHTML = '<span></span><span></span><span></span>';
+        jamunChat.appendChild(typingDiv);
+        jamunChat.scrollTop = jamunChat.scrollHeight;
+    }
+
+    function hideTyping() {
+        isTyping = false;
+        const indicator = document.getElementById('typingIndicator');
+        if (indicator) indicator.remove();
+    }
+
+    async function handleChat() {
+        const text = chatInput.value.trim();
+        if (!text || isTyping) return;
+
+        const lowText = text.toLowerCase();
+
+        // User Message
+        addMessage(text, 'user');
+        chatInput.value = '';
+
+        showTyping();
+
+        // 1. Keyword Check: Hi / Hello
+        if (lowText === 'hi' || lowText === 'hello') {
+            setTimeout(() => {
+                hideTyping();
+                addMessage("Welcome! I'm Jamun 🍇, your retail intelligence assistant. How can I help you scale your business today?", 'jamun');
+            }, 800);
+            return;
+        }
+
+        // 2. Keyword Check: Sales Report
+        if (lowText.includes('sales report')) {
+            setTimeout(() => {
+                hideTyping();
+                addMessage("Analyzing your sales data from all 5 store locations... 🔄", 'jamun');
+                showTyping();
+
+                setTimeout(() => {
+                    hideTyping();
+                    const reportHtml = `
+                        <div class="analysis-card">
+                            <div class="card-header">Weekly Sales Report</div>
+                            <p><strong>Total Revenue:</strong> ₹4,25,000 (+12%)</p>
+                            <p><strong>Top Store:</strong> South Delhi Hub</p>
+                            <p><strong>Bestseller:</strong> Gulab Mix (500g)</p>
+                            <button class="chat-action-btn">Download Full PDF</button>
+                        </div>
+                    `;
+                    addMessage(reportHtml, 'jamun', true);
+                }, 2000);
+            }, 1000);
+            return;
+        }
+
+        // 3. Fallback to Gemini API
+        try {
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+                    contents: [...chatHistory, { role: "user", parts: [{ text: text }] }]
+                })
+            });
+
+            const data = await response.json();
+            hideTyping();
+
+            if (data.candidates && data.candidates[0].content && data.candidates[0].content.parts[0].text) {
+                const aiResponse = data.candidates[0].content.parts[0].text;
+                addMessage(aiResponse, 'jamun');
+
+                chatHistory.push({ role: "user", parts: [{ text: text }] });
+                chatHistory.push({ role: "model", parts: [{ text: aiResponse }] });
+                if (chatHistory.length > 10) chatHistory = chatHistory.slice(-10);
+            } else {
+                throw new Error("API Issue");
+            }
+        } catch (error) {
+            hideTyping();
+            addMessage("I'm experiencing a small glitch in the retail cloud. Mind trying again?", 'jamun');
+            console.error("Gemini Error:", error);
+        }
+    }
+
+    if (sendBtn && chatInput) {
+        sendBtn.addEventListener('click', handleChat);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleChat();
+        });
+    }
+
+    // Initial greeting
+    if (jamunChat && jamunChat.children.length === 0) {
+        setTimeout(() => {
+            addMessage("Hello! I'm Jamun 🍇. How can I help you scale your retail business today?", 'jamun');
+        }, 800);
+    }
 });

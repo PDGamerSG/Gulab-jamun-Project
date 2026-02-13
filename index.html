@@ -29,7 +29,6 @@
             <ul class="nav-links">
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#features">Features</a></li>
-                <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -208,12 +207,68 @@
         </section>
 
         <!-- Dashboard Showcase Section -->
-        <section id="dashboard" class="dashboard-section">
+        <!-- AI Chatbot Showcase Section -->
+        <section id="dashboard" class="dashboard-section chat-section">
             <div class="container">
-                <div class="dashboard-wrapper">
-                    <div class="dashboard-frame">
-                        <img src="dashboard pic.png" alt="Gulabjamun Dashboard" class="dashboard-img" loading="lazy">
-                        <div class="dashboard-overlay"></div>
+                <div class="section-header center">
+                    <span class="section-tag">AI Copilot</span>
+                    <h2 class="section-title">Meet Jamun : Your AI Retail Assistant</h2>
+                    <p class="section-subtitle">Analyze trends, manage menus, and optimize inventory with a single
+                        conversational command.</p>
+                </div>
+
+                <div class="chat-interface-wrapper" data-reveal="fade-up">
+                    <div class="chat-interface">
+                        <div class="chat-header">
+                            <div class="jamun-avatar">
+                                <div class="avatar-glow"></div>
+                                <span>J</span>
+                            </div>
+                            <div class="chat-meta">
+                                <h3>Jamun AI</h3>
+                                <div class="status-indicator">
+                                    <span class="dot"></span>
+                                    <span>Active Scaling Mode</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-window" id="jamunChat">
+                            <!-- Messages will be injected by JS or shown as static first -->
+                            <div class="message jamun">
+                                <p>Welcome back! Last weekend saw a <strong>12% increase</strong> in beverage sales
+                                    across South Delhi stores.</p>
+                            </div>
+                            <div class="message user">
+                                <p>Jamun, can we optimize the menu prices for slow-moving items?</p>
+                            </div>
+                            <div class="message jamun">
+                                <div class="analysis-card">
+                                    <div class="card-header">Inventory Insight</div>
+                                    <p>Identified 5 items with low turnover. Suggested price drop: 10%.</p>
+                                    <button class="chat-action-btn">Manage Menu Now</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-input-bar">
+                            <input type="text" id="chatInput" placeholder="Ask Jamun to sync 5 stores..."
+                                autocomplete="off">
+                            <button class="chat-send-icon" id="sendBtn">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Floating Performance Cards -->
+                    <div class="floating-pills">
+                        <div class="pill pill-1">Menu Updated ✅</div>
+                        <div class="pill pill-2">Inventory Syncing...</div>
+                        <div class="pill pill-3">+8% Sales Boost</div>
                     </div>
                 </div>
             </div>
@@ -230,79 +285,80 @@
                     </p>
                 </div>
 
-                <div class="problem-grid">
-                    <!-- Card 1 -->
-                    <div class="problem-card" data-reveal="fade-up">
-                        <div class="problem-icon">
-                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
-                                fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
-                                </path>
-                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                            </svg>
+                <div class="problem-bento">
+                    <!-- Card 1: Large Focal Point -->
+                    <div class="bento-item data-silos" data-reveal="fade-up">
+                        <div class="bento-content">
+                            <div class="bento-tag red">High Impact</div>
+                            <div class="bento-icon-wrapper">
+                                <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2"
+                                    fill="none">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                                </svg>
+                            </div>
+                            <h3>The "Data Silo" Trap</h3>
+                            <p>Your sales, inventory, and customer data are trapped in separate islands. They don't
+                                talk, you don't grow.</p>
+                            <div class="bento-footer">
+                                <span class="footer-stat">65% of retailers struggle here</span>
+                            </div>
                         </div>
-                        <h3>Disconnected Data Silos</h3>
-                        <p>Sales, inventory, and customer data live in separate systems that don't talk to each other.
-                        </p>
-                        <div class="problem-result">
-                            <strong>Result:</strong> No single source of truth for the business.
-                        </div>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="problem-card" data-reveal="fade-up" data-delay="100">
-                        <div class="problem-icon">
-                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
-                                fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
-                                <path d="M3 6h18"></path>
-                                <path d="M16 10a4 4 0 0 1-8 0"></path>
-                            </svg>
-                        </div>
-                        <h3>Frequent Stock-Outs & Overstock</h3>
-                        <p>Without real-time demand visibility, popular products run out while slow-moving items pile
-                            up.</p>
-                        <div class="problem-result">
-                            <strong>Result:</strong> Lost revenue and wasted inventory costs.
+                        <div class="bento-visual">
+                            <div class="silo-circles">
+                                <div class="silo-circle c1"></div>
+                                <div class="silo-circle c2"></div>
+                                <div class="silo-circle c3"></div>
+                                <div class="silo-line"></div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Card 3 -->
-                    <div class="problem-card" data-reveal="fade-up" data-delay="200">
-                        <div class="problem-icon">
-                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
-                                fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                            </svg>
+                    <!-- Card 2: Inventory -->
+                    <div class="bento-item inventory-chaos" data-reveal="fade-up" data-delay="100">
+                        <div class="bento-content">
+                            <div class="bento-tag orange">Inventory Lag</div>
+                            <h3>Stock Chaos</h3>
+                            <p>Popular items run out while slow-movers gather dust. It's revenue left on the table.</p>
                         </div>
-                        <h3>No Unified Customer View</h3>
-                        <p>Customer data is scattered across POS, e-commerce, and CRM tools.</p>
-                        <div class="problem-result">
-                            <strong>Result:</strong> Poor personalization and weak customer retention.
+                        <div class="bento-visual">
+                            <div class="stock-bars">
+                                <div class="bar empty"></div>
+                                <div class="bar full"></div>
+                                <div class="bar half"></div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Card 4 -->
-                    <div class="problem-card" data-reveal="fade-up" data-delay="300">
-                        <div class="problem-icon">
-                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
-                                fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10 9 9 9 8 9"></polyline>
-                            </svg>
+                    <!-- Card 3: Reports -->
+                    <div class="bento-item manual-reports" data-reveal="fade-up" data-delay="150">
+                        <div class="bento-content">
+                            <div class="bento-tag purple">Manual Pains</div>
+                            <h3>Excel Hell</h3>
+                            <p>Spending hours on manual exports? Your insights are outdated before you even hit 'Save'.
+                            </p>
                         </div>
-                        <h3>Manual Reports & Excel Dependency</h3>
-                        <p>Teams rely on manual exports, spreadsheets, and delayed reports.</p>
-                        <div class="problem-result">
-                            <strong>Result:</strong> Slow decisions and outdated insights.
+                        <div class="bento-visual">
+                            <div class="excel-grid">
+                                <span></span><span></span><span></span>
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Customer -->
+                    <div class="bento-item customer-view" data-reveal="fade-up" data-delay="200">
+                        <div class="bento-content">
+                            <div class="bento-icon-wrapper small">
+                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                    fill="none">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                </svg>
+                            </div>
+                            <h3>The Invisible Customer</h3>
+                            <p>Without a unified view, every customer is a stranger. No loyalty, just one-offs.</p>
                         </div>
                     </div>
                 </div>
@@ -320,73 +376,78 @@
                     </p>
                 </div>
 
-                <div class="solution-grid">
+                <div class="solution-grid-premium">
                     <!-- Pillar 1 -->
-                    <div class="solution-pillar" data-reveal="fade-up">
-                        <div class="pillar-icon">
-                            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2"
-                                fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10 9 9 9 8 9"></polyline>
+                    <div class="solution-card-premium" data-reveal="fade-up">
+                        <div class="card-glow"></div>
+                        <div class="pillar-icon-premium">
+                            <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2"
+                                fill="none">
+                                <path d="M12 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="16" y1="13" x2="8" y2="13" />
+                                <line x1="16" y1="17" x2="8" y2="17" />
+                                <polyline points="10 9 9 9 8 9" />
                             </svg>
                         </div>
                         <h3>Unified Retail Data Hub</h3>
-                        <p>Connect POS, e-commerce, warehouse, and customer systems into one centralized platform.</p>
-                        <ul class="pillar-list">
-                            <li>Batch and real-time data pipelines</li>
-                            <li>Single source of truth</li>
-                            <li>Multi-store data integration</li>
+                        <p>No more data silos. Gulabjamun brings all your POS, E-commerce, and Warehouse data into one
+                            command center.</p>
+                        <ul class="pillar-list-premium">
+                            <li>Real-time Data Pipelines</li>
+                            <li>Single Source of Truth</li>
+                            <li>Multi-store Sync</li>
                         </ul>
-                        <div class="pillar-outcome">
-                            <strong>Outcome:</strong> No more data silos—everything in one place.
+                        <div class="pillar-footer-premium">
+                            <strong>100% Visibility</strong>
                         </div>
                     </div>
 
                     <!-- Pillar 2 -->
-                    <div class="solution-pillar" data-reveal="fade-up" data-delay="100">
-                        <div class="pillar-icon">
-                            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2"
-                                fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="3"></circle>
+                    <div class="solution-card-premium" data-reveal="fade-up" data-delay="100">
+                        <div class="card-glow"></div>
+                        <div class="pillar-icon-premium">
+                            <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2"
+                                fill="none">
+                                <circle cx="12" cy="12" r="3" />
                                 <path
-                                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
-                                </path>
+                                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
                             </svg>
                         </div>
-                        <h3>Intelligent Operations & Automation</h3>
-                        <p>Manage every part of your retail operations from one system with automated workflows.</p>
-                        <ul class="pillar-list">
-                            <li>POS and billing integration</li>
-                            <li>Inventory and warehouse tracking</li>
-                            <li>HRM and role-based access</li>
+                        <h3>Smart Ops & Automation</h3>
+                        <p>Let AI handle the heavy lifting. Automate stock replenishments, role-based access, and daily
+                            reporting.</p>
+                        <ul class="pillar-list-premium">
+                            <li>Automated Stock Alerts</li>
+                            <li>Role-based Permissions</li>
+                            <li>Intelligent Scheduling</li>
                         </ul>
-                        <div class="pillar-outcome">
-                            <strong>Outcome:</strong> Run your entire retail business from a single dashboard.
+                        <div class="pillar-footer-premium">
+                            <strong>Zero Manual Drag</strong>
                         </div>
                     </div>
 
                     <!-- Pillar 3 -->
-                    <div class="solution-pillar" data-reveal="fade-up" data-delay="200">
-                        <div class="pillar-icon">
-                            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2"
-                                fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="18" y1="20" x2="18" y2="10"></line>
-                                <line x1="12" y1="20" x2="12" y2="4"></line>
-                                <line x1="6" y1="20" x2="6" y2="14"></line>
+                    <div class="solution-card-premium" data-reveal="fade-up" data-delay="200">
+                        <div class="card-glow"></div>
+                        <div class="pillar-icon-premium">
+                            <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2"
+                                fill="none">
+                                <line x1="18" y1="20" x2="18" y2="10" />
+                                <line x1="12" y1="20" x2="12" y2="4" />
+                                <line x1="6" y1="20" x2="6" y2="14" />
                             </svg>
                         </div>
-                        <h3>Real-Time Analytics & Customer Intelligence</h3>
-                        <p>Turn raw data into actionable insights instantly for better planning and personalization.</p>
-                        <ul class="pillar-list">
-                            <li>Revenue and turnover analytics</li>
-                            <li>Customer lifetime value (CLV)</li>
-                            <li>Basket and purchase analysis</li>
+                        <h3>Advanced Customer Intel</h3>
+                        <p>Know your customers better than they know themselves. Track behavior patterns and boost
+                            lifetime value across all touchpoints.</p>
+                        <ul class="pillar-list-premium">
+                            <li>Predictive Analytics</li>
+                            <li>Purchase Analysis</li>
+                            <li>Personalized Journeys</li>
                         </ul>
-                        <div class="pillar-outcome">
-                            <strong>Outcome:</strong> Faster decisions, better planning, happier customers.
+                        <div class="pillar-footer-premium">
+                            <strong>Scale Revenue</strong>
                         </div>
                     </div>
                 </div>
@@ -684,104 +745,7 @@
                 </div>
             </div>
         </section>
-        <!-- Pricing Section -->
-        <section id="pricing" class="pricing-section">
-            <div class="container">
-                <div class="section-header center">
-                    <span class="section-tag">Flexible Plans</span>
-                    <h2 class="section-title">Pricing Built for Your Scale</h2>
-                    <p class="section-subtitle">Choose the perfect plan to unlock your retail intelligence
-                        potential.</p>
-                </div>
 
-                <div class="pricing-grid">
-                    <!-- Starter -->
-                    <div class="pricing-card" data-reveal="fade-up">
-                        <div class="pricing-header">
-                            <h3>Starter</h3>
-                            <div class="price">FREE<span>/mo</span></div>
-                            <p>For independent single stores.</p>
-                        </div>
-                        <ul class="pricing-features">
-                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
-                                    stroke-width="2.5">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg> 1 Store Location</li>
-                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
-                                    stroke-width="2.5">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg> Daily Data Sync</li>
-                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
-                                    stroke-width="2.5">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg> Basic Analytics</li>
-                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
-                                    stroke-width="2.5">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg> Email Support</li>
-                        </ul>
-                        <a href="waiting.html" class="btn-outline-premium">Start for Free</a>
-                    </div>
-
-                    <!-- Growth -->
-                    <div class="pricing-card primary" data-reveal="fade-up" data-delay="100">
-                        <div class="card-tag">Recommended</div>
-                        <div class="pricing-header">
-                            <h3>Growth</h3>
-                            <div class="price">$49<span>/mo</span></div>
-                            <p>For growing retail chains.</p>
-                        </div>
-                        <ul class="pricing-features">
-                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
-                                    stroke-width="2.5">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg> Up to 5 Stores</li>
-                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
-                                    stroke-width="2.5">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg> Real-time Alerts</li>
-                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
-                                    stroke-width="2.5">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg> Advanced CLV Reports</li>
-                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
-                                    stroke-width="2.5">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg> Priority Support</li>
-                        </ul>
-                        <a href="waiting.html" class="btn-primary-premium">Get Started</a>
-                    </div>
-
-                    <!-- Enterprise -->
-                    <div class="pricing-card" data-reveal="fade-up" data-delay="200">
-                        <div class="pricing-header">
-                            <h3>Enterprise</h3>
-                            <div class="price">Custom</div>
-                            <p>For large-scale retail giants.</p>
-                        </div>
-                        <ul class="pricing-features">
-                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
-                                    stroke-width="2.5">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg> Unlimited Stores</li>
-                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
-                                    stroke-width="2.5">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg> Custom Integrations</li>
-                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
-                                    stroke-width="2.5">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg> Dedicated Manager</li>
-                            <li><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"
-                                    stroke-width="2.5">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg> 24/7 Phone Support</li>
-                        </ul>
-                        <a href="#contact" class="btn-outline-premium">Contact Sales</a>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- FAQ Section -->
         <section id="faq" class="faq-section">
