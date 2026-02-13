@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import * as XLSX from "xlsx";
 import {
     BarChart, Bar, LineChart, Line, AreaChart, Area, PieChart, Pie,
@@ -6,6 +6,7 @@ import {
 } from "recharts";
 import axios from "axios";
 
+/* ─── Icons ──────────────────────────────────────────────── */
 const IconBarChart = () => (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>
 );
@@ -25,13 +26,19 @@ const IconUpload = () => (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" y1="3" x2="12" y2="15" /></svg>
 );
 const IconFolder = () => (
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" /></svg>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" /></svg>
 );
 const IconX = () => (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
 );
 const IconArrowUp = () => (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="19" x2="12" y2="5" /><polyline points="5 12 12 5 19 12" /></svg>
+);
+const IconPlus = () => (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+);
+const IconTrash = () => (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg>
 );
 
 const CHART_TYPES = [
@@ -41,7 +48,15 @@ const CHART_TYPES = [
     { id: "pie", label: "Pie Chart", icon: <IconPieChart /> },
 ];
 
-const COLORS = ["#E85D75", "#FFB26B", "#E0C3FC", "#10b981", "#38bdf8", "#8b5cf6", "#fbbf24", "#f43f5e"];
+const COLORS = ["#E85D75", "#FFB26B", "#E0C3FC", "#10b981", "#38bdf8", "#8b5cf6", "#fbbf24", "#f43f5e", "#06b6d4", "#ec4899"];
+
+const CUSTOM_TOOLTIP_STYLE = {
+    borderRadius: 10,
+    border: 'none',
+    boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
+    padding: '10px 14px',
+    fontSize: '0.85rem'
+};
 
 function CustomDataPage() {
     const [data, setData] = useState([]);
@@ -58,6 +73,7 @@ function CustomDataPage() {
     const [ingesting, setIngesting] = useState(false);
     const fileInputRef = useRef(null);
 
+    /* ─── File Upload ────────────────────────────────────── */
     const handleFileUpload = (e) => {
         const file = e.target.files[0];
         if (!file) return;
@@ -73,28 +89,40 @@ function CustomDataPage() {
             const rawData = XLSX.utils.sheet_to_json(ws);
 
             if (rawData.length > 0) {
-                setColumns(Object.keys(rawData[0]));
-                setData(rawData);
+                const cols = Object.keys(rawData[0]);
+                setColumns(cols);
 
-                const numKey = Object.keys(rawData[0]).find(k => typeof rawData[0][k] === 'number');
-                const catKey = Object.keys(rawData[0]).find(k => typeof rawData[0][k] === 'string');
+                // Convert numeric strings to numbers
+                const cleaned = rawData.map(row => {
+                    const newRow = {};
+                    cols.forEach(c => {
+                        const val = row[c];
+                        const num = parseFloat(val);
+                        newRow[c] = (val !== "" && !isNaN(num) && String(num) === String(val)) ? num : val;
+                    });
+                    return newRow;
+                });
+                setData(cleaned);
+
+                // Auto-detect best axes
+                const numKeys = cols.filter(k => typeof cleaned[0][k] === 'number');
+                const catKeys = cols.filter(k => typeof cleaned[0][k] === 'string');
                 setChartConfig(prev => ({
                     ...prev,
-                    xAxis: catKey || Object.keys(rawData[0])[0],
-                    yAxis: numKey || Object.keys(rawData[0])[1] || Object.keys(rawData[0])[0]
+                    xAxis: catKeys[0] || cols[0],
+                    yAxis: numKeys[0] || cols[1] || cols[0]
                 }));
             }
         };
         reader.readAsBinaryString(file);
-        // Reset input so same file can be re-uploaded
         e.target.value = "";
     };
 
+    /* ─── Data Editing ───────────────────────────────────── */
     const handleCellChange = (rowIndex, col, value) => {
         const newData = [...data];
-
         const num = parseFloat(value);
-        newData[rowIndex] = { ...newData[rowIndex], [col]: isNaN(num) ? value : num };
+        newData[rowIndex] = { ...newData[rowIndex], [col]: (value !== "" && !isNaN(num)) ? num : value };
         setData(newData);
     };
 
@@ -105,15 +133,74 @@ function CustomDataPage() {
     };
 
     const removeRow = (index) => {
-        const newData = [...data];
-        newData.splice(index, 1);
-        setData(newData);
+        setData(data.filter((_, i) => i !== index));
     };
 
+    /* ─── Chart Data (Aggregated) ────────────────────────── */
+    const chartData = useMemo(() => {
+        if (!data.length || !chartConfig.xAxis || !chartConfig.yAxis) return [];
+
+        // Check if yAxis values are numeric
+        const isNumericY = data.some(row => typeof row[chartConfig.yAxis] === 'number');
+
+        if (!isNumericY) {
+            // If yAxis is not numeric, count occurrences per xAxis category
+            const countMap = {};
+            data.forEach(row => {
+                const key = String(row[chartConfig.xAxis] ?? "Unknown");
+                countMap[key] = (countMap[key] || 0) + 1;
+            });
+            return Object.entries(countMap).map(([name, value]) => ({
+                [chartConfig.xAxis]: name,
+                [chartConfig.yAxis]: value
+            }));
+        }
+
+        // Aggregate: sum yAxis values grouped by xAxis
+        const grouped = {};
+        data.forEach(row => {
+            const key = String(row[chartConfig.xAxis] ?? "Unknown");
+            const val = parseFloat(row[chartConfig.yAxis]);
+            if (!isNaN(val)) {
+                if (!grouped[key]) {
+                    grouped[key] = { sum: 0, count: 0 };
+                }
+                grouped[key].sum += val;
+                grouped[key].count += 1;
+            }
+        });
+
+        return Object.entries(grouped).map(([name, { sum, count }]) => ({
+            [chartConfig.xAxis]: name,
+            [chartConfig.yAxis]: Math.round(sum * 100) / 100,
+            _count: count
+        }));
+    }, [data, chartConfig.xAxis, chartConfig.yAxis]);
+
+    /* ─── Summary Stats ──────────────────────────────────── */
+    const stats = useMemo(() => {
+        if (!data.length || !chartConfig.yAxis) return null;
+        const vals = data
+            .map(r => parseFloat(r[chartConfig.yAxis]))
+            .filter(v => !isNaN(v));
+        if (!vals.length) return null;
+        return {
+            total: vals.reduce((a, b) => a + b, 0),
+            avg: vals.reduce((a, b) => a + b, 0) / vals.length,
+            max: Math.max(...vals)
+        };
+    }, [data, chartConfig.yAxis]);
+
+    /* ─── Numeric Columns List ───────────────────────────── */
+    const numericColumns = useMemo(() => {
+        if (!data.length) return [];
+        return columns.filter(c => data.some(row => typeof row[c] === 'number'));
+    }, [data, columns]);
+
+    /* ─── Data Ingest ────────────────────────────────────── */
     const ingestData = async () => {
         setIngesting(true);
         try {
-
             const required = ["order_id", "revenue", "country"];
             const missing = required.filter(r => !columns.includes(r));
             if (missing.length > 0) {
@@ -121,11 +208,9 @@ function CustomDataPage() {
                 setIngesting(false);
                 return;
             }
-
             await axios.post("http://localhost:8000/ingest-data", data);
-            // Notify all dashboard charts to refresh their data
             window.dispatchEvent(new Event("data-refresh"));
-            alert("Analysis data successfully appended to system!");
+            alert("Data successfully appended to system!");
         } catch (err) {
             alert("Failed to ingest data. Ensure backend is running.");
         }
@@ -142,16 +227,111 @@ function CustomDataPage() {
         XLSX.writeFile(wb, "Gulabjamun_Sales_Template.xlsx");
     };
 
+    /* ─── Render Chart ───────────────────────────────────── */
+    const renderChart = () => {
+        if (!chartData.length) {
+            return (
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 280, color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+                    No valid data to display. Check your axis selections.
+                </div>
+            );
+        }
+
+        const commonProps = { data: chartData };
+        const xKey = chartConfig.xAxis;
+        const yKey = chartConfig.yAxis;
+
+        switch (chartConfig.type) {
+            case "bar":
+                return (
+                    <BarChart {...commonProps}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
+                        <XAxis dataKey={xKey} tick={{ fontSize: 11, fill: '#6B7280' }} axisLine={{ stroke: '#e5e7eb' }} tickLine={false} />
+                        <YAxis tick={{ fontSize: 11, fill: '#6B7280' }} axisLine={false} tickLine={false} />
+                        <Tooltip contentStyle={CUSTOM_TOOLTIP_STYLE} />
+                        <Bar dataKey={yKey} fill="#E85D75" radius={[6, 6, 0, 0]} maxBarSize={60}>
+                            {chartData.map((_, i) => (
+                                <Cell key={i} fill={COLORS[i % COLORS.length]} />
+                            ))}
+                        </Bar>
+                    </BarChart>
+                );
+            case "line":
+                return (
+                    <LineChart {...commonProps}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
+                        <XAxis dataKey={xKey} tick={{ fontSize: 11, fill: '#6B7280' }} axisLine={{ stroke: '#e5e7eb' }} tickLine={false} />
+                        <YAxis tick={{ fontSize: 11, fill: '#6B7280' }} axisLine={false} tickLine={false} />
+                        <Tooltip contentStyle={CUSTOM_TOOLTIP_STYLE} />
+                        <Line type="monotone" dataKey={yKey} stroke="#E85D75" strokeWidth={3} dot={{ r: 5, fill: '#E85D75', stroke: 'white', strokeWidth: 2 }} activeDot={{ r: 7 }} />
+                    </LineChart>
+                );
+            case "area":
+                return (
+                    <AreaChart {...commonProps}>
+                        <defs>
+                            <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stopColor="#E85D75" stopOpacity={0.3} />
+                                <stop offset="100%" stopColor="#E85D75" stopOpacity={0.02} />
+                            </linearGradient>
+                        </defs>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
+                        <XAxis dataKey={xKey} tick={{ fontSize: 11, fill: '#6B7280' }} axisLine={{ stroke: '#e5e7eb' }} tickLine={false} />
+                        <YAxis tick={{ fontSize: 11, fill: '#6B7280' }} axisLine={false} tickLine={false} />
+                        <Tooltip contentStyle={CUSTOM_TOOLTIP_STYLE} />
+                        <Area type="monotone" dataKey={yKey} stroke="#E85D75" strokeWidth={2.5} fill="url(#areaGradient)" />
+                    </AreaChart>
+                );
+            case "pie":
+                return (
+                    <PieChart>
+                        <Pie
+                            data={chartData}
+                            dataKey={yKey}
+                            nameKey={xKey}
+                            cx="50%"
+                            cy="50%"
+                            outerRadius={110}
+                            innerRadius={50}
+                            paddingAngle={3}
+                            label={({ name, percent }) => `${name} (${(percent * 100).toFixed(0)}%)`}
+                            labelLine={{ stroke: '#d1d5db' }}
+                        >
+                            {chartData.map((_, i) => (
+                                <Cell key={i} fill={COLORS[i % COLORS.length]} />
+                            ))}
+                        </Pie>
+                        <Tooltip contentStyle={CUSTOM_TOOLTIP_STYLE} />
+                        <Legend wrapperStyle={{ fontSize: '0.8rem' }} />
+                    </PieChart>
+                );
+            default:
+                return null;
+        }
+    };
+
+    /* ─── Format Number ──────────────────────────────────── */
+    const fmt = (n) => {
+        if (n >= 1000000) return (n / 1000000).toFixed(1) + "M";
+        if (n >= 1000) return (n / 1000).toFixed(1) + "K";
+        return Math.round(n * 100) / 100;
+    };
+
+    /* ─── JSX ────────────────────────────────────────────── */
     return (
         <div className="page-container">
             <div className="page-header">
                 <div>
                     <h1 className="page-title">Custom Data Lab</h1>
-                    <p className="page-subtitle">Upload Excel/CSV files, edit interactively, and generate custom visualizations</p>
+                    <p className="page-subtitle">Upload, edit, and visualize your own data</p>
                 </div>
-                <div style={{ display: "flex", gap: 12 }}>
-                    <button className="btn btn-outline" onClick={downloadTemplate}><IconDownload /> Download Template</button>
-                    <button className="btn btn-primary" onClick={() => fileInputRef.current.click()}><IconUpload /> Upload File</button>
+                <div style={{ display: "flex", gap: 10 }}>
+                    <button className="btn btn-outline" onClick={downloadTemplate}>
+                        <IconDownload /> Template
+                    </button>
+                    <button className="btn btn-primary" onClick={() => fileInputRef.current.click()}>
+                        <IconUpload /> Upload File
+                    </button>
                     <input
                         type="file"
                         ref={fileInputRef}
@@ -163,20 +343,39 @@ function CustomDataPage() {
             </div>
 
             {data.length === 0 ? (
-                <div className="upload-placeholder animate-in">
-                    <div className="upload-icon" style={{ color: "var(--text-muted)" }}><IconFolder /></div>
+                <div
+                    className="upload-placeholder animate-in"
+                    onClick={() => fileInputRef.current.click()}
+                >
+                    <div className="upload-icon">
+                        <IconFolder />
+                    </div>
                     <h3>No Data Loaded</h3>
-                    <p>Upload an Excel or CSV file to start analyzing.</p>
-                    <button className="btn btn-primary" onClick={() => fileInputRef.current.click()}>Select File</button>
+                    <p>Upload an Excel or CSV file to start analyzing, or download a template first.</p>
+                    <button className="btn btn-primary" onClick={(e) => { e.stopPropagation(); fileInputRef.current.click(); }}>
+                        <IconUpload /> Select File
+                    </button>
                 </div>
             ) : (
                 <div className="custom-workspace animate-in">
-                    { }
+                    {/* ─ Left Column: Config + Chart ─ */}
                     <div className="workspace-left">
+                        {/* File info */}
+                        {fileName && (
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
+                                <span style={{ fontWeight: 600 }}>📄 {fileName}</span>
+                                <span style={{ color: 'var(--text-muted)' }}>·</span>
+                                <span>{data.length} rows · {columns.length} columns</span>
+                            </div>
+                        )}
+
+                        {/* Config Card */}
                         <div className="card config-card">
-                            <h3 style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                <span style={{ color: "var(--accent-primary)" }}><IconBarChart /></span> Analysis Configuration
+                            <h3>
+                                <span style={{ color: "var(--accent-primary)" }}><IconBarChart /></span>
+                                Chart Configuration
                             </h3>
+
                             <div className="config-grid">
                                 <div className="form-group">
                                     <label>Chart Type</label>
@@ -185,7 +384,7 @@ function CustomDataPage() {
                                             <button
                                                 key={t.id}
                                                 className={`type-btn ${chartConfig.type === t.id ? "active" : ""}`}
-                                                onClick={() => setChartConfig({ ...chartConfig, type: t.id })}
+                                                onClick={() => setChartConfig(c => ({ ...c, type: t.id }))}
                                                 title={t.label}
                                             >
                                                 {t.icon}
@@ -193,98 +392,112 @@ function CustomDataPage() {
                                         ))}
                                     </div>
                                 </div>
+
+                                <div className="form-group">
+                                    <label>Chart Title</label>
+                                    <input
+                                        type="text"
+                                        className="chart-title-input"
+                                        value={chartConfig.title}
+                                        onChange={(e) => setChartConfig(c => ({ ...c, title: e.target.value }))}
+                                        placeholder="Enter chart title"
+                                    />
+                                </div>
+
                                 <div className="form-group">
                                     <label>X Axis (Category)</label>
                                     <select
                                         value={chartConfig.xAxis}
-                                        onChange={(e) => setChartConfig({ ...chartConfig, xAxis: e.target.value })}
+                                        onChange={(e) => setChartConfig(c => ({ ...c, xAxis: e.target.value }))}
                                     >
                                         {columns.map(c => <option key={c} value={c}>{c}</option>)}
                                     </select>
                                 </div>
+
                                 <div className="form-group">
                                     <label>Y Axis (Value)</label>
                                     <select
                                         value={chartConfig.yAxis}
-                                        onChange={(e) => setChartConfig({ ...chartConfig, yAxis: e.target.value })}
+                                        onChange={(e) => setChartConfig(c => ({ ...c, yAxis: e.target.value }))}
                                     >
-                                        {columns.map(c => <option key={c} value={c}>{c}</option>)}
+                                        {columns.map(c => (
+                                            <option key={c} value={c}>
+                                                {c} {numericColumns.includes(c) ? "📊" : ""}
+                                            </option>
+                                        ))}
                                     </select>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="card analysis-chart-card">
-                            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 16 }}>
-                                <h3>{chartConfig.title}</h3>
-                                <span className="badge">{data.length} records</span>
+                        {/* Summary Stats */}
+                        {stats && (
+                            <div className="data-summary">
+                                <div className="summary-stat">
+                                    <div className="stat-value">{fmt(stats.total)}</div>
+                                    <div className="stat-label">Total</div>
+                                </div>
+                                <div className="summary-stat">
+                                    <div className="stat-value">{fmt(stats.avg)}</div>
+                                    <div className="stat-label">Average</div>
+                                </div>
+                                <div className="summary-stat">
+                                    <div className="stat-value">{fmt(stats.max)}</div>
+                                    <div className="stat-label">Maximum</div>
+                                </div>
                             </div>
-                            <div style={{ width: '100%', height: 300 }}>
+                        )}
+
+                        {/* Chart */}
+                        <div className="card analysis-chart-card">
+                            <div className="chart-header">
+                                <h3>{chartConfig.title}</h3>
+                                <span className="badge">{chartData.length} groups</span>
+                            </div>
+                            <div style={{ width: '100%', height: 320 }}>
                                 <ResponsiveContainer>
-                                    {chartConfig.type === "bar" ? (
-                                        <BarChart data={data}>
-                                            <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                                            <XAxis dataKey={chartConfig.xAxis} tick={{ fontSize: 11 }} />
-                                            <YAxis tick={{ fontSize: 11 }} />
-                                            <Tooltip contentStyle={{ borderRadius: 8, border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }} />
-                                            <Bar dataKey={chartConfig.yAxis} fill="#E85D75" radius={[4, 4, 0, 0]} />
-                                        </BarChart>
-                                    ) : chartConfig.type === "line" ? (
-                                        <LineChart data={data}>
-                                            <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                                            <XAxis dataKey={chartConfig.xAxis} tick={{ fontSize: 11 }} />
-                                            <YAxis tick={{ fontSize: 11 }} />
-                                            <Tooltip contentStyle={{ borderRadius: 8, border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }} />
-                                            <Line type="monotone" dataKey={chartConfig.yAxis} stroke="#E85D75" strokeWidth={3} dot={{ r: 4 }} />
-                                        </LineChart>
-                                    ) : chartConfig.type === "area" ? (
-                                        <AreaChart data={data}>
-                                            <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                                            <XAxis dataKey={chartConfig.xAxis} tick={{ fontSize: 11 }} />
-                                            <YAxis tick={{ fontSize: 11 }} />
-                                            <Tooltip contentStyle={{ borderRadius: 8, border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }} />
-                                            <Area type="monotone" dataKey={chartConfig.yAxis} stroke="#E85D75" fill="rgba(232, 93, 117, 0.2)" />
-                                        </AreaChart>
-                                    ) : (
-                                        <PieChart>
-                                            <Pie
-                                                data={data} dataKey={chartConfig.yAxis} nameKey={chartConfig.xAxis}
-                                                cx="50%" cy="50%" outerRadius={100} fill="#8884d8" label
-                                            >
-                                                {data.map((_, index) => <Cell key={index} fill={COLORS[index % COLORS.length]} />)}
-                                            </Pie>
-                                            <Tooltip />
-                                            <Legend />
-                                        </PieChart>
-                                    )}
+                                    {renderChart()}
                                 </ResponsiveContainer>
                             </div>
                         </div>
 
-                        <div style={{ marginTop: 16, display: "flex", gap: 12 }}>
-                            <button className="btn btn-outline" onClick={() => setData([])} style={{ flex: 1 }}>Clear All Data</button>
+                        {/* Action Buttons */}
+                        <div className="action-bar">
+                            <button className="btn btn-outline" onClick={() => { setData([]); setColumns([]); setFileName(null); }}>
+                                <IconTrash /> Clear Data
+                            </button>
                             <button
-                                className="btn btn-primary"
+                                className="btn btn-success"
                                 onClick={ingestData}
                                 disabled={ingesting}
-                                style={{ flex: 1, background: "linear-gradient(135deg, #10b981, #059669)" }}
                             >
-                                {ingesting ? "Ingesting..." : <><IconArrowUp /> Append to System Data</>}
+                                {ingesting ? (
+                                    <>
+                                        <span className="spinner" /> Ingesting...
+                                    </>
+                                ) : (
+                                    <>
+                                        <IconArrowUp /> Append to System
+                                    </>
+                                )}
                             </button>
                         </div>
                     </div>
 
-                    { }
+                    {/* ─ Right Column: Data Editor ─ */}
                     <div className="workspace-right">
                         <div className="card grid-card">
-                            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+                            <div className="grid-header">
                                 <h3>Data Editor</h3>
-                                <button className="btn btn-sm btn-outline" onClick={addRow}>+ Add Row</button>
+                                <button className="btn btn-sm btn-outline" onClick={addRow}>
+                                    <IconPlus /> Add Row
+                                </button>
                             </div>
                             <div className="table-wrapper">
                                 <table className="custom-table">
                                     <thead>
                                         <tr>
+                                            <th style={{ width: 40, textAlign: 'center' }}>#</th>
                                             {columns.map(c => <th key={c}>{c}</th>)}
                                             <th style={{ width: 40 }}></th>
                                         </tr>
@@ -292,11 +505,14 @@ function CustomDataPage() {
                                     <tbody>
                                         {data.map((row, rIndex) => (
                                             <tr key={rIndex}>
+                                                <td style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.75rem', padding: '0 8px' }}>
+                                                    {rIndex + 1}
+                                                </td>
                                                 {columns.map(c => (
                                                     <td key={c}>
                                                         <input
                                                             type="text"
-                                                            value={row[c] || ""}
+                                                            value={row[c] ?? ""}
                                                             onChange={(e) => handleCellChange(rIndex, c, e.target.value)}
                                                             className="cell-input"
                                                         />
@@ -304,8 +520,9 @@ function CustomDataPage() {
                                                 ))}
                                                 <td>
                                                     <button
+                                                        className="delete-row-btn"
                                                         onClick={() => removeRow(rIndex)}
-                                                        style={{ border: 'none', background: 'none', color: '#ef4444', cursor: 'pointer', padding: 4, display: 'flex', alignItems: 'center' }}
+                                                        title="Delete row"
                                                     >
                                                         <IconX />
                                                     </button>

@@ -3,6 +3,11 @@
     min-height: 100vh;
 }
 
+.app-main {
+    width: 100%;
+    min-height: 100vh;
+}
+
 .app-shell.with-sidebar .app-main {
     flex: 1;
     min-width: 0;
