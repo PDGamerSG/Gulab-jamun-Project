@@ -1,639 +1,827 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gulab Jamun – Management Dashboard</title>
-  <meta name="description" content="Gulab Jamun Smart Retail Supply Chain & Customer Intelligence Platform – Management Dashboard" />
+  <meta name="description"
+    content="Gulab Jamun Smart Retail Supply Chain & Customer Intelligence Platform – Management Dashboard" />
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 
-<div class="app">
+  <div class="app-shell">
 
-  <!-- ═══ SIDEBAR OVERLAY (mobile) ═══ -->
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <!-- ═══ SIDEBAR OVERLAY (mobile) ═══ -->
+    <div class="sidebar-overlay-bg" id="sidebarOverlay"></div>
 
-  <!-- ═══ SIDEBAR ═══ -->
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-brand">
-      <div class="brand-icon">🍩</div>
-      <div class="brand-text">
-        <h2>Gulab Jamun</h2>
-        <span>Retail Intelligence</span>
-      </div>
-    </div>
+    <!-- ═══ SIDEBAR ═══ -->
+    <aside class="sidebar" id="sidebar">
 
-    <nav class="sidebar-nav">
-      <div class="nav-label">Main</div>
-
-      <div class="nav-item active" data-page="dashboard">
-        <span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
-        Dashboard
-      </div>
-
-      <div class="nav-item" data-page="user-roles">
-        <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-        User Roles
-      </div>
-
-      <div class="nav-item" data-page="pos-suite">
-        <span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
-        POS Suite
-        <span class="badge">3</span>
-      </div>
-
-      <div class="nav-item" data-page="inventory">
-        <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span>
-        Inventory
-        <span class="badge">2</span>
-      </div>
-
-      <div class="nav-item" data-page="store-insights">
-        <span class="nav-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span>
-        Store Insights
-      </div>
-
-      <div class="nav-item" data-page="hrm-hub">
-        <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-        HRM Hub
-      </div>
-
-      <div class="nav-label" style="margin-top:8px;">System</div>
-
-      <div class="nav-item" data-page="settings">
-        <span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
-        Settings
-      </div>
-    </nav>
-
-    <div class="sidebar-footer">
-      <div class="sidebar-user">
-        <div class="user-avatar-sm">AY</div>
-        <div class="user-info">
-          <h4>Ayush Yadav</h4>
-          <span>Super Admin</span>
-        </div>
-      </div>
-    </div>
-  </aside>
-
-  <!-- ═══ MAIN AREA ═══ -->
-  <div class="main-area">
-
-    <!-- ── Header ── -->
-    <header class="header">
-      <div class="header-left">
-        <button class="menu-toggle" id="menuToggle">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <!-- Header -->
+      <div class="sidebar-header">
+        <button class="sidebar-hamburger" id="sidebarToggle" aria-label="Toggle sidebar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
         </button>
-        <div class="page-title">
-          <h1 id="pageTitle">Dashboard</h1>
-          <p id="pageSubtitle">Welcome back, Ayush — here's your overview</p>
-        </div>
+        <a href="#" class="sidebar-brand">
+          <span class="sidebar-brand-text">Gulab Jamun</span>
+        </a>
       </div>
 
-      <div class="header-center">
-        <div class="search-box">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" placeholder="Search anything…" id="globalSearch" />
-        </div>
-      </div>
+      <div class="sidebar-divider"></div>
 
-      <div class="header-right">
-        <button class="header-btn" title="Notifications">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-          <span class="notif-dot"></span>
-        </button>
-        <button class="header-btn" title="Help">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        </button>
-        <div class="user-avatar" title="Ayush Yadav">AY</div>
-      </div>
-    </header>
+      <!-- Navigation -->
+      <nav class="sidebar-nav">
 
-    <!-- ── Content ── -->
-    <main class="content" id="contentArea">
-
-      <!-- ═══════════ PAGE: DASHBOARD ═══════════ -->
-      <section class="page-section active" id="page-dashboard">
-
-        <!-- KPI Row -->
-        <div class="grid grid-4 mb-20" id="kpiGrid">
-          <!-- filled by JS -->
+        <!-- Dashboard -->
+        <div class="sidebar-item-wrapper">
+          <button class="sidebar-nav-btn active" data-page="dashboard" data-tooltip="Dashboard">
+            <span class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1" />
+                <rect x="14" y="3" width="7" height="7" rx="1" />
+                <rect x="3" y="14" width="7" height="7" rx="1" />
+                <rect x="14" y="14" width="7" height="7" rx="1" />
+              </svg></span>
+            <span class="sidebar-label">Dashboard</span>
+          </button>
         </div>
 
-        <!-- Charts + Activity Row -->
-        <div class="grid grid-3 mb-20">
-          <!-- Revenue Chart -->
-          <div class="card" style="grid-column: span 2;">
+        <!-- User Roles -->
+        <div class="sidebar-item-wrapper">
+          <button class="sidebar-nav-btn" data-page="user-roles" data-tooltip="User Roles">
+            <span class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg></span>
+            <span class="sidebar-label">User Roles</span>
+          </button>
+        </div>
+
+        <!-- POS Suite -->
+        <div class="sidebar-item-wrapper">
+          <button class="sidebar-nav-btn" data-page="pos-suite" data-tooltip="POS Suite">
+            <span class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+              </svg></span>
+            <span class="sidebar-label">POS Suite</span>
+            <span class="sidebar-badge">3</span>
+          </button>
+        </div>
+
+        <!-- Inventory -->
+        <div class="sidebar-item-wrapper">
+          <button class="sidebar-nav-btn" data-page="inventory" data-tooltip="Inventory">
+            <span class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                <line x1="12" y1="22.08" x2="12" y2="12" />
+              </svg></span>
+            <span class="sidebar-label">Inventory</span>
+            <span class="sidebar-badge">2</span>
+          </button>
+        </div>
+
+        <!-- Store Insights -->
+        <div class="sidebar-item-wrapper">
+          <button class="sidebar-nav-btn" data-page="store-insights" data-tooltip="Store Insights">
+            <span class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10" />
+                <line x1="12" y1="20" x2="12" y2="4" />
+                <line x1="6" y1="20" x2="6" y2="14" />
+              </svg></span>
+            <span class="sidebar-label">Store Insights</span>
+          </button>
+        </div>
+
+        <!-- HRM Hub -->
+        <div class="sidebar-item-wrapper">
+          <button class="sidebar-nav-btn" data-page="hrm-hub" data-tooltip="HRM Hub">
+            <span class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg></span>
+            <span class="sidebar-label">HRM Hub</span>
+          </button>
+        </div>
+
+      </nav>
+
+      <div class="sidebar-divider"></div>
+
+      <!-- Footer / Settings -->
+      <div class="sidebar-footer">
+        <div class="sidebar-item-wrapper">
+          <button class="sidebar-nav-btn" data-page="settings" data-tooltip="Settings">
+            <span class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3" />
+                <path
+                  d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+              </svg></span>
+            <span class="sidebar-label">Settings</span>
+          </button>
+        </div>
+        <div class="sidebar-item-wrapper">
+          <button class="sidebar-nav-btn logout-btn" data-tooltip="Logout">
+            <span class="sidebar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                <polyline points="16 17 21 12 16 7" />
+                <line x1="21" y1="12" x2="9" y2="12" />
+              </svg></span>
+            <span class="sidebar-label">Logout</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ═══ MAIN AREA ═══ -->
+    <div class="app-main">
+
+      <!-- ── Header ── -->
+      <header class="header">
+        <div class="header-left">
+          <div class="page-title-text">
+            <h1 id="pageTitle">Dashboard</h1>
+            <p id="pageSubtitle">Welcome back, Ayush — here's your overview</p>
+          </div>
+        </div>
+
+        <div class="header-center">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input type="text" placeholder="Search anything…" id="globalSearch" />
+          </div>
+        </div>
+
+        <div class="header-right">
+          <button class="header-btn" title="Notifications">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+            </svg>
+            <span class="notif-dot"></span>
+          </button>
+          <button class="header-btn" title="Help">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
+          </button>
+          <div class="user-avatar" title="Ayush Yadav">AY</div>
+        </div>
+      </header>
+
+      <!-- ── Content ── -->
+      <main class="content" id="contentArea">
+
+        <!-- ═══════════ PAGE: DASHBOARD ═══════════ -->
+        <section class="page-section active" id="page-dashboard">
+
+          <!-- KPI Row -->
+          <div class="grid grid-4 mb-20" id="kpiGrid"></div>
+
+          <!-- Charts + Activity -->
+          <div class="grid grid-3 mb-20">
+            <div class="card" style="grid-column: span 2;">
+              <div class="card-header">
+                <h3>Revenue Trend (Last 7 months)</h3>
+                <span style="font-size:0.78rem; color:var(--text-muted);">₹ in Lakhs</span>
+              </div>
+              <div class="card-body">
+                <div class="bar-chart" id="revenueChart"></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <h3>Sales by Category</h3>
+              </div>
+              <div class="card-body">
+                <div class="category-list" id="categoryList"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity + Payment -->
+          <div class="grid grid-3">
+            <div class="card" style="grid-column: span 2;">
+              <div class="card-header">
+                <h3>Recent Activity</h3>
+              </div>
+              <div class="card-body">
+                <div class="activity-feed" id="activityFeed"></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <h3>Payment Methods</h3>
+              </div>
+              <div class="card-body">
+                <div class="category-list" id="paymentList"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══════════ PAGE: USER ROLES ═══════════ -->
+        <section class="page-section" id="page-user-roles">
+          <div class="section-header">
+            <h2>Roles & Permissions</h2>
+            <div class="actions">
+              <button class="btn btn-primary" id="btnAddRole">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                Add Role
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-3 mb-20" id="rolesGrid"></div>
+
+          <div class="card">
             <div class="card-header">
-              <h3>Revenue Trend (Last 7 months)</h3>
-              <span style="font-size:12px; color:var(--text-muted);">₹ in Lakhs</span>
+              <h3>User Directory</h3>
             </div>
             <div class="card-body">
-              <div class="bar-chart" id="revenueChart"></div>
+              <div class="filter-bar">
+                <input type="text" class="filter-input" placeholder="Search users…" id="userSearch" />
+                <select id="roleFilter">
+                  <option value="">All Roles</option>
+                </select>
+              </div>
+              <div class="table-container">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>User</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th>Store</th>
+                      <th>Last Active</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="usersTableBody"></tbody>
+                </table>
+              </div>
             </div>
           </div>
-          <!-- Sales by Category -->
+
+          <div class="card mt-20">
+            <div class="card-header">
+              <h3>Permissions Matrix</h3>
+            </div>
+            <div class="card-body">
+              <div class="table-container">
+                <table class="perm-matrix">
+                  <thead>
+                    <tr>
+                      <th>Role</th>
+                      <th>Dashboard</th>
+                      <th>POS</th>
+                      <th>Inventory</th>
+                      <th>Insights</th>
+                      <th>HRM</th>
+                      <th>Settings</th>
+                      <th>User Mgmt</th>
+                    </tr>
+                  </thead>
+                  <tbody id="permMatrixBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══════════ PAGE: POS SUITE ═══════════ -->
+        <section class="page-section" id="page-pos-suite">
+          <div class="section-header">
+            <h2>Point of Sale</h2>
+            <div class="actions">
+              <button class="btn btn-outline">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Export
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-4 mb-20">
+            <div class="card pos-summary">
+              <div class="pos-metric"><span class="pm-label">Today's Sales</span><span class="pm-value">₹5,24,300</span>
+              </div>
+              <div class="pos-metric"><span class="pm-label">Transactions</span><span class="pm-value">342</span></div>
+              <div class="pos-metric"><span class="pm-label">Avg Basket</span><span class="pm-value">₹1,533</span></div>
+            </div>
+            <div class="card pos-summary">
+              <div class="pos-metric"><span class="pm-label">Active Registers</span><span class="pm-value"
+                  style="color:var(--success);">42 / 50</span></div>
+              <div class="pos-metric"><span class="pm-label">Offline</span><span class="pm-value"
+                  style="color:var(--danger);">3</span></div>
+              <div class="pos-metric"><span class="pm-label">Idle</span><span class="pm-value"
+                  style="color:var(--warning);">5</span></div>
+            </div>
+            <div class="card pos-summary">
+              <div class="pos-metric"><span class="pm-label">Refunds Today</span><span class="pm-value">7</span></div>
+              <div class="pos-metric"><span class="pm-label">Refund Amount</span><span class="pm-value"
+                  style="color:var(--danger);">₹12,430</span></div>
+              <div class="pos-metric"><span class="pm-label">Refund Rate</span><span class="pm-value">2.0%</span></div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <h3>Payment Split</h3>
+              </div>
+              <div class="card-body">
+                <div class="category-list" id="posPaymentList"></div>
+              </div>
+            </div>
+          </div>
+
           <div class="card">
-            <div class="card-header"><h3>Sales by Category</h3></div>
+            <div class="card-header">
+              <h3>Recent Transactions</h3>
+            </div>
             <div class="card-body">
-              <div class="category-list" id="categoryList"></div>
+              <div class="filter-bar">
+                <input type="text" class="filter-input" placeholder="Search transactions…" id="txnSearch" />
+                <select id="txnStatusFilter">
+                  <option value="">All Status</option>
+                  <option value="completed">Completed</option>
+                  <option value="processing">Processing</option>
+                  <option value="refunded">Refunded</option>
+                </select>
+                <select id="txnMethodFilter">
+                  <option value="">All Methods</option>
+                  <option value="UPI">UPI</option>
+                  <option value="Card">Card</option>
+                  <option value="Cash">Cash</option>
+                  <option value="Wallet">Wallet</option>
+                </select>
+              </div>
+              <div class="table-container">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Txn ID</th>
+                      <th>Store</th>
+                      <th>Customer</th>
+                      <th>Items</th>
+                      <th>Total</th>
+                      <th>Payment</th>
+                      <th>Time</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="txnTableBody"></tbody>
+                </table>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        <!-- Activity + Payment -->
-        <div class="grid grid-3">
-          <div class="card" style="grid-column: span 2;">
-            <div class="card-header"><h3>Recent Activity</h3></div>
-            <div class="card-body">
-              <div class="activity-feed" id="activityFeed"></div>
+        <!-- ═══════════ PAGE: INVENTORY ═══════════ -->
+        <section class="page-section" id="page-inventory">
+          <div class="section-header">
+            <h2>Inventory Management</h2>
+            <div class="actions">
+              <button class="btn btn-outline">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Export CSV
+              </button>
+              <button class="btn btn-primary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                Add Product
+              </button>
             </div>
           </div>
+
+          <div class="grid grid-4 mb-20">
+            <div class="card kpi-card">
+              <div class="kpi-icon primary"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                  <line x1="12" y1="22.08" x2="12" y2="12" />
+                </svg></div>
+              <div class="kpi-label">Total Products</div>
+              <div class="kpi-value">20</div>
+            </div>
+            <div class="card kpi-card">
+              <div class="kpi-icon success"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg></div>
+              <div class="kpi-label">In Stock</div>
+              <div class="kpi-value" id="goodStockCount">0</div>
+            </div>
+            <div class="card kpi-card">
+              <div class="kpi-icon warning"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                  <line x1="12" y1="9" x2="12" y2="13" />
+                  <line x1="12" y1="17" x2="12.01" y2="17" />
+                </svg></div>
+              <div class="kpi-label">Low Stock</div>
+              <div class="kpi-value" id="lowStockCount">0</div>
+            </div>
+            <div class="card kpi-card">
+              <div class="kpi-icon danger"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg></div>
+              <div class="kpi-label">Critical Stock</div>
+              <div class="kpi-value" id="criticalStockCount">0</div>
+            </div>
+          </div>
+
           <div class="card">
-            <div class="card-header"><h3>Payment Methods</h3></div>
+            <div class="card-header">
+              <h3>Product Inventory</h3>
+            </div>
             <div class="card-body">
-              <div class="category-list" id="paymentList"></div>
+              <div class="filter-bar">
+                <input type="text" class="filter-input" placeholder="Search products…" id="productSearch" />
+                <select id="categoryFilter">
+                  <option value="">All Categories</option>
+                </select>
+                <select id="stockFilter">
+                  <option value="">All Stock Levels</option>
+                  <option value="good">In Stock</option>
+                  <option value="low">Low Stock</option>
+                  <option value="critical">Critical</option>
+                </select>
+              </div>
+              <div class="table-container">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>SKU</th>
+                      <th>Product Name</th>
+                      <th>Category</th>
+                      <th>Price (₹)</th>
+                      <th>Stock</th>
+                      <th>Reorder Level</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="productTableBody"></tbody>
+                </table>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- ═══════════ PAGE: USER ROLES ═══════════ -->
-      <section class="page-section" id="page-user-roles">
-        <div class="section-header">
-          <h2>Roles & Permissions</h2>
-          <div class="actions">
-            <button class="btn btn-primary" id="btnAddRole">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-              Add Role
-            </button>
-          </div>
-        </div>
-
-        <!-- Roles Grid -->
-        <div class="grid grid-3 mb-20" id="rolesGrid"></div>
-
-        <!-- Users Table -->
-        <div class="card">
-          <div class="card-header">
-            <h3>User Directory</h3>
-          </div>
-          <div class="card-body">
-            <div class="filter-bar">
-              <input type="text" class="filter-input" placeholder="Search users…" id="userSearch" />
-              <select id="roleFilter">
-                <option value="">All Roles</option>
+        <!-- ═══════════ PAGE: STORE INSIGHTS ═══════════ -->
+        <section class="page-section" id="page-store-insights">
+          <div class="section-header">
+            <h2>Store Insights</h2>
+            <div class="actions">
+              <select
+                style="padding:8px 14px; border:1px solid var(--border); border-radius:var(--radius-sm); font-size:0.88rem; background:white;">
+                <option>Last 30 Days</option>
+                <option>Last 7 Days</option>
+                <option>This Month</option>
+                <option>This Quarter</option>
               </select>
             </div>
-            <div class="table-container">
-              <table>
-                <thead>
-                  <tr>
-                    <th>User</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Store</th>
-                    <th>Last Active</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="usersTableBody"></tbody>
-              </table>
+          </div>
+
+          <div class="grid grid-4 mb-20">
+            <div class="card kpi-card">
+              <div class="kpi-icon primary"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                  <polyline points="9 22 9 12 15 12 15 22" />
+                </svg></div>
+              <div class="kpi-label">Active Stores</div>
+              <div class="kpi-value">10</div>
+            </div>
+            <div class="card kpi-card">
+              <div class="kpi-icon success"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="1" x2="12" y2="23" />
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                </svg></div>
+              <div class="kpi-label">Total Revenue</div>
+              <div class="kpi-value">₹2.84Cr</div>
+            </div>
+            <div class="card kpi-card">
+              <div class="kpi-icon info"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10" />
+                  <line x1="12" y1="20" x2="12" y2="4" />
+                  <line x1="6" y1="20" x2="6" y2="14" />
+                </svg></div>
+              <div class="kpi-label">Avg per Store</div>
+              <div class="kpi-value">₹28.4L</div>
+            </div>
+            <div class="card kpi-card">
+              <div class="kpi-icon warning"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg></div>
+              <div class="kpi-label">Avg Rating</div>
+              <div class="kpi-value">4.39</div>
             </div>
           </div>
-        </div>
 
-        <!-- Permissions Matrix -->
-        <div class="card mt-20">
-          <div class="card-header"><h3>Permissions Matrix</h3></div>
-          <div class="card-body">
-            <div class="table-container">
-              <table class="perm-matrix">
-                <thead>
-                  <tr>
-                    <th>Role</th>
-                    <th>Dashboard</th>
-                    <th>POS</th>
-                    <th>Inventory</th>
-                    <th>Insights</th>
-                    <th>HRM</th>
-                    <th>Settings</th>
-                    <th>User Mgmt</th>
-                  </tr>
-                </thead>
-                <tbody id="permMatrixBody"></tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
+          <div class="grid grid-3 mb-20" id="storeCardsGrid"></div>
 
-      <!-- ═══════════ PAGE: POS SUITE ═══════════ -->
-      <section class="page-section" id="page-pos-suite">
-        <div class="section-header">
-          <h2>Point of Sale</h2>
-          <div class="actions">
-            <button class="btn btn-outline">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Export
-            </button>
-          </div>
-        </div>
-
-        <!-- POS KPIs -->
-        <div class="grid grid-4 mb-20">
-          <div class="card pos-summary">
-            <div class="pos-metric"><span class="pm-label">Today's Sales</span><span class="pm-value">₹5,24,300</span></div>
-            <div class="pos-metric"><span class="pm-label">Transactions</span><span class="pm-value">342</span></div>
-            <div class="pos-metric"><span class="pm-label">Avg Basket</span><span class="pm-value">₹1,533</span></div>
-          </div>
-          <div class="card pos-summary">
-            <div class="pos-metric"><span class="pm-label">Active Registers</span><span class="pm-value" style="color:var(--success);">42 / 50</span></div>
-            <div class="pos-metric"><span class="pm-label">Offline</span><span class="pm-value" style="color:var(--danger);">3</span></div>
-            <div class="pos-metric"><span class="pm-label">Idle</span><span class="pm-value" style="color:var(--warning);">5</span></div>
-          </div>
-          <div class="card pos-summary">
-            <div class="pos-metric"><span class="pm-label">Refunds Today</span><span class="pm-value">7</span></div>
-            <div class="pos-metric"><span class="pm-label">Refund Amount</span><span class="pm-value" style="color:var(--danger);">₹12,430</span></div>
-            <div class="pos-metric"><span class="pm-label">Refund Rate</span><span class="pm-value">2.0%</span></div>
-          </div>
           <div class="card">
-            <div class="card-header"><h3>Payment Split</h3></div>
-            <div class="card-body">
-              <div class="category-list" id="posPaymentList"></div>
+            <div class="card-header">
+              <h3>Store Performance Breakdown</h3>
             </div>
-          </div>
-        </div>
-
-        <!-- Transactions Table -->
-        <div class="card">
-          <div class="card-header"><h3>Recent Transactions</h3></div>
-          <div class="card-body">
-            <div class="filter-bar">
-              <input type="text" class="filter-input" placeholder="Search transactions…" id="txnSearch" />
-              <select id="txnStatusFilter">
-                <option value="">All Status</option>
-                <option value="completed">Completed</option>
-                <option value="processing">Processing</option>
-                <option value="refunded">Refunded</option>
-              </select>
-              <select id="txnMethodFilter">
-                <option value="">All Methods</option>
-                <option value="UPI">UPI</option>
-                <option value="Card">Card</option>
-                <option value="Cash">Cash</option>
-                <option value="Wallet">Wallet</option>
-              </select>
-            </div>
-            <div class="table-container">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Txn ID</th>
-                    <th>Store</th>
-                    <th>Customer</th>
-                    <th>Items</th>
-                    <th>Total</th>
-                    <th>Payment</th>
-                    <th>Time</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody id="txnTableBody"></tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════ PAGE: INVENTORY ═══════════ -->
-      <section class="page-section" id="page-inventory">
-        <div class="section-header">
-          <h2>Inventory Management</h2>
-          <div class="actions">
-            <button class="btn btn-outline">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Export CSV
-            </button>
-            <button class="btn btn-primary">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-              Add Product
-            </button>
-          </div>
-        </div>
-
-        <!-- Inventory KPIs -->
-        <div class="grid grid-4 mb-20">
-          <div class="card kpi-card">
-            <div class="kpi-icon primary">📦</div>
-            <div class="kpi-value">20</div>
-            <div class="kpi-label">Total Products</div>
-          </div>
-          <div class="card kpi-card">
-            <div class="kpi-icon success">✅</div>
-            <div class="kpi-value" id="goodStockCount">0</div>
-            <div class="kpi-label">In Stock</div>
-          </div>
-          <div class="card kpi-card">
-            <div class="kpi-icon warning">⚠️</div>
-            <div class="kpi-value" id="lowStockCount">0</div>
-            <div class="kpi-label">Low Stock</div>
-          </div>
-          <div class="card kpi-card">
-            <div class="kpi-icon danger">🚨</div>
-            <div class="kpi-value" id="criticalStockCount">0</div>
-            <div class="kpi-label">Critical Stock</div>
-          </div>
-        </div>
-
-        <!-- Products Table -->
-        <div class="card">
-          <div class="card-header"><h3>Product Inventory</h3></div>
-          <div class="card-body">
-            <div class="filter-bar">
-              <input type="text" class="filter-input" placeholder="Search products…" id="productSearch" />
-              <select id="categoryFilter">
-                <option value="">All Categories</option>
-              </select>
-              <select id="stockFilter">
-                <option value="">All Stock Levels</option>
-                <option value="good">In Stock</option>
-                <option value="low">Low Stock</option>
-                <option value="critical">Critical</option>
-              </select>
-            </div>
-            <div class="table-container">
-              <table>
-                <thead>
-                  <tr>
-                    <th>SKU</th>
-                    <th>Product Name</th>
-                    <th>Category</th>
-                    <th>Price (₹)</th>
-                    <th>Stock</th>
-                    <th>Reorder Level</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="productTableBody"></tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════ PAGE: STORE INSIGHTS ═══════════ -->
-      <section class="page-section" id="page-store-insights">
-        <div class="section-header">
-          <h2>Store Insights</h2>
-          <div class="actions">
-            <select style="padding:8px 14px; border:1px solid var(--border); border-radius:10px; font-size:13px; background:white;">
-              <option>Last 30 Days</option>
-              <option>Last 7 Days</option>
-              <option>This Month</option>
-              <option>This Quarter</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Store Performance Summary -->
-        <div class="grid grid-4 mb-20">
-          <div class="card kpi-card">
-            <div class="kpi-icon primary">🏪</div>
-            <div class="kpi-value">10</div>
-            <div class="kpi-label">Active Stores</div>
-          </div>
-          <div class="card kpi-card">
-            <div class="kpi-icon success">💰</div>
-            <div class="kpi-value">₹2.84Cr</div>
-            <div class="kpi-label">Total Revenue</div>
-          </div>
-          <div class="card kpi-card">
-            <div class="kpi-icon info">📊</div>
-            <div class="kpi-value">₹28.4L</div>
-            <div class="kpi-label">Avg per Store</div>
-          </div>
-          <div class="card kpi-card">
-            <div class="kpi-icon warning">⭐</div>
-            <div class="kpi-value">4.39</div>
-            <div class="kpi-label">Avg Rating</div>
-          </div>
-        </div>
-
-        <!-- Store Cards Grid -->
-        <div class="grid grid-3 mb-20" id="storeCardsGrid"></div>
-
-        <!-- Store Table -->
-        <div class="card">
-          <div class="card-header"><h3>Store Performance Breakdown</h3></div>
-          <div class="card-body">
-            <div class="table-container">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Store ID</th>
-                    <th>Store Name</th>
-                    <th>City</th>
-                    <th>Region</th>
-                    <th>Revenue</th>
-                    <th>Orders</th>
-                    <th>Rating</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody id="storeTableBody"></tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════ PAGE: HRM HUB ═══════════ -->
-      <section class="page-section" id="page-hrm-hub">
-        <div class="section-header">
-          <h2>HR Management</h2>
-          <div class="actions">
-            <button class="btn btn-primary">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-              Add Employee
-            </button>
-          </div>
-        </div>
-
-        <!-- HRM KPIs -->
-        <div class="grid grid-4 mb-20">
-          <div class="card kpi-card">
-            <div class="kpi-icon primary">👥</div>
-            <div class="kpi-value">15</div>
-            <div class="kpi-label">Total Employees</div>
-          </div>
-          <div class="card kpi-card">
-            <div class="kpi-icon success">✅</div>
-            <div class="kpi-value">14</div>
-            <div class="kpi-label">Active</div>
-          </div>
-          <div class="card kpi-card">
-            <div class="kpi-icon info">🏖️</div>
-            <div class="kpi-value">1</div>
-            <div class="kpi-label">On Leave</div>
-          </div>
-          <div class="card kpi-card">
-            <div class="kpi-icon warning">📊</div>
-            <div class="kpi-value">92%</div>
-            <div class="kpi-label">Avg Attendance</div>
-          </div>
-        </div>
-
-        <!-- Department Breakdown -->
-        <div class="grid grid-2 mb-20">
-          <div class="card">
-            <div class="card-header"><h3>Department Breakdown</h3></div>
-            <div class="card-body">
-              <div class="category-list" id="deptBreakdown"></div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header"><h3>Leave Requests</h3></div>
             <div class="card-body">
               <div class="table-container">
                 <table>
                   <thead>
                     <tr>
-                      <th>Employee</th>
-                      <th>Type</th>
-                      <th>From</th>
-                      <th>To</th>
-                      <th>Days</th>
+                      <th>Store ID</th>
+                      <th>Store Name</th>
+                      <th>City</th>
+                      <th>Region</th>
+                      <th>Revenue</th>
+                      <th>Orders</th>
+                      <th>Rating</th>
                       <th>Status</th>
                     </tr>
                   </thead>
-                  <tbody id="leaveTableBody"></tbody>
+                  <tbody id="storeTableBody"></tbody>
                 </table>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        <!-- Employee Directory -->
-        <div class="card">
-          <div class="card-header"><h3>Employee Directory</h3></div>
-          <div class="card-body">
-            <div class="filter-bar">
-              <input type="text" class="filter-input" placeholder="Search employees…" id="empSearch" />
-              <select id="deptFilter">
-                <option value="">All Departments</option>
-              </select>
-            </div>
-            <div class="table-container">
-              <table>
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Department</th>
-                    <th>Designation</th>
-                    <th>Store</th>
-                    <th>Join Date</th>
-                    <th>Attendance</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody id="empTableBody"></tbody>
-              </table>
+        <!-- ═══════════ PAGE: HRM HUB ═══════════ -->
+        <section class="page-section" id="page-hrm-hub">
+          <div class="section-header">
+            <h2>HR Management</h2>
+            <div class="actions">
+              <button class="btn btn-primary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                Add Employee
+              </button>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- ═══════════ PAGE: SETTINGS ═══════════ -->
-      <section class="page-section" id="page-settings">
-        <div class="section-header"><h2>Settings</h2></div>
+          <div class="grid grid-4 mb-20">
+            <div class="card kpi-card">
+              <div class="kpi-icon primary"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg></div>
+              <div class="kpi-label">Total Employees</div>
+              <div class="kpi-value">15</div>
+            </div>
+            <div class="card kpi-card">
+              <div class="kpi-icon success"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg></div>
+              <div class="kpi-label">Active</div>
+              <div class="kpi-value">14</div>
+            </div>
+            <div class="card kpi-card">
+              <div class="kpi-icon info"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg></div>
+              <div class="kpi-label">On Leave</div>
+              <div class="kpi-value">1</div>
+            </div>
+            <div class="card kpi-card">
+              <div class="kpi-icon warning"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                </svg></div>
+              <div class="kpi-label">Avg Attendance</div>
+              <div class="kpi-value">92%</div>
+            </div>
+          </div>
 
-        <div class="grid grid-2">
+          <div class="grid grid-2 mb-20">
+            <div class="card">
+              <div class="card-header">
+                <h3>Department Breakdown</h3>
+              </div>
+              <div class="card-body">
+                <div class="category-list" id="deptBreakdown"></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <h3>Leave Requests</h3>
+              </div>
+              <div class="card-body">
+                <div class="table-container">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Employee</th>
+                        <th>Type</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Days</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody id="leaveTableBody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="card">
-            <div class="card-header"><h3>General Settings</h3></div>
+            <div class="card-header">
+              <h3>Employee Directory</h3>
+            </div>
             <div class="card-body">
-              <div class="form-group">
-                <label>Company Name</label>
-                <input type="text" value="Gulab Jamun Retail Pvt. Ltd." />
+              <div class="filter-bar">
+                <input type="text" class="filter-input" placeholder="Search employees…" id="empSearch" />
+                <select id="deptFilter">
+                  <option value="">All Departments</option>
+                </select>
               </div>
-              <div class="form-group">
-                <label>Default Currency</label>
-                <select><option>₹ INR (Indian Rupee)</option></select>
+              <div class="table-container">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Department</th>
+                      <th>Designation</th>
+                      <th>Store</th>
+                      <th>Join Date</th>
+                      <th>Attendance</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="empTableBody"></tbody>
+                </table>
               </div>
-              <div class="form-group">
-                <label>Timezone</label>
-                <select><option>Asia/Kolkata (IST +05:30)</option></select>
-              </div>
-              <button class="btn btn-primary" style="margin-top:8px;">Save Changes</button>
             </div>
           </div>
-          <div class="card">
-            <div class="card-header"><h3>Notification Preferences</h3></div>
-            <div class="card-body">
-              <div class="form-group">
-                <label>Email Notifications</label>
-                <select><option>Enabled</option><option>Disabled</option></select>
+        </section>
+
+        <!-- ═══════════ PAGE: SETTINGS ═══════════ -->
+        <section class="page-section" id="page-settings">
+          <div class="section-header">
+            <h2>Settings</h2>
+          </div>
+
+          <div class="grid grid-2">
+            <div class="card">
+              <div class="card-header">
+                <h3>General Settings</h3>
               </div>
-              <div class="form-group">
-                <label>Low Stock Alerts</label>
-                <select><option>Enabled</option><option>Disabled</option></select>
+              <div class="card-body">
+                <div class="form-group">
+                  <label>Company Name</label>
+                  <input type="text" value="Gulab Jamun Retail Pvt. Ltd." />
+                </div>
+                <div class="form-group">
+                  <label>Default Currency</label>
+                  <select>
+                    <option>₹ INR (Indian Rupee)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Timezone</label>
+                  <select>
+                    <option>Asia/Kolkata (IST +05:30)</option>
+                  </select>
+                </div>
+                <button class="btn btn-primary" style="margin-top:8px;">Save Changes</button>
               </div>
-              <div class="form-group">
-                <label>Daily Digest</label>
-                <select><option>Enabled</option><option>Disabled</option></select>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <h3>Notification Preferences</h3>
               </div>
-              <button class="btn btn-primary" style="margin-top:8px;">Save Changes</button>
+              <div class="card-body">
+                <div class="form-group">
+                  <label>Email Notifications</label>
+                  <select>
+                    <option>Enabled</option>
+                    <option>Disabled</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Low Stock Alerts</label>
+                  <select>
+                    <option>Enabled</option>
+                    <option>Disabled</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Daily Digest</label>
+                  <select>
+                    <option>Enabled</option>
+                    <option>Disabled</option>
+                  </select>
+                </div>
+                <button class="btn btn-primary" style="margin-top:8px;">Save Changes</button>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-    </main>
-  </div>
-</div>
-
-<!-- ═══ ADD ROLE MODAL ═══ -->
-<div class="modal-overlay" id="roleModal">
-  <div class="modal">
-    <div class="modal-header">
-      <h3>Add New Role</h3>
-      <button class="modal-close" id="closeRoleModal">&times;</button>
-    </div>
-    <div class="modal-body">
-      <div class="form-group">
-        <label>Role Name</label>
-        <input type="text" placeholder="Enter role name" />
-      </div>
-      <div class="form-group">
-        <label>Permissions</label>
-        <div class="toggle-group">
-          <div class="toggle-item on">Dashboard</div>
-          <div class="toggle-item">POS</div>
-          <div class="toggle-item">Inventory</div>
-          <div class="toggle-item">Insights</div>
-          <div class="toggle-item">HRM</div>
-          <div class="toggle-item">Settings</div>
-          <div class="toggle-item">User Management</div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Description</label>
-        <input type="text" placeholder="Brief description of this role" />
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-outline" id="cancelRoleModal">Cancel</button>
-      <button class="btn btn-primary">Create Role</button>
+      </main>
     </div>
   </div>
-</div>
 
-<script src="data.js"></script>
-<script src="app.js"></script>
+  <!-- ═══ ADD ROLE MODAL ═══ -->
+  <div class="modal-overlay" id="roleModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Add New Role</h3>
+        <button class="modal-close" id="closeRoleModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Role Name</label>
+          <input type="text" placeholder="Enter role name" />
+        </div>
+        <div class="form-group">
+          <label>Permissions</label>
+          <div class="toggle-group">
+            <div class="toggle-item on">Dashboard</div>
+            <div class="toggle-item">POS</div>
+            <div class="toggle-item">Inventory</div>
+            <div class="toggle-item">Insights</div>
+            <div class="toggle-item">HRM</div>
+            <div class="toggle-item">Settings</div>
+            <div class="toggle-item">User Management</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" placeholder="Brief description of this role" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="cancelRoleModal">Cancel</button>
+        <button class="btn btn-primary">Create Role</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
 </body>
+
 </html>

@@ -135,14 +135,14 @@ const DATA = {
 
     // ── Recent Activity (Dashboard Feed) ────────────────────────
     recentActivity: [
-        { icon: '🛒', text: 'New order #TXN-90010 placed at Mumbai Central', time: '2 min ago', type: 'order' },
-        { icon: '📦', text: 'Shipment SHP-4421 dispatched from Delhi WH', time: '8 min ago', type: 'shipment' },
-        { icon: '⚠️', text: 'Low stock alert: Cadbury Dairy Milk Silk (45 units)', time: '15 min ago', type: 'alert' },
-        { icon: '👤', text: 'New user Bharat Patel onboarded as Cashier', time: '1 hr ago', type: 'user' },
-        { icon: '💰', text: 'Daily revenue crossed ₹5,00,000 milestone', time: '2 hrs ago', type: 'milestone' },
-        { icon: '🔄', text: 'Inventory sync completed for all stores', time: '3 hrs ago', type: 'system' },
-        { icon: '⚠️', text: 'Critical stock: Dove Shampoo 340ml (30 units)', time: '4 hrs ago', type: 'alert' },
-        { icon: '📊', text: 'Weekly analytics report generated', time: '5 hrs ago', type: 'report' },
+        { icon: 'order', text: 'New order #TXN-90010 placed at Mumbai Central', time: '2 min ago', type: 'order' },
+        { icon: 'shipment', text: 'Shipment SHP-4421 dispatched from Delhi WH', time: '8 min ago', type: 'shipment' },
+        { icon: 'alert', text: 'Low stock alert: Cadbury Dairy Milk Silk (45 units)', time: '15 min ago', type: 'alert' },
+        { icon: 'user', text: 'New user Bharat Patel onboarded as Cashier', time: '1 hr ago', type: 'user' },
+        { icon: 'milestone', text: 'Daily revenue crossed ₹5,00,000 milestone', time: '2 hrs ago', type: 'milestone' },
+        { icon: 'system', text: 'Inventory sync completed for all stores', time: '3 hrs ago', type: 'system' },
+        { icon: 'alert', text: 'Critical stock: Dove Shampoo 340ml (30 units)', time: '4 hrs ago', type: 'alert' },
+        { icon: 'report', text: 'Weekly analytics report generated', time: '5 hrs ago', type: 'report' },
     ],
 
     // ── Chart Data ──────────────────────────────────────────────
