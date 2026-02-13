@@ -1,10 +1,32 @@
 import { useState } from "react";
 
+const IconDatabase = ({ size = 20 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" /><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" /></svg>
+);
+const IconZap = ({ size = 20 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+);
+const IconRefresh = ({ size = 20 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 4 23 10 17 10" /><polyline points="1 20 1 14 7 14" /><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" /></svg>
+);
+const IconLayers = ({ size = 20 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></svg>
+);
+const IconSave = ({ size = 20 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" /><polyline points="17 21 17 13 7 13 7 21" /><polyline points="7 3 7 8 15 8" /></svg>
+);
+const IconBarChart = ({ size = 20 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>
+);
+const IconClipboard = ({ size = 16 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /><rect x="8" y="2" width="8" height="4" rx="1" ry="1" /></svg>
+);
+
 const PIPELINE_STAGES = [
     {
         id: "sources",
         title: "Data Sources",
-        icon: "🗄️",
+        icon: <IconDatabase />,
         color: "#E85D75",
         items: [
             { name: "POS Systems", desc: "50+ store terminals", type: "Batch" },
@@ -17,7 +39,7 @@ const PIPELINE_STAGES = [
     {
         id: "ingestion",
         title: "Data Ingestion",
-        icon: "⚡",
+        icon: <IconZap />,
         color: "#FFB26B",
         items: [
             { name: "Batch Pipeline", desc: "Daily CSV/Parquet loads", type: "Python" },
@@ -30,7 +52,7 @@ const PIPELINE_STAGES = [
     {
         id: "transform",
         title: "Transformation",
-        icon: "🔄",
+        icon: <IconRefresh />,
         color: "#E0C3FC",
         items: [
             { name: "Null Handling", desc: "Drop/impute null values", type: "Quality" },
@@ -43,7 +65,7 @@ const PIPELINE_STAGES = [
     {
         id: "modeling",
         title: "Data Modeling",
-        icon: "🏗️",
+        icon: <IconLayers />,
         color: "#10b981",
         items: [
             { name: "fact_sales", desc: "Order transactions", type: "Fact" },
@@ -56,7 +78,7 @@ const PIPELINE_STAGES = [
     {
         id: "storage",
         title: "Storage",
-        icon: "💾",
+        icon: <IconSave />,
         color: "#38bdf8",
         items: [
             { name: "Parquet Format", desc: "Columnar compression", type: "Storage" },
@@ -69,7 +91,7 @@ const PIPELINE_STAGES = [
     {
         id: "analytics",
         title: "Analytics & ML",
-        icon: "📊",
+        icon: <IconBarChart />,
         color: "#8b5cf6",
         items: [
             { name: "KPI Engine", desc: "Revenue, CLV, Turnover", type: "Metrics" },
@@ -93,11 +115,11 @@ function ArchitecturePage() {
                 </div>
             </div>
 
-            {}
+            { }
             <div className="pipeline-flow">
                 {PIPELINE_STAGES.map((stage, index) => (
                     <div key={stage.id} className="pipeline-stage-wrapper animate-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                        {}
+                        { }
                         {index > 0 && (
                             <div className="pipeline-connector">
                                 <div className="connector-line" />
@@ -105,7 +127,7 @@ function ArchitecturePage() {
                             </div>
                         )}
 
-                        {}
+                        { }
                         <div
                             className={`pipeline-stage card ${expandedStage === stage.id ? "expanded" : ""}`}
                             onClick={() => setExpandedStage(expandedStage === stage.id ? null : stage.id)}
@@ -113,7 +135,7 @@ function ArchitecturePage() {
                         >
                             <div className="stage-accent" style={{ background: stage.color }} />
                             <div className="stage-header">
-                                <div className="stage-icon" style={{ background: `${stage.color}15` }}>
+                                <div className="stage-icon" style={{ background: `${stage.color}15`, color: stage.color }}>
                                     {stage.icon}
                                 </div>
                                 <div>
@@ -123,7 +145,7 @@ function ArchitecturePage() {
                                 <span className="stage-expand">{expandedStage === stage.id ? "−" : "+"}</span>
                             </div>
 
-                            {}
+                            { }
                             <div className="stage-items">
                                 {stage.items.map((item, i) => (
                                     <div key={i} className="stage-item">
@@ -136,7 +158,7 @@ function ArchitecturePage() {
                                 ))}
                             </div>
 
-                            {}
+                            { }
                             {expandedStage === stage.id && (
                                 <div className="stage-detail animate-in">
                                     <div className="detail-divider" />
@@ -148,9 +170,12 @@ function ArchitecturePage() {
                 ))}
             </div>
 
-            {}
+            { }
             <div className="card" style={{ padding: "var(--space-xl)", marginTop: "var(--space-2xl)" }}>
-                <h3 style={{ marginBottom: "var(--space-md)", fontSize: "1.1rem" }}>📋 ETL Pipeline Summary</h3>
+                <h3 style={{ marginBottom: "var(--space-md)", fontSize: "1.1rem", display: "flex", alignItems: "center", gap: 8 }}>
+                    <span style={{ color: "var(--text-muted)" }}><IconClipboard /></span>
+                    ETL Pipeline Summary
+                </h3>
                 <div className="flow-summary-grid">
                     <div className="flow-stat">
                         <div className="flow-stat-value">4</div>

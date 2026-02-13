@@ -13,11 +13,24 @@ import SlowMovingProductsChart from "../SlowMovingProductsChart";
 import StockRiskChart from "../StockRiskChart";
 import SimulateOrderButton from "../SimulateOrderButton";
 
+const IconGrid = () => (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /></svg>
+);
+const IconTrendUp = () => (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg>
+);
+const IconUsers = () => (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+);
+const IconTruck = () => (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="3" width="15" height="13" /><polygon points="16 8 20 8 23 11 23 16 16 16 16 8" /><circle cx="5.5" cy="18.5" r="2.5" /><circle cx="18.5" cy="18.5" r="2.5" /></svg>
+);
+
 const TABS = [
-    { id: "overview", label: "Overview", icon: "📊" },
-    { id: "revenue", label: "Revenue & Sales", icon: "📈" },
-    { id: "customer", label: "Customer Intelligence", icon: "👥" },
-    { id: "operations", label: "Operations", icon: "🚚" },
+    { id: "overview", label: "Overview", icon: <IconGrid /> },
+    { id: "revenue", label: "Revenue & Sales", icon: <IconTrendUp /> },
+    { id: "customer", label: "Customer Intelligence", icon: <IconUsers /> },
+    { id: "operations", label: "Operations", icon: <IconTruck /> },
 ];
 
 function DashboardPage() {
@@ -42,7 +55,7 @@ function DashboardPage() {
             </div>
 
 
-            {}
+            { }
             <div className="tab-nav">
                 {TABS.map((tab) => (
                     <button
@@ -56,13 +69,15 @@ function DashboardPage() {
                 ))}
             </div>
 
-            {}
+            { }
             {
                 activeTab === "overview" && (
                     <div className="animate-in">
                         <section className="dashboard-section">
                             <div className="section-title">
-                                <span className="icon" style={{ background: "rgba(232,93,117,0.08)" }}>📊</span>
+                                <span className="icon" style={{ background: "rgba(232,93,117,0.08)", color: "#E85D75" }}>
+                                    <IconGrid />
+                                </span>
                                 Executive Summary
                             </div>
                             <KPICards />
@@ -70,7 +85,9 @@ function DashboardPage() {
 
                         <section className="dashboard-section">
                             <div className="section-title">
-                                <span className="icon" style={{ background: "rgba(255,178,107,0.12)" }}>📈</span>
+                                <span className="icon" style={{ background: "rgba(255,178,107,0.12)", color: "#FFB26B" }}>
+                                    <IconTrendUp />
+                                </span>
                                 Revenue Trend
                             </div>
                             <div className="card chart-card animate-in">
@@ -100,7 +117,9 @@ function DashboardPage() {
                     <div className="animate-in">
                         <section className="dashboard-section">
                             <div className="section-title">
-                                <span className="icon" style={{ background: "rgba(255,178,107,0.12)" }}>📈</span>
+                                <span className="icon" style={{ background: "rgba(255,178,107,0.12)", color: "#FFB26B" }}>
+                                    <IconTrendUp />
+                                </span>
                                 Revenue Analytics
                             </div>
                             <div className="charts-grid">
@@ -127,7 +146,9 @@ function DashboardPage() {
                     <div className="animate-in">
                         <section className="dashboard-section">
                             <div className="section-title">
-                                <span className="icon" style={{ background: "rgba(224,195,252,0.2)" }}>👥</span>
+                                <span className="icon" style={{ background: "rgba(224,195,252,0.2)", color: "#c9a0f0" }}>
+                                    <IconUsers />
+                                </span>
                                 Customer Intelligence
                             </div>
                             <div className="charts-grid">
@@ -158,7 +179,9 @@ function DashboardPage() {
                     <div className="animate-in">
                         <section className="dashboard-section">
                             <div className="section-title">
-                                <span className="icon" style={{ background: "rgba(232,93,117,0.08)" }}>🚚</span>
+                                <span className="icon" style={{ background: "rgba(232,93,117,0.08)", color: "#E85D75" }}>
+                                    <IconTruck />
+                                </span>
                                 Operations &amp; Supply Chain
                             </div>
                             <div className="charts-grid">

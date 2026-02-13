@@ -20,10 +20,12 @@ function RevenueChart() {
 
   useEffect(() => {
     const fetchData = () => {
-      axios.get("http://localhost:8000/monthly-revenue").then(res => {
-        const formatted = Object.entries(res.data).map(([key, value]) => ({
-          month: key, revenue: value
-        }));
+      // Add timestamp to prevent caching
+      axios.get(`http://localhost:8000/monthly-revenue?t=${new Date().getTime()}`).then(res => {
+        const formatted = Object.entries(res.data)
+          .map(([key, value]) => ({ month: key, revenue: value }))
+          .sort((a, b) => a.month.localeCompare(b.month))
+          .slice(-12); // Show only last 12 months so new data is visible
         setData(formatted);
       });
     };

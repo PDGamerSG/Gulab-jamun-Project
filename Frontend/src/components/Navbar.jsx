@@ -8,7 +8,7 @@ const NAV_LINKS = [
     { to: "/data-quality", label: "Data Quality" },
     { to: "/storage-security", label: "Storage & Security" },
     { to: "/custom-data", label: "Custom Lab" },
-    { to: "/ai-agent", label: "🤖 AI Copilot" },
+    { to: "/ai-chat", label: "🤖 AI Copilot" },
 ];
 
 function Navbar() {

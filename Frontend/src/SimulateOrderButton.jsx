@@ -1,6 +1,16 @@
 import { useState } from "react";
 import axios from "axios";
 
+const IconZap = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+);
+const IconEdit = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" /><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
+);
+const IconTrash = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg>
+);
+
 function SimulateOrderButton() {
   const [loading, setLoading] = useState(false);
   const [clearing, setClearing] = useState(false);
@@ -56,16 +66,16 @@ function SimulateOrderButton() {
     <>
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
         <button className="btn btn-primary" onClick={simulateOrder} disabled={loading}>
-          {loading ? <span className="spinner" /> : "⚡"}
+          {loading ? <span className="spinner" /> : <IconZap />}
           {loading ? "Simulating..." : "Simulate Random Order"}
         </button>
 
         <button className="btn btn-outline" onClick={() => setShowModal(true)}>
-          📝 Manual Entry
+          <IconEdit /> Manual Entry
         </button>
 
         <button className="btn btn-danger" onClick={clearOrders} disabled={clearing}>
-          {clearing ? <span className="spinner" /> : "🗑️"}
+          {clearing ? <span className="spinner" /> : <IconTrash />}
           {clearing ? "Clearing..." : "Clear Added Orders"}
         </button>
       </div>
@@ -119,4 +129,3 @@ function SimulateOrderButton() {
 }
 
 export default SimulateOrderButton;
-
