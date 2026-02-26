@@ -75,6 +75,12 @@ function LoginPage() {
                     </button>
                 </form>
 
+                <div className="login-credentials">
+                    <span className="login-credentials-label">Demo Credentials</span>
+                    <p>Username: <strong>admin</strong></p>
+                    <p>Password: <strong>admin123</strong></p>
+                </div>
+
                 <button
                     className="login-back"
                     onClick={() => navigate("/")}
