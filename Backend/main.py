@@ -1,15 +1,16 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
-from faker import Faker
 import random
 from datetime import datetime
 from pydantic import BaseModel
+from pathlib import Path
 
 class AIFixRequest(BaseModel):
     fix_type: str
 
 app = FastAPI()
+BASE_DIR = Path(__file__).resolve().parent
 
 
 app.add_middleware(
@@ -22,16 +23,28 @@ app.add_middleware(
 
 
 try:
-    sales_df = pd.read_parquet("fact_sales.parquet")
-    sales_df["order_date"] = pd.to_datetime(sales_df["order_date"])
+    sales_df = pd.read_csv(BASE_DIR / "clean_sales.csv")
+    sales_df["order_date"] = pd.to_datetime(sales_df["order_date"], errors="coerce")
 except:
-    
-    sales_df = pd.DataFrame(columns=["order_id", "product_id", "customer_id", "order_date", "revenue", "quantity", "unit_price", "country"])
+    try:
+        sales_df = pd.read_parquet(BASE_DIR / "fact_sales.parquet")
+        sales_df["order_date"] = pd.to_datetime(sales_df["order_date"], errors="coerce")
+    except:
+        
+        sales_df = pd.DataFrame(columns=["order_id", "product_id", "customer_id", "order_date", "revenue", "quantity", "unit_price", "country"])
 
 try:
-    shipment_df = pd.read_parquet("fact_shipment.parquet")
+    shipment_df = pd.read_csv(BASE_DIR / "clean_shipment.csv")
 except:
-    shipment_df = pd.DataFrame(columns=["shipment_id", "order_id", "warehouse_id", "delivery_status"])
+    try:
+        shipment_df = pd.read_parquet(BASE_DIR / "fact_shipment.parquet")
+    except:
+        shipment_df = pd.DataFrame(columns=["shipment_id", "order_id", "warehouse_id", "delivery_status"])
+
+try:
+    sales_df["order_date"] = pd.to_datetime(sales_df["order_date"])
+except:
+    pass
 
 simulated_orders = []
 
@@ -80,7 +93,7 @@ def kpi_summary():
         "total_revenue": float(total_revenue),
         "total_orders": int(total_orders),
         "total_customers": int(total_customers),
-        "delivery_success_rate": round(delivery_success, 2)
+        "delivery_success_rate": float(round(delivery_success, 2))
     }
 
 @app.get("/warehouse-sales")
@@ -199,13 +212,13 @@ def data_quality():
     
     ref_issues = 0
     if "order_id" in shipment_df.columns and "order_id" in sales_df.columns:
-        ref_issues = int(~shipment_df["order_id"].isin(sales_df["order_id"]).sum())
+        ref_issues = int((~shipment_df["order_id"].isin(sales_df["order_id"])).sum())
 
     
     valid_statuses = {"On Time", "Delayed"}
     delivery_issues = 0
     if "delivery_status" in shipment_df.columns:
-        delivery_issues = int(~shipment_df["delivery_status"].isin(valid_statuses).sum())
+        delivery_issues = int((~shipment_df["delivery_status"].isin(valid_statuses)).sum())
 
     
     total_issues = null_sales + null_shipment + dup_sales + neg_price + neg_qty + date_issues + ref_issues + delivery_issues
