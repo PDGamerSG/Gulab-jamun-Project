@@ -3,7 +3,6 @@
   "outputDirectory": "Frontend/dist",
   "functions": {
     "api/index.py": {
-      "runtime": "python3.11",
       "includeFiles": "Backend/**"
     }
   },

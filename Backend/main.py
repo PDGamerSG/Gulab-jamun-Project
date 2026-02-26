@@ -12,6 +12,53 @@ class AIFixRequest(BaseModel):
 app = FastAPI()
 BASE_DIR = Path(__file__).resolve().parent
 
+def _generate_demo_sales(rows: int = 3000) -> pd.DataFrame:
+    random.seed(42)
+    countries = ["India", "USA", "UK", "Germany", "Japan", "Canada", "Australia"]
+    products = [f"P{100 + i}" for i in range(1, 51)]
+    customers = [f"C{1000 + i}" for i in range(1, 801)]
+    start = pd.Timestamp("2024-01-01")
+    end = pd.Timestamp("2026-01-31")
+
+    records = []
+    for i in range(rows):
+        qty = random.randint(1, 8)
+        unit_price = round(random.uniform(8, 220), 2)
+        order_date = start + pd.to_timedelta(random.randint(0, (end - start).days), unit="D")
+        records.append(
+            {
+                "order_id": str(500000 + i),
+                "product_id": random.choice(products),
+                "description": "Demo Product",
+                "quantity": qty,
+                "order_date": order_date,
+                "unit_price": unit_price,
+                "customer_id": random.choice(customers),
+                "country": random.choice(countries),
+                "revenue": round(qty * unit_price, 2),
+            }
+        )
+    return pd.DataFrame(records)
+
+def _generate_demo_shipments(sales: pd.DataFrame) -> pd.DataFrame:
+    random.seed(43)
+    warehouses = ["A", "B", "C", "D", "E", "F"]
+    statuses = ["On Time", "Delayed"]
+    weights = [0.72, 0.28]
+
+    records = []
+    for i, order_id in enumerate(sales["order_id"].astype(str).tolist()):
+        status = random.choices(statuses, weights=weights, k=1)[0]
+        records.append(
+            {
+                "shipment_id": i + 1,
+                "order_id": order_id,
+                "warehouse_id": random.choice(warehouses),
+                "delivery_status": status,
+            }
+        )
+    return pd.DataFrame(records)
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -45,6 +92,13 @@ try:
     sales_df["order_date"] = pd.to_datetime(sales_df["order_date"])
 except:
     pass
+
+# If datasets are not bundled in deployment, provide deterministic demo data
+# so charts and dashboard routes still render meaningful values.
+if sales_df.empty:
+    sales_df = _generate_demo_sales()
+if shipment_df.empty:
+    shipment_df = _generate_demo_shipments(sales_df)
 
 simulated_orders = []
 
