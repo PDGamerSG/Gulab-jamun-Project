@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, useCallback } from "react";
-import axios from "axios";
+import api from "./lib/api";
 
 // Animated count-up hook
 function useCountUp(target, duration = 1800, enabled = true) {
@@ -80,7 +80,7 @@ function KPICards() {
 
   useEffect(() => {
     const fetchKpi = () => {
-      axios.get("http://localhost:8000/kpi-summary").then(res => {
+      api.get("/kpi-summary").then(res => {
         setKpi(res.data);
         setRefreshKey(k => k + 1);
       });

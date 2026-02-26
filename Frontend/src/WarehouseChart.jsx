@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "./lib/api";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, LabelList } from "recharts";
 
 const CustomTooltip = ({ active, payload, label }) => {
@@ -32,7 +32,7 @@ function WarehouseChart() {
 
   useEffect(() => {
     const fetchData = () => {
-      axios.get("http://localhost:8000/warehouse-sales").then(res => {
+      api.get("/warehouse-sales").then(res => {
         const formatted = Object.entries(res.data)
           .map(([key, value]) => ({ warehouse: key, revenue: value }))
           .sort((a, b) => b.revenue - a.revenue);

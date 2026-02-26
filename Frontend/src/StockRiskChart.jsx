@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "./lib/api";
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer,
   CartesianGrid, LabelList
@@ -41,7 +41,7 @@ function StockRiskChart() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/stock-risk")
+    api.get("/stock-risk")
       .then(res => {
         const formatted = Object.entries(res.data).map(([key, value]) => ({
           product: key.length > 12 ? key.substring(0, 12) + '…' : key,

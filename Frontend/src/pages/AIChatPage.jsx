@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import axios from "axios";
+import api from "../lib/api";
 import "../AIChat.css";
 
 const QUICK_ASKS = [
@@ -40,7 +40,7 @@ function AIChatPage() {
         setLoading(true);
 
         try {
-            const res = await axios.post("http://localhost:8000/ai-chat", {
+            const res = await api.post("/ai-chat", {
                 message: userMsg,
             });
             setMessages((prev) => [
@@ -52,7 +52,7 @@ function AIChatPage() {
                 ...prev,
                 {
                     role: "bot",
-                    text: "Sorry, I couldn't connect to the server. Please make sure the backend is running.",
+                    text: "Sorry, I couldn't connect to the server. Please try again in a moment.",
                 },
             ]);
         }
@@ -71,7 +71,7 @@ function AIChatPage() {
         <div className="chat-page">
             <div className="chat-header animate-in">
                 <h1>
-                    <span style={{ display: "inline-flex", verticalAlign: "middle", marginRight: 6, color: "var(--accent-primary)" }}><IconBot size={28} /></span> Jamun AI
+                    <span style={{ display: "inline-flex", verticalAlign: "middle", marginRight: 6, color: "#FFB26B" }}><IconBot size={28} /></span> Jamun AI
                 </h1>
                 <p>
                     Ask me anything about your retail data — revenue, customers,
@@ -95,7 +95,7 @@ function AIChatPage() {
             <div className="chat-messages">
                 {messages.length === 0 && !loading && (
                     <div className="chat-welcome animate-in">
-                        <span className="welcome-icon" style={{ color: "var(--accent-primary)" }}><IconMessageCircle size={32} /></span>
+                        <span className="welcome-icon" style={{ color: "#FFB26B" }}><IconMessageCircle size={32} /></span>
                         <h3>Start a Conversation</h3>
                         <p>
                             Click a quick question above or type your own to get

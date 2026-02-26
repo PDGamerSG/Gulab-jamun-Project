@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "./lib/api";
 import {
   AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid,
   ResponsiveContainer
@@ -20,7 +20,7 @@ function RevenueChart() {
 
   useEffect(() => {
     const fetchData = () => {
-      axios.get(`http://localhost:8000/monthly-revenue?t=${new Date().getTime()}`).then(res => {
+      api.get(`/monthly-revenue?t=${new Date().getTime()}`).then(res => {
         const formatted = Object.entries(res.data)
           .map(([key, value]) => ({ month: key, revenue: value }))
           .sort((a, b) => a.month.localeCompare(b.month))

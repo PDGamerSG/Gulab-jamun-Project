@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "./lib/api";
 
 const IconZap = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
@@ -23,7 +23,7 @@ function SimulateOrderButton() {
   const simulateOrder = async () => {
     setLoading(true);
     try {
-      await axios.post("http://localhost:8000/simulate-order");
+      await api.post("/simulate-order");
       setLoading(false);
       window.dispatchEvent(new Event("data-refresh"));
     } catch {
@@ -34,7 +34,7 @@ function SimulateOrderButton() {
   const clearOrders = async () => {
     setClearing(true);
     try {
-      await axios.delete("http://localhost:8000/clear-simulated-orders");
+      await api.delete("/clear-simulated-orders");
       setClearing(false);
       window.dispatchEvent(new Event("data-refresh"));
     } catch {
@@ -51,7 +51,7 @@ function SimulateOrderButton() {
         ...formData,
         order_date: new Date().toISOString()
       };
-      await axios.post("http://localhost:8000/create-order", payload);
+      await api.post("/create-order", payload);
       setLoading(false);
       setShowModal(false);
       window.dispatchEvent(new Event("data-refresh"));

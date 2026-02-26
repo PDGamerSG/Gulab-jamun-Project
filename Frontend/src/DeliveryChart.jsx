@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "./lib/api";
 import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from "recharts";
 
 const COLORS = ["#10b981", "#E85D75"];
@@ -36,7 +36,7 @@ function DeliveryChart() {
   const [onTimePct, setOnTimePct] = useState(0);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/delivery-performance").then(res => {
+    api.get("/delivery-performance").then(res => {
       const entries = Object.entries(res.data).map(([key, value]) => ({
         name: key, value: value
       }));

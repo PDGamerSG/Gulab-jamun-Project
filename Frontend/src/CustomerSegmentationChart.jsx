@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "./lib/api";
 import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from "recharts";
 
 const COLORS = ["#10b981", "#E85D75"];
@@ -38,7 +38,7 @@ function CustomerSegmentationChart() {
 
   useEffect(() => {
     const fetchData = () => {
-      axios.get("http://localhost:8000/customer-segmentation").then(res => {
+      api.get("/customer-segmentation").then(res => {
         const entries = Object.entries(res.data).map(([key, value]) => ({
           name: key, value: value
         }));

@@ -4,7 +4,7 @@ import {
     BarChart, Bar, LineChart, Line, AreaChart, Area, PieChart, Pie,
     XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell
 } from "recharts";
-import axios from "axios";
+import api from "../lib/api";
 
 /* ─── Icons ──────────────────────────────────────────────── */
 const IconBarChart = () => (
@@ -208,7 +208,7 @@ function CustomDataPage() {
                 setIngesting(false);
                 return;
             }
-            await axios.post("http://localhost:8000/ingest-data", data);
+            await api.post("/ingest-data", data);
             window.dispatchEvent(new Event("data-refresh"));
             alert("Data successfully appended to system!");
         } catch (err) {

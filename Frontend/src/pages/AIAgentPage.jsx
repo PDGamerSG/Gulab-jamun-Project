@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../lib/api";
 import "../AIAgent.css";
 
 const IconBot = ({ size = 20 }) => (
@@ -23,7 +23,7 @@ const AIAgentPage = () => {
         setScanning(true);
         addLog("Initiating system scan...", "info");
         try {
-            const res = await axios.get("http://localhost:8000/ai-diagnose");
+            const res = await api.get("/ai-diagnose");
             setIssues(res.data.issues);
             setInsights(res.data.insights);
             addLog(`Scan complete. Found ${res.data.issues.length} issues.`, "success");
@@ -36,7 +36,7 @@ const AIAgentPage = () => {
     const fixIssue = async (issueType) => {
         addLog(`Applying fix for: ${issueType}...`, "info");
         try {
-            const res = await axios.post("http://localhost:8000/ai-fix", { fix_type: issueType });
+            const res = await api.post("/ai-fix", { fix_type: issueType });
             addLog(`Fix applied: ${res.data.message}`, "success");
             runDiagnostics();
         } catch (err) {
@@ -49,7 +49,7 @@ const AIAgentPage = () => {
             <header className="ai-header">
                 <div>
                     <h1 className="ai-title">
-                        <span style={{ display: "inline-flex", verticalAlign: "middle", marginRight: 8, color: "var(--accent-primary)" }}><IconBot size={28} /></span> Gulabjamun AI Core
+                        <span style={{ display: "inline-flex", verticalAlign: "middle", marginRight: 8, color: "#FFB26B" }}><IconBot size={28} /></span> Gulabjamun AI Core
                     </h1>
                     <p className="page-subtitle">Autonomous Data Steward & Business Advisor</p>
                 </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../lib/api";
 import "../DataQuality.css";
 
 // --- Icons (Enhanced) ---
@@ -92,7 +92,7 @@ function DataQualityPage() {
 
     useEffect(() => {
         setTimeout(() => {
-            axios.get("http://localhost:8000/data-quality")
+            api.get("/data-quality")
                 .then(res => {
                     setQualityData(res.data);
                     setLoading(false);

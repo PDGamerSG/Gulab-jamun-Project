@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "./lib/api";
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, Legend,
   ResponsiveContainer, CartesianGrid, LabelList
@@ -44,7 +44,7 @@ function DeliveryDelayWarehouseChart() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/delivery-delay-by-warehouse").then(res => {
+    api.get("/delivery-delay-by-warehouse").then(res => {
       const warehouses = Object.keys(res.data["On Time"] || {});
       const formatted = warehouses.map(w => ({
         warehouse: w.length > 10 ? w.substring(0, 10) + '…' : w,

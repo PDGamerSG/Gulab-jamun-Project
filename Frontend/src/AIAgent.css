@@ -1,4 +1,3 @@
-
 .ai-page {
     padding: 24px;
     max-width: 1400px;
@@ -17,7 +16,7 @@
 .ai-title {
     font-size: 2rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+    background: linear-gradient(135deg, #FFB26B 0%, #E85D75 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -27,13 +26,13 @@
 }
 
 .ai-badge {
-    background: rgba(99, 102, 241, 0.1);
-    color: #818cf8;
+    background: rgba(255, 178, 107, 0.1);
+    color: #FFB26B;
     padding: 4px 12px;
     border-radius: 999px;
     font-size: 0.875rem;
     font-weight: 500;
-    border: 1px solid rgba(99, 102, 241, 0.2);
+    border: 1px solid rgba(255, 178, 107, 0.2);
 }
 
 .ai-grid {
@@ -121,9 +120,9 @@
 }
 
 .btn-fix {
-    background: #3b82f6;
-    color: white;
-    border: none;
+    background: rgba(255, 178, 107, 0.1);
+    color: #FFB26B;
+    border: 1px solid rgba(255, 178, 107, 0.3);
     padding: 8px 16px;
     border-radius: 8px;
     font-weight: 500;
@@ -135,27 +134,30 @@
 }
 
 .btn-fix:hover {
-    background: #2563eb;
+    background: rgba(255, 178, 107, 0.2);
+    border-color: #FFB26B;
 }
 
 .btn-scan {
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, #FFB26B 0%, #E85D75 100%);
+    background-size: 200% auto;
     color: white;
     border: none;
     padding: 12px 24px;
     border-radius: 12px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.4s ease;
     display: flex;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 4px 12px rgba(255, 178, 107, 0.3);
 }
 
 .btn-scan:hover {
+    background-position: right center;
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 6px 16px rgba(232, 93, 117, 0.4);
 }
 
 .btn-scan:disabled {
@@ -169,7 +171,7 @@
     border-radius: 12px;
     padding: 16px;
     margin-bottom: 12px;
-    border-left: 4px solid #8b5cf6;
+    border-left: 4px solid #E85D75;
 }
 
 .insight-metric {

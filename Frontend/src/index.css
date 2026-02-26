@@ -1,19 +1,18 @@
-
-
-
 :root {
-  
+
   --bg-main: #FFFFFF;
   --bg-section: #F7F6F3;
   --bg-card: #FFFFFF;
   --bg-card-hover: #FEFCFB;
   --bg-hero-gradient: linear-gradient(135deg, #FAD0C4 0%, #FFD1A6 50%, #E0C3FC 100%);
 
-  
+
   --accent-primary: #E85D75;
   --accent-primary-light: #f0899b;
   --accent-primary-dark: #c94a60;
   --accent-secondary: #FFB26B;
+  --accent-secondary-light: #ffd1a3;
+  --accent-secondary-dark: #e0964c;
   --accent-lavender: #E0C3FC;
   --accent-lavender-dark: #c9a0f0;
   --gradient-hero: linear-gradient(135deg, #FAD0C4, #FFD1A6, #E0C3FC);
@@ -21,13 +20,13 @@
   --gradient-warm: linear-gradient(135deg, #FFB26B, #E85D75);
   --gradient-cool: linear-gradient(135deg, #E0C3FC, #E85D75);
 
-  
+
   --text-primary: #111111;
   --text-secondary: #6B7280;
   --text-muted: #9CA3AF;
   --text-on-accent: #FFFFFF;
 
-  
+
   --border-light: #E5E7EB;
   --border-accent: rgba(232, 93, 117, 0.2);
   --radius-sm: 8px;
@@ -41,7 +40,7 @@
   --shadow-glow: 0 4px 24px rgba(232, 93, 117, 0.15);
   --transition: all 0.25s cubic-bezier(.4, 0, .2, 1);
 
-  
+
   --space-xs: 4px;
   --space-sm: 8px;
   --space-md: 16px;

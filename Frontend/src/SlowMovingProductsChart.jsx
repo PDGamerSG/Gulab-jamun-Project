@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "./lib/api";
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer,
   CartesianGrid, LabelList, Cell
@@ -26,7 +26,7 @@ function SlowMovingProductsChart() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/slow-moving-products")
+    api.get("/slow-moving-products")
       .then(res => {
         const formatted = Object.entries(res.data).map(([key, value]) => ({
           product: key.length > 16 ? key.substring(0, 16) + '…' : key,

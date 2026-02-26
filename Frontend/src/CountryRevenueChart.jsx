@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "./lib/api";
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip,
   ResponsiveContainer, Cell, CartesianGrid, LabelList
@@ -28,7 +28,7 @@ function CountryRevenueChart() {
 
   useEffect(() => {
     const fetchData = () => {
-      axios.get("http://localhost:8000/country-revenue").then(res => {
+      api.get("/country-revenue").then(res => {
         const entries = Object.entries(res.data)
           .map(([key, value]) => ({ country: key, revenue: value }))
           .sort((a, b) => b.revenue - a.revenue)
