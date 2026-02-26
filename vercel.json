@@ -1,6 +1,6 @@
 {
-  "buildCommand": "cd Frontend && npm install && npm run build",
-  "outputDirectory": "Frontend/dist",
+  "buildCommand": "if [ -d Frontend ]; then APP_DIR=Frontend; elif [ -d frontend ]; then APP_DIR=frontend; else echo 'Frontend folder not found'; ls -la; exit 1; fi && cd $APP_DIR && npm install && npm run build && cd .. && rm -rf dist && cp -r $APP_DIR/dist dist",
+  "outputDirectory": "dist",
   "functions": {
     "api/index.py": {
       "includeFiles": "Backend/**"
